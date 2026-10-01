@@ -393,6 +393,124 @@
       .edu { padding: 24px 20px; }
       footer { padding: 36px 24px; border-radius: 28px; margin-top: 72px; }
     }
+    /* ---------- tabs ---------- */
+    :root { --violet: #7950f2; --violet-d: #5f3dc4; --violet-soft: #f3f0ff; }
+    .tabbar {
+      position: sticky; top: 0; z-index: 30; margin: 0 -24px; padding: 10px 24px;
+      background: rgba(245,246,251,.84); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    }
+    .tabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      font-family: inherit; font-size: 15px; font-weight: 700; color: var(--ink-2);
+      background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+      padding: 11px 22px; cursor: pointer; white-space: nowrap;
+      transition: background .2s, color .2s, border-color .2s, transform .2s;
+    }
+    .tab-btn:hover { border-color: var(--ink-3); transform: translateY(-1px); }
+    .tab-btn[aria-selected="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .view[hidden] { display: none; }
+    .view:not([data-view="portfolio"]) .section { padding-top: 44px; }
+    .view[data-view="portfolio"] > .hero { margin-top: 14px; }
+    .lead { font-size: 16.5px; color: var(--ink-2); line-height: 1.8; max-width: 760px; margin-bottom: 24px; }
+
+    /* study */
+    .goal-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 16px; }
+    .goal-card, .prog-card { border-radius: var(--r-lg); box-shadow: var(--shadow); padding: 26px 28px; }
+    .goal-card { background: var(--blue-soft); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .goal-card .mini-label { margin-bottom: 8px; }
+    .goal-text { font-size: 19px; font-weight: 900; line-height: 1.4; }
+    .dday { font-family: var(--font-mono); font-weight: 700; font-size: 36px; color: var(--blue-d); white-space: nowrap; }
+    .prog-card { background: var(--card); --c: var(--blue); --c-d: var(--blue-d); display: flex; flex-direction: column; justify-content: center; }
+    .prog-card .g-track { background: var(--bg); }
+    .part-label {
+      display: flex; align-items: center; gap: 12px; margin: 44px 0 16px;
+      font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: .12em; color: var(--c-d);
+    }
+    .part-label::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+    .part-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+    .chap {
+      background: var(--card); border-radius: var(--r-lg); box-shadow: var(--shadow);
+      padding: 26px 28px; margin-bottom: 14px; display: grid; grid-template-columns: auto 1fr; gap: 22px;
+    }
+    .chap-num {
+      min-width: 60px; height: 60px; padding: 0 12px; border-radius: 18px; background: var(--c); color: #fff;
+      display: grid; place-items: center; font-family: var(--font-mono); font-weight: 700; font-size: 18px;
+    }
+    .chap-title { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+    .chap h3 { font-size: 20px; font-weight: 900; letter-spacing: -0.01em; }
+    .done-badge {
+      font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: #fff; background: var(--mint-d);
+      padding: 4px 11px; border-radius: 999px;
+    }
+    .chap-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .chap-col { background: var(--c-soft); border-radius: 16px; padding: 14px 16px; }
+    .chap-col .mini-label { margin-bottom: 6px; color: var(--c-d); }
+    .chap-col p:last-child { font-size: 14.5px; color: var(--ink-2); line-height: 1.65; }
+    .ext-link {
+      margin-top: 14px; display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700;
+      color: var(--c-d); text-decoration: none; background: var(--c-soft); padding: 8px 14px; border-radius: 999px;
+    }
+    .ext-link svg { width: 12px; height: 12px; }
+
+    /* gameplay */
+    .gp-prog { background: var(--card); border-radius: var(--r-lg); box-shadow: var(--shadow); padding: 26px 28px; --c: var(--mint); --c-d: var(--mint-d); }
+    .gp-prog .g-track { background: var(--bg); }
+    .gp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+    .gp-card {
+      background: var(--card); border-radius: var(--r-md); box-shadow: var(--shadow); padding: 20px 22px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .gp-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .gp-date { font-family: var(--font-mono); font-size: 13px; font-weight: 700; background: var(--bg); padding: 5px 12px; border-radius: 999px; }
+    .gp-status { font-size: 12.5px; font-weight: 700; padding: 5px 12px; border-radius: 999px; background: #eceef5; color: var(--ink-3); }
+    .gp-card[data-status="playing"] .gp-status { background: var(--peach-soft); color: var(--peach-d); }
+    .gp-card[data-status="done"] .gp-status { background: var(--mint-soft); color: var(--mint-d); }
+    .gp-title { font-size: 18px; font-weight: 900; line-height: 1.35; }
+    .gp-title.unset { color: var(--ink-3); }
+    .gp-note { font-size: 13px; font-weight: 700; color: var(--peach-d); }
+    .gp-meta { font-size: 13.5px; color: var(--ink-3); }
+    .gp-meta .sep { margin: 0 4px; }
+    .gp-desc { font-size: 14.5px; color: var(--ink-2); line-height: 1.65; }
+    .gp-comment { background: var(--mint-soft); border-radius: 14px; padding: 12px 14px; font-size: 14px; color: var(--ink-2); }
+    .gp-comment .mini-label { margin-bottom: 4px; color: var(--mint-d); }
+
+    /* game event */
+    .event-card { background: var(--card); border-radius: var(--r-lg); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 24px; }
+    .event-head { background: var(--pink-soft); padding: 36px 40px; }
+    .event-eyebrow { font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--pink-d); }
+    .event-head h3 { font-size: clamp(28px, 4vw, 40px); font-weight: 900; letter-spacing: -0.02em; margin: 8px 0 12px; line-height: 1.2; }
+    .event-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+    .event-meta span { font-size: 13px; font-weight: 500; background: rgba(255,255,255,.75); padding: 4px 12px; border-radius: 999px; }
+    .event-meta .sep { display: none; }
+    .event-section { padding: 30px 40px; border-top: 1px solid var(--line); }
+    .event-section h4 { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 900; margin-bottom: 14px; }
+    .event-section h4::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--pink); flex-shrink: 0; }
+    .event-section p { font-size: 15.5px; color: var(--ink-2); line-height: 1.85; margin-bottom: 10px; }
+    .event-section p.event-highlight { background: var(--lemon-soft); border-radius: 16px; padding: 16px 18px; font-weight: 700; color: var(--ink); margin-top: 14px; }
+    .ev-table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--line); margin: 8px 0 14px; }
+    .ev-table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14.5px; }
+    .ev-table th { background: var(--bg); text-align: left; font-weight: 700; padding: 12px 16px; white-space: nowrap; }
+    .ev-table td { padding: 12px 16px; border-top: 1px solid var(--line); vertical-align: top; color: var(--ink-2); line-height: 1.6; }
+    .event-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 4px; }
+    .event-flow .step { background: var(--pink-soft); color: var(--pink-d); font-weight: 700; font-size: 13.5px; padding: 8px 14px; border-radius: 999px; }
+    .event-flow .arrow { color: var(--ink-3); }
+
+    @media (max-width: 960px) {
+      .goal-row { grid-template-columns: 1fr; }
+      .chap-cols { grid-template-columns: 1fr; }
+      .gp-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .tabbar { margin: 0 -16px; padding: 8px 16px; }
+      .tab-btn { padding: 10px 18px; font-size: 14px; }
+      .goal-card, .prog-card, .gp-prog { padding: 22px 20px; }
+      .chap { grid-template-columns: 1fr; padding: 22px 20px; gap: 14px; }
+      .chap-num { width: fit-content; height: 44px; border-radius: 14px; font-size: 16px; }
+      .gp-grid { grid-template-columns: 1fr; }
+      .event-head { padding: 28px 22px; }
+      .event-section { padding: 24px 22px; }
+    }
   </style>
 </head>
 <body>
@@ -403,6 +521,16 @@
       <a class="top-mail" href="mailto:rlatkdgjs0304@naver.com">rlatkdgjs0304@naver.com</a>
     </div>
 
+    <nav class="tabbar" aria-label="섹션 전환">
+      <div class="tabs" role="tablist">
+        <button class="tab-btn" type="button" role="tab" data-tab="portfolio" aria-selected="true">Portfolio</button>
+        <button class="tab-btn" type="button" role="tab" data-tab="study" aria-selected="false">Study</button>
+        <button class="tab-btn" type="button" role="tab" data-tab="gameplay" aria-selected="false">GamePlay</button>
+        <button class="tab-btn" type="button" role="tab" data-tab="gameevent" aria-selected="false">GameEvent</button>
+      </div>
+    </nav>
+
+    <div class="view" data-view="portfolio">
     <!-- HERO -->
     <header class="hero">
       <div>
@@ -734,6 +862,45 @@
         </div>
       </section>
     </main>
+    </div>
+
+    <div class="view" data-view="study" hidden>
+      <section class="section">
+        <div class="sec-head reveal"><div><p class="sec-en">Study</p><h2>학습 계획표</h2></div></div>
+        <p class="lead">「클로드 코워크 with 스킬, 플러그인」을 파트별로 공부하며 이론 · 실습 · 응용을 정리합니다. 잘 모르는 내용은 유튜브에서 찾아보고 아래 참고 링크에 남겨둡니다.</p>
+        <div class="goal-row">
+          <div class="goal-card">
+            <div><p class="mini-label">목표</p><p class="goal-text">9월 28일까지 Part 1까지 끝내기</p></div>
+            <p class="dday" data-dday></p>
+          </div>
+          <div class="prog-card">
+            <div class="g-top"><span class="g-name">전체 진행률</span><span class="g-num" data-progress-num>0 / 17</span></div>
+            <div class="g-track"><div class="g-fill" data-progress-fill style="width:0%"></div></div>
+          </div>
+        </div>
+        <div data-study-list></div>
+      </section>
+    </div>
+
+    <div class="view" data-view="gameplay" hidden>
+      <section class="section">
+        <div class="sec-head reveal"><div><p class="sec-en">GamePlay</p><h2>게임 플레이 트래커</h2></div></div>
+        <p class="lead">교수님이 지정해주신 일정(9/10 ~ 9/23)에 따라 하루 1개씩 게임을 플레이하며 QA 관점 기록을 남깁니다.</p>
+        <div class="gp-prog">
+          <div class="g-top"><span class="g-name">플레이 진행률</span><span class="g-num" data-gp-progress-num>0 / 14</span></div>
+          <div class="g-track"><div class="g-fill" data-gp-progress-fill style="width:0%"></div></div>
+        </div>
+        <div class="gp-grid" data-gameplay-list></div>
+      </section>
+    </div>
+
+    <div class="view" data-view="gameevent" hidden>
+      <section class="section">
+        <div class="sec-head reveal"><div><p class="sec-en">GameEvent</p><h2>이벤트 기획</h2></div></div>
+        <p class="lead">트렌드 분석을 바탕으로 라이브 서비스 게임의 이벤트를 기획한 자료입니다. 배경 분석 → 문제 진단 → 컨셉 설계 → 콘텐츠·일정·KPI 순으로 정리합니다.</p>
+        <div data-gameevent-list></div>
+      </section>
+    </div>
 
     <footer class="reveal">
       <div>
@@ -859,6 +1026,286 @@
       }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
       items.forEach(function (el) { io.observe(el); });
     })();
+  </script>
+<script>
+    var STUDY_CHAPTERS = [
+      { part: 1, num: 1, title: "코워크란 무엇인가", done: false, link: "",
+        theory: "코워크의 정의(\"손으로 완성해야 할 일을 맡기는 곳\"), 코워크 vs 채팅 vs 클로드 코드 비교, 데스크톱·웹·모바일 실행 환경",
+        practice: "코워크에서 폴더 하나를 연결해 파일 목록을 요약시켜보기",
+        apply: "자주 반복하는 개인 작업(과제 정리, 자료 스크랩)을 코워크 작업 하나로 옮겨보기" },
+      { part: 1, num: 2, title: "코워크로 작업 시작하기", done: false, link: "",
+        theory: "작업 목표 정의 방법, 폴더·도구 연결과 접근 범위 제한, 실행 투명성, 중단·방향 수정, 삭제 승인 절차",
+        practice: "폴더를 연결해 코워크가 파일을 읽고 정리하는 과정을 지켜보고, 중간에 방향을 한 번 수정해보기",
+        apply: "학교 과제 폴더를 연결해 파일 자동 정리 작업을 설계해보기" },
+      { part: 1, num: 3, title: "지속 실행과 자동 스케줄링", done: false, link: "",
+        theory: "백그라운드 지속 실행 개념, 일간/주간/월간 스케줄 작업, 모바일에서 진행 상황 확인",
+        practice: "매일 아침 알림처럼 동작하는 간단한 스케줄 작업 하나 만들어보기",
+        apply: "구상 중인 \"오버나이트 뉴스 브리핑\", \"이동 기록 자동화\" 아이디어에 스케줄링 적용해보기" },
+      { part: 1, num: 4, title: "코워크 활용 사례", done: false, link: "",
+        theory: "보고서 자동화, 재무 데이터 통합·차이 분석, 계약 검토와 근거 인용, 대규모 작업의 병렬 분할",
+        practice: "예시 데이터로 간단한 리포트 자동 생성 흐름을 따라 해보기",
+        apply: "진행 중인 \"가고 싶은 회사 채용공고 정리\" 과제에 회사별 자동 정리 작업 적용" },
+      { part: 2, num: 5, title: "스킬의 개념", done: false, link: "",
+        theory: "스킬 = 지침+메타데이터+리소스 패키지, 클로드를 전문화시키는 원리, 점진적 로딩 3단계(메타데이터→지침→리소스)",
+        practice: "내장 스킬(pptx 등) 하나를 실제로 호출해보고 동작을 관찰하기",
+        apply: "본인이 반복하는 작업(PPT 제작, 기획서 작성) 중 스킬로 대체 가능한 부분 찾아보기" },
+      { part: 2, num: 6, title: "SKILL.md 파헤치기", done: false, link: "",
+        theory: "YAML 프론트매터 작성 규칙(name, description), Instructions·Examples 본문 구조, 참고 파일·스크립트 구성",
+        practice: "간단한 SKILL.md 파일을 직접 작성해보기 (예: 문서 양식 통일 스킬)",
+        apply: "게임 QA 버그 리포트 양식을 스킬로 만들어보기" },
+      { part: 2, num: 7, title: "내장 스킬 vs 커스텀 스킬", done: false, link: "",
+        theory: "사전 제작 스킬(pptx/xlsx/docx/pdf), 커스텀 스킬 생성 위치(개인용/프로젝트용), 서비스별 저장·공유 범위 비교",
+        practice: "커스텀 스킬 폴더를 만들어 등록해보기",
+        apply: "진행 중인 프로젝트(예: 슬라임 아이들러) 문서화 전용 스킬 제작" },
+      { part: 2, num: 8, title: "스킬 활용과 보안", done: false, link: "",
+        theory: "반복 업무 자동화 사례, 신뢰할 수 있는 출처 원칙, 번들 파일 감사 체크리스트",
+        practice: "임의의 스킬 파일 하나에 보안 체크리스트를 적용해 점검해보기",
+        apply: "팀/동료와 스킬을 공유하기 전 점검할 나만의 체크리스트 만들기" },
+      { part: 3, num: 9, title: "플러그인이란 무엇인가", done: false, link: "",
+        theory: "슬래시 명령어·서브에이전트·MCP 서버·훅의 번들, 팀 표준화와 공유라는 목적",
+        practice: "/plugin 명령으로 플러그인 패널을 열어 구성요소 살펴보기",
+        apply: "팀 프로젝트에서 반복되는 명령들을 플러그인 후보로 정리해보기" },
+      { part: 3, num: 10, title: "마켓플레이스 탐색하기", done: false, link: "",
+        theory: "공식 마켓플레이스 vs 커뮤니티 마켓플레이스, 마켓플레이스 추가·갱신·삭제 명령",
+        practice: "공식 마켓플레이스 Discover 탭에서 플러그인 하나 찾아보기",
+        apply: "게임 개발/QA에 유용한 플러그인(GitHub, Notion 등) 후보 리스트 만들기" },
+      { part: 3, num: 11, title: "플러그인 설치와 관리", done: false, link: "",
+        theory: "설치 범위(사용자/프로젝트/로컬), 활성화·비활성화·재로드, 사용하지 않는 플러그인 정리",
+        practice: "플러그인 하나를 설치하고 /reload-plugins까지 실행해보기",
+        apply: "본인 작업 환경에 실제로 필요한 플러그인만 남기고 정리해보기" },
+      { part: 3, num: 12, title: "대표 플러그인 카테고리", done: false, link: "",
+        theory: "코드 인텔리전스(LSP), 외부 연동(GitHub/Slack/Notion/Figma), 워크플로우·보안 리뷰 플러그인",
+        practice: "관심 있는 카테고리의 플러그인 하나를 설치해 기능 확인하기",
+        apply: "QA 업무에 쓸 만한 외부 연동(버그 트래커 등) 플러그인 검토" },
+      { part: 3, num: 13, title: "나만의 플러그인 만들기", done: false, link: "",
+        theory: "marketplace.json 구조, 배포 절차와 팀/개인 마켓플레이스 운영, 설치 시 보안 유의사항",
+        practice: "간단한 marketplace.json 초안을 직접 작성해보기",
+        apply: "앞서 만든 스킬(버그 리포트 등)을 하나의 플러그인으로 묶어보기" },
+      { part: 4, num: 14, title: "코워크+스킬+플러그인의 결합", done: false, link: "",
+        theory: "코워크 작업 안에서 스킬이 호출되는 흐름, 플러그인으로 확장된 도구 활용, 결과물을 아티팩트로 보존하기",
+        practice: "스킬을 활용해 코워크로 산출물을 만들고 아티팩트로 저장해보기",
+        apply: "학습 자료를 아티팩트로 정리해 반복 열람 가능한 형태로 만들기" },
+      { part: 4, num: 15, title: "실전 워크플로우 설계", done: false, link: "",
+        theory: "문서 자동 생성 파이프라인, 데이터 정리 자동화, 반복 업무 스케줄링 자동화",
+        practice: "본인 데이터(엑셀 등)로 미니 자동화 파이프라인을 설계해보기",
+        apply: "구상 중인 \"미니게임 무인 배포 파이프라인\" 기획에 적용해보기" },
+      { part: 5, num: 16, title: "게임 QA 업무에 적용하기", done: false, link: "",
+        theory: "채용공고 자동 정리, 버그 리포트 표준화, 테스트 케이스·체크리스트 자동 생성",
+        practice: "실제 채용공고 3개로 정리 스킬을 테스트해보기",
+        apply: "데브시스터즈 등 목표 기업 지원 준비에 바로 활용하기" },
+      { part: 5, num: 17, title: "학습과 포트폴리오 관리", done: false, link: "",
+        theory: "학습 자료 정리용 개인 스킬, 프로젝트 문서화 자동화",
+        practice: "진행 중인 프로젝트 하나를 골라 문서화를 자동화해보기",
+        apply: "포트폴리오용 프로젝트 소개 자료를 자동 생성해보기" }
+    ];
+
+    var PART_COLOR = { 1: "blue", 2: "green", 3: "amber", 4: "blue", 5: "green" };
+    var GAMEPLAY_SLOTS = [
+      { date: "09.10", name: "제우스: 오만의 신", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
+      { date: "09.11", name: "리니지M", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
+      { date: "09.12", name: "SOL: Enchant", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
+      { date: "09.13", name: "WOS: 화이트아웃 서바이벌", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
+      { date: "09.14", name: "킹샷: Kingshot", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
+      { date: "09.15", name: "오딘: 발할라 라이징", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
+      { date: "09.16", name: "메이플 키우기", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
+      { date: "09.17", name: "이클립스: 더 어웨이크닝", note: "Google, App Store 공동 1위", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
+      { date: "09.18", name: "로블록스 (Roblox)", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
+      { date: "09.19", name: "가십하버: 합성 & 스토리 게임", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
+      { date: "09.20", name: "로얄 매치 (Royal Match)", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
+      { date: "09.21", name: "운빨존많겜", note: "순위 15위 → 11위 상승", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
+      { date: "09.22", name: "라스트 워: 서바이벌", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
+      { date: "09.23", name: "열혈강호: 넥스트", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" }
+    ];
+
+    var GP_STATUS_LABEL = { todo: "예정", playing: "진행 중", done: "완료" };
+    var GAME_EVENTS = [
+      {
+        title: "오늘의 쿠키 한 조각",
+        keyword: "트렌드 코리아 2026 — 픽셀 라이프(Pixelated Life)",
+        game: "쿠키런:킹덤",
+        date: "2026.09.17",
+        background: [
+          "트렌드 코리아 2026(김난도 외)이 제시한 키워드 \"픽셀 라이프(Pixelated Life)\"는 소비가 크고 무거운 단위가 아니라 작고 빠른 단위로 쪼개져 이뤄지는 현상을 가리킨다. 하나의 큰 성공을 좇기보다 짧은 시간 안에 성취를 반복적으로 확인하려는 심리가 핵심이다.",
+          "라이브 서비스 게임에서는 유저가 한 번에 투입하는 시간과 집중력이 줄면서, 장기 목표보다 하루 안에 끝나는 짧은 루틴에서 성취감을 확인하려는 경향이 커진다. 콘텐츠 설계 방향도 \"한 판 크게\"가 아니라 \"조금씩 자주\"로 옮겨가야 한다는 의미다.",
+          "대상 게임은 쿠키런:킹덤(2021년 1월 21일 글로벌 출시, 서비스 5년차 이상). 왕국 버닝타임(3~4일 주기), 대무역시대(약 1주), 길드 명예 이벤트(7~8일) 등 반복 이벤트가 촘촘한 라이브 서비스 게임으로, 유저 커뮤니티에서는 재화 수급 이벤트 기간은 짧은 반면 한정 뽑기 기간은 길어 무과금 진행이 어렵다는 점, 한정 쿠키 등장률이 0.301%로 낮고 천장이 250회에 달해 피로도가 누적된다는 불만이 꾸준히 관찰된다.",
+          "이는 픽셀 라이프가 지목하는 문제와 정확히 겹친다. 유저는 장기간 쌓아야 하는 확률형 보상보다, 짧은 시간 투입으로 확정적인 성취를 자주 얻길 원한다."
+        ],
+        target: [
+          "쿠키런:킹덤은 하루 사이클로 촘촘하게 짜인 반복 이벤트가 거의 상시로 겹치는 구조라, 핵심 장기 유저일수록 이벤트를 숙제처럼 대부분 챙겨야 한다는 부담이 있다.",
+          "상대적으로 플레이타임이 짧은 라이트 유저나 복귀 유저는 이 촘촘한 일정을 따라가기 부담스러워 이탈하기 쉽다. 이번 이벤트는 이런 라이트·복귀 유저층이 부담 없이 가볍게 참여할 수 있는 진입점을 제공하는 것을 목표로 한다."
+        ],
+        concept: {
+          name: "오늘의 쿠키 한 조각",
+          desc: "매일 로그인하면 5분 내로 끝나는 초경량 미션 3개를 제공하고, 완료 즉시 확정 보상(확률 없음)을 지급한다. 7일 연속 참여하면 하루하루 모은 조각들이 합쳐져 하나의 픽셀 아트 일러스트(한정 쿠키 그림)를 완성하는 \"쿠키 조각 앨범\" UI로 성취를 시각화한다.",
+          design: "확률형 아이템 피로도가 높다는 기존 유저 불만을 정면으로 피해 가는 확정 보상 구조이며, 참여 단위를 짧게 쪼개 라이트·복귀 유저도 부담 없이 챙길 수 있게 한다. 일별 미션은 기존 시스템 안에서 한 번의 행위만으로 완료되게 설계해, 새로 배워야 할 규칙이 없다."
+        },
+        missions: [
+          ["1일차", "몬스터 3마리 처치", "쿠키 조각 1개 + 별가루 50"],
+          ["2일차", "상점에서 재료 1회 구매", "조각 1개 + 캔디 100"],
+          ["3일차", "오븐 강화 1회 진행", "조각 1개 + 강화 재료"],
+          ["4일차", "길드 의뢰 1건 완료", "조각 1개 + 길드 코인"],
+          ["5일차", "킹덤 아레나 1회 참가", "조각 1개 + 아레나 코인"],
+          ["6일차", "월드 탐험 1스테이지 클리어", "조각 1개 + 경험치 물약"],
+          ["7일차", "누적 7개 달성(자동 확인)", "픽셀 아트 일러스트 완성 + 한정 쿠키 조각 5개"]
+        ],
+        flow: ["오늘의 미션 확인", "5분 내 행위 수행", "즉시 확정 보상 지급", "쿠키 조각 앨범 업데이트", "7일 연속 시 → 일러스트 완성 + 한정 보상"],
+        schedule: [
+          ["사전 예고", "D-3 ~ D-1", "인게임 공지, SNS 티저, 이벤트명과 보상 미리보기 공개"],
+          ["진행", "D0 ~ D6 (7일)", "일별 미션 오픈, 실시간 참여 현황 집계"],
+          ["사후 정리", "D+1 ~ D+2", "미수령 보상 지급, 참여율과 이탈 구간 분석, 커뮤니티 피드백 수집"]
+        ],
+        budget: [
+          "유저 1인당 지급량(7일 완주 기준, 예시): 쿠키 조각 5개, 별가루 50개, 캔디 100개, 강화 재료 1묶음, 길드 코인·아레나 코인 소량, 경험치 물약 1개, 한정 일러스트(재화 아님, 장식용).",
+          "보상이 모두 확정 지급이라 확률형 재화 구매를 유도하지 않는다. 신규 결제 유도보다 재방문(리텐션) 확대를 주된 효과로 설계했으며, 별도 유료 상품은 만들지 않는 것을 원칙으로 하고 필요할 경우 이벤트 테마 코스튬을 상점에 한정 판매하는 수준으로 수익화를 최소화한다.",
+          "기존 시스템(로그인, 상점, 강화 등)을 재사용하므로 신규 개발 비용은 낮고, 주요 비용은 마케팅(SNS 티저, 인플루언서 협업) 쪽에 집중된다."
+        ],
+        highlight: "이 이벤트의 핵심 가치는 매출 극대화가 아니라, 확률형 아이템 피로도로 이탈 위험이 큰 유저층을 붙잡는 리텐션 방어형 이벤트라는 점이다.",
+        kpi: [
+          ["DAU 증가율", "이벤트 기간 중 평균 DAU +8~12%", "이벤트 전후 7일 비교"],
+          ["라이트·복귀 유저 재방문율", "이벤트 기간 중 +15퍼센트포인트", "코호트별 로그인 추적"],
+          ["7일 완주율", "참여 유저 중 40% 이상", "조각 앨범 완성 유저 수 ÷ 참여 유저 수"],
+          ["확률형 아이템 관련 부정 언급 변화", "이벤트 기간 중 20% 감소", "커뮤니티·SNS 언급 모니터링(정성 평가)"]
+        ],
+        risks: [
+          ["보상이 작아 코어 유저에게 매력이 부족할 수 있음", "7일 완주 보상으로 한정 일러스트와 코스튬을 배치해 소장 가치를 준다"],
+          ["매일 챙겨야 하는 이벤트가 오히려 부담으로 느껴질 위험", "9일 중 7일만 달성하면 되는 유예 구조로 참여 부담을 낮춘다"],
+          ["기존 헤비 이벤트와 보상량을 비교하면 초라해 보일 수 있음", "확정 지급과 짧은 투입 시간이라는 장점을 공지에서 강조한다"],
+          ["짧은 미션 위주 설계가 장기 리텐션에는 효과가 약할 수 있음", "1회 파일럿으로 진행해 참여율과 피드백을 본 뒤 정기 편성을 검토한다"]
+        ]
+      }
+    ];
+
+    function evTable(headers, rows) {
+      var thead = "<thead><tr>" + headers.map(function (h) { return "<th>" + h + "</th>"; }).join("") + "</tr></thead>";
+      var tbody = "<tbody>" + rows.map(function (r) {
+        return "<tr>" + r.map(function (c) { return "<td>" + c + "</td>"; }).join("") + "</tr>";
+      }).join("") + "</tbody>";
+      return '<div class="ev-table-wrap"><table class="ev-table">' + thead + tbody + "</table></div>";
+    }
+
+    /* ---------- tabs (switch) ---------- */
+    (function () {
+      var btns = Array.prototype.slice.call(document.querySelectorAll(".tab-btn"));
+      var views = Array.prototype.slice.call(document.querySelectorAll(".view"));
+      var names = btns.map(function (b) { return b.getAttribute("data-tab"); });
+
+      function show(name, push) {
+        if (names.indexOf(name) < 0) name = "portfolio";
+        btns.forEach(function (b) { b.setAttribute("aria-selected", String(b.getAttribute("data-tab") === name)); });
+        views.forEach(function (v) { v.hidden = v.getAttribute("data-view") !== name; });
+        if (push) {
+          try { history.replaceState(null, "", name === "portfolio" ? location.pathname : "#" + name); } catch (e) {}
+          window.scrollTo(0, 0);
+        }
+      }
+      btns.forEach(function (b) { b.addEventListener("click", function () { show(b.getAttribute("data-tab"), true); }); });
+      window.addEventListener("hashchange", function () { show(location.hash.replace("#", ""), false); });
+      show(location.hash.replace("#", ""), false);
+    })();
+
+    /* ---------- study render ---------- */
+    PART_COLOR = { 1: "blue", 2: "mint", 3: "peach", 4: "pink", 5: "violet" };
+    function colorStyle(n) { return "--c:var(--" + n + ");--c-d:var(--" + n + "-d);--c-soft:var(--" + n + "-soft)"; }
+    var EXT_SVG = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4.5 3H9v4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+    (function () {
+      var list = document.querySelector("[data-study-list]");
+      if (!list) return;
+
+      var ddayEl = document.querySelector("[data-dday]");
+      if (ddayEl) {
+        var target = new Date("2026-09-28T00:00:00+09:00");
+        var diff = Math.ceil((target - new Date()) / 86400000);
+        ddayEl.textContent = diff > 0 ? ("D-" + diff) : (diff === 0 ? "D-DAY" : ("D+" + Math.abs(diff)));
+      }
+
+      var currentPart = null;
+      STUDY_CHAPTERS.forEach(function (ch) {
+        if (ch.part !== currentPart) {
+          currentPart = ch.part;
+          var head = document.createElement("p");
+          head.className = "part-label";
+          head.setAttribute("style", colorStyle(PART_COLOR[ch.part]));
+          head.textContent = "PART " + ch.part;
+          list.appendChild(head);
+        }
+        var row = document.createElement("article");
+        row.className = "chap" + (ch.done ? " is-done" : "");
+        row.setAttribute("style", colorStyle(PART_COLOR[ch.part]));
+        var linkHtml = ch.link
+          ? '<a class="ext-link" href="' + ch.link + '" target="_blank" rel="noopener">참고 영상 보기' + EXT_SVG + "</a>"
+          : "";
+        row.innerHTML =
+          '<div class="chap-num">' + ch.num + "장</div>" +
+          "<div>" +
+            '<div class="chap-title"><h3>' + ch.title + "</h3>" + (ch.done ? '<span class="done-badge">완료</span>' : "") + "</div>" +
+            '<div class="chap-cols">' +
+              '<div class="chap-col"><p class="mini-label">이론</p><p>' + ch.theory + "</p></div>" +
+              '<div class="chap-col"><p class="mini-label">실습</p><p>' + ch.practice + "</p></div>" +
+              '<div class="chap-col"><p class="mini-label">응용</p><p>' + ch.apply + "</p></div>" +
+            "</div>" + linkHtml +
+          "</div>";
+        list.appendChild(row);
+      });
+
+      var done = STUDY_CHAPTERS.filter(function (ch) { return ch.done; }).length;
+      var numEl = document.querySelector("[data-progress-num]");
+      var fillEl = document.querySelector("[data-progress-fill]");
+      if (numEl) numEl.innerHTML = "<b>" + done + "</b> / " + STUDY_CHAPTERS.length;
+      if (fillEl) fillEl.style.width = Math.round((done / STUDY_CHAPTERS.length) * 100) + "%";
+    })();
+
+    /* ---------- gameplay render ---------- */
+    (function () {
+      var list = document.querySelector("[data-gameplay-list]");
+      if (!list) return;
+      GAMEPLAY_SLOTS.forEach(function (slot) {
+        var card = document.createElement("article");
+        card.className = "gp-card";
+        card.setAttribute("data-status", slot.status);
+        var metaParts = [slot.period, slot.level, slot.genre].filter(Boolean);
+        card.innerHTML =
+          '<div class="gp-top"><span class="gp-date">' + slot.date + '</span><span class="gp-status">' + GP_STATUS_LABEL[slot.status] + "</span></div>" +
+          (slot.name ? '<h3 class="gp-title">' + slot.name + "</h3>" : '<h3 class="gp-title unset">게임명 미정</h3>') +
+          (slot.note ? '<p class="gp-note">' + slot.note + "</p>" : "") +
+          (metaParts.length ? '<p class="gp-meta">' + metaParts.join(' <span class="sep">/</span> ') + "</p>" : "") +
+          (slot.desc ? '<p class="gp-desc">' + slot.desc + "</p>" : "") +
+          (slot.comment ? '<div class="gp-comment"><p class="mini-label">QA 코멘트</p><p>' + slot.comment + "</p></div>" : "");
+        list.appendChild(card);
+      });
+      var done = GAMEPLAY_SLOTS.filter(function (s) { return s.status === "done"; }).length;
+      var numEl = document.querySelector("[data-gp-progress-num]");
+      var fillEl = document.querySelector("[data-gp-progress-fill]");
+      if (numEl) numEl.innerHTML = "<b>" + done + "</b> / " + GAMEPLAY_SLOTS.length;
+      if (fillEl) fillEl.style.width = Math.round((done / GAMEPLAY_SLOTS.length) * 100) + "%";
+    })();
+
+    /* ---------- game event render ---------- */
+    (function () {
+      var list = document.querySelector("[data-gameevent-list]");
+      if (!list) return;
+      GAME_EVENTS.forEach(function (ev) {
+        var card = document.createElement("article");
+        card.className = "event-card";
+        var flowHtml = ev.flow.map(function (step, i) {
+          return '<span class="step">' + step + "</span>" + (i < ev.flow.length - 1 ? '<span class="arrow">→</span>' : "");
+        }).join("");
+        var paras = function (arr) { return arr.map(function (p) { return "<p>" + p + "</p>"; }).join(""); };
+        card.innerHTML =
+          '<div class="event-head"><p class="event-eyebrow">' + ev.keyword + "</p><h3>" + ev.title + "</h3>" +
+            '<p class="event-meta"><span>대상 게임 · ' + ev.game + "</span><span>" + ev.date + "</span></p></div>" +
+          '<div class="event-section"><h4>기획 배경 및 트렌드 분석</h4>' + paras(ev.background) + "</div>" +
+          '<div class="event-section"><h4>타겟 유저 및 문제 진단</h4>' + paras(ev.target) + "</div>" +
+          '<div class="event-section"><h4>이벤트 컨셉 · ' + ev.concept.name + "</h4><p>" + ev.concept.desc + "</p><p>" + ev.concept.design + "</p></div>" +
+          '<div class="event-section"><h4>콘텐츠 상세 · 일별 미션</h4>' + evTable(["일차", "미션(5분 내 완료)", "확정 보상"], ev.missions) + '<div class="event-flow">' + flowHtml + "</div></div>" +
+          '<div class="event-section"><h4>진행 일정(WBS)</h4>' + evTable(["단계", "기간", "내용"], ev.schedule) + "</div>" +
+          '<div class="event-section"><h4>예산 및 재화 소모 계획</h4>' + paras(ev.budget) + '<p class="event-highlight">' + ev.highlight + "</p></div>" +
+          '<div class="event-section"><h4>기대 효과 및 KPI</h4>' + evTable(["지표", "목표치(예시)", "측정 방법"], ev.kpi) + "</div>" +
+          '<div class="event-section"><h4>리스크 및 대응안</h4>' + evTable(["리스크", "대응안"], ev.risks) + "</div>";
+        list.appendChild(card);
+      });
+    })();
+
   </script>
 <script type="text/plain" id="game-slime"><!doctype html>
 <html lang="ko">
