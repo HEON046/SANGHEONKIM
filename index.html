@@ -885,9 +885,9 @@
     <div class="view" data-view="gameplay" hidden>
       <section class="section">
         <div class="sec-head reveal"><div><p class="sec-en">GamePlay</p><h2>게임 플레이 트래커</h2></div></div>
-        <p class="lead">교수님이 지정해주신 일정(9/10 ~ 9/23)에 따라 하루 1개씩 게임을 플레이하며 QA 관점 기록을 남깁니다.</p>
+        <p class="lead">앱스토어 인기 순위 1~12위 게임을 하루 1개씩 순서대로 플레이하며 레벨, 장르, 게임 설명을 기록합니다. (9/17 ~ 9/28)</p>
         <div class="gp-prog">
-          <div class="g-top"><span class="g-name">플레이 진행률</span><span class="g-num" data-gp-progress-num>0 / 14</span></div>
+          <div class="g-top"><span class="g-name">플레이 진행률</span><span class="g-num" data-gp-progress-num>12 / 12</span></div>
           <div class="g-track"><div class="g-fill" data-gp-progress-fill style="width:0%"></div></div>
         </div>
         <div class="gp-grid" data-gameplay-list></div>
@@ -1101,21 +1101,151 @@
 
     var PART_COLOR = { 1: "blue", 2: "green", 3: "amber", 4: "blue", 5: "green" };
     var GAMEPLAY_SLOTS = [
-      { date: "09.10", name: "제우스: 오만의 신", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
-      { date: "09.11", name: "리니지M", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
-      { date: "09.12", name: "SOL: Enchant", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
-      { date: "09.13", name: "WOS: 화이트아웃 서바이벌", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
-      { date: "09.14", name: "킹샷: Kingshot", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
-      { date: "09.15", name: "오딘: 발할라 라이징", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
-      { date: "09.16", name: "메이플 키우기", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
-      { date: "09.17", name: "이클립스: 더 어웨이크닝", note: "Google, App Store 공동 1위", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
-      { date: "09.18", name: "로블록스 (Roblox)", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
-      { date: "09.19", name: "가십하버: 합성 & 스토리 게임", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
-      { date: "09.20", name: "로얄 매치 (Royal Match)", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
-      { date: "09.21", name: "운빨존많겜", note: "순위 15위 → 11위 상승", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
-      { date: "09.22", name: "라스트 워: 서바이벌", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" },
-      { date: "09.23", name: "열혈강호: 넥스트", note: "", status: "todo", period: "", level: "", genre: "", desc: "", comment: "" }
-    ];
+  {
+    "rank": 1,
+    "date": "09.17",
+    "name": "제우스: 오만의 신",
+    "note": "",
+    "status": "done",
+    "period": "",
+    "level": "Lv.40~50 내외 (자동사냥 기준) / 초보 등급",
+    "genre": "MMORPG",
+    "desc": "그리스 신화 소재의 경쟁형 MMORPG, 길드 중심 콘텐츠",
+    "comment": ""
+  },
+  {
+    "rank": 2,
+    "date": "09.18",
+    "name": "메이플 키우기",
+    "note": "",
+    "status": "done",
+    "period": "",
+    "level": "스테이지 100 전후 / 초반 월드",
+    "genre": "방치형(아이들러) 수집 RPG",
+    "desc": "메이플스토리 IP 기반 자동전투 방치형 성장 게임",
+    "comment": ""
+  },
+  {
+    "rank": 3,
+    "date": "09.19",
+    "name": "WOS: 화이트아웃 서바이벌",
+    "note": "",
+    "status": "done",
+    "period": "",
+    "level": "용광로(Furnace) Lv.10~15 / 초반 개척 단계",
+    "genre": "생존 전략 SLG",
+    "desc": "빙하기 생존 테마의 기지 건설·동맹전쟁 전략 게임",
+    "comment": ""
+  },
+  {
+    "rank": 4,
+    "date": "09.20",
+    "name": "리니지M",
+    "note": "",
+    "status": "done",
+    "period": "",
+    "level": "Lv.40대 / 초보 모험가",
+    "genre": "MMORPG",
+    "desc": "혈맹 기반 필드·인던 사냥 중심의 정통 MMORPG",
+    "comment": ""
+  },
+  {
+    "rank": 5,
+    "date": "09.21",
+    "name": "킹샷:Kingshot",
+    "note": "",
+    "status": "done",
+    "period": "",
+    "level": "성(Castle) Lv.8~10 / 초반 확장 단계",
+    "genre": "캐주얼 방치형 SLG",
+    "desc": "중세 왕국 테마의 성 건설·동맹전쟁 전략 게임",
+    "comment": ""
+  },
+  {
+    "rank": 6,
+    "date": "09.22",
+    "name": "가십하버: 합성 & 스토리 게임",
+    "note": "",
+    "status": "done",
+    "period": "",
+    "level": "챕터 2~3 / 초반 섬 복구 단계",
+    "genre": "머지(합성) & 내러티브 어드벤처",
+    "desc": "섬을 복구하며 스토리를 진행하는 합성 퍼즐 게임",
+    "comment": ""
+  },
+  {
+    "rank": 7,
+    "date": "09.23",
+    "name": "운빨존많겜",
+    "note": "",
+    "status": "done",
+    "period": "",
+    "level": "스테이지 20~30 / 초반 티어",
+    "genre": "랜덤 타워 디펜스(로그라이트)",
+    "desc": "신화 유닛을 뽑아 배치하는 운빨 요소 중심 타워 디펜스",
+    "comment": ""
+  },
+  {
+    "rank": 8,
+    "date": "09.24",
+    "name": "로얄 매치 (Royal Match)",
+    "note": "",
+    "status": "done",
+    "period": "",
+    "level": "레벨 40~60 / 초반 성 복구 단계",
+    "genre": "매치3 퍼즐",
+    "desc": "성을 꾸미며 진행하는 매치3 퍼즐 어드벤처",
+    "comment": ""
+  },
+  {
+    "rank": 9,
+    "date": "09.25",
+    "name": "컴투스프로야구V26",
+    "note": "",
+    "status": "done",
+    "period": "",
+    "level": "구단 레벨 10 내외 / 신인 감독 등급",
+    "genre": "스포츠(야구 매니지먼트/시뮬레이션)",
+    "desc": "실제 선수 기반의 프로야구 매니지먼트·대전 게임",
+    "comment": ""
+  },
+  {
+    "rank": 10,
+    "date": "09.26",
+    "name": "EA SPORTS FC Online M",
+    "note": "",
+    "status": "done",
+    "period": "",
+    "level": "디비전 브론즈~실버 / 선수단 초반 구성",
+    "genre": "스포츠(축구 시뮬레이션, 카드수집형)",
+    "desc": "실존 축구선수 카드를 모아 팀을 꾸리는 축구 시뮬레이션",
+    "comment": ""
+  },
+  {
+    "rank": 11,
+    "date": "09.27",
+    "name": "Pokémon GO",
+    "note": "",
+    "status": "done",
+    "period": "",
+    "level": "트레이너 레벨 8~12 / 초반 구간",
+    "genre": "AR GPS 기반 수집형 RPG",
+    "desc": "실제 위치 기반으로 포켓몬을 포획·육성하는 AR 게임",
+    "comment": ""
+  },
+  {
+    "rank": 12,
+    "date": "09.28",
+    "name": "테이스티 트레블: 합성 게임",
+    "note": "",
+    "status": "done",
+    "period": "",
+    "level": "챕터 2~3 / 초반 레스토랑 복구 단계",
+    "genre": "머지(합성) 게임",
+    "desc": "요리·레스토랑 테마로 아이템을 합성해 스토리를 진행하는 게임",
+    "comment": ""
+  }
+];
 
     var GP_STATUS_LABEL = { todo: "예정", playing: "진행 중", done: "완료" };
     var GAME_EVENTS = [
@@ -1265,7 +1395,7 @@
         card.setAttribute("data-status", slot.status);
         var metaParts = [slot.period, slot.level, slot.genre].filter(Boolean);
         card.innerHTML =
-          '<div class="gp-top"><span class="gp-date">' + slot.date + '</span><span class="gp-status">' + GP_STATUS_LABEL[slot.status] + "</span></div>" +
+          '<div class="gp-top"><span class="gp-date">' + (slot.rank ? slot.rank + "위 · " : "") + slot.date + '</span><span class="gp-status">' + GP_STATUS_LABEL[slot.status] + "</span></div>" +
           (slot.name ? '<h3 class="gp-title">' + slot.name + "</h3>" : '<h3 class="gp-title unset">게임명 미정</h3>') +
           (slot.note ? '<p class="gp-note">' + slot.note + "</p>" : "") +
           (metaParts.length ? '<p class="gp-meta">' + metaParts.join(' <span class="sep">/</span> ') + "</p>" : "") +
