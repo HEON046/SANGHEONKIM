@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="게임의 완성도를 끝까지 책임지는 QA 엔지니어 김상헌의 포트폴리오">
-  <meta property="og:title" content="김상헌 | Game QA Portfolio">
-  <meta property="og:description" content="게임의 완성도를 끝까지 책임지는 QA 엔지니어">
+  <meta name="description" content="김상헌 포트폴리오 · 게임 QA · 기획 · 개발 프로젝트">
+  <meta property="og:title" content="김상헌 | Portfolio">
+  <meta property="og:description" content="김상헌 포트폴리오">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230d1a1b%22/><rect x=%2228%22 y=%2228%22 width=%2244%22 height=%2244%22 fill=%22%233fd98a%22 transform=%22rotate(45 50 50)%22/></svg>">
-  <title>김상헌 | Game QA Portfolio</title>
+  <title>김상헌 | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -612,23 +612,50 @@
     .tc-cats li { background: #fff; border-radius: 12px; padding: 9px 12px; font-size: 13px; display: flex; justify-content: space-between; gap: 8px; color: #3a3f4d; }
     .tc-cats b { color: var(--c-d); }
     @media (max-width: 820px) { .tc-cats { grid-template-columns: 1fr; } }
+
+    /* ---------- side nav ---------- */
+    .nav-label, .tb-ko { display: none; }
+    @media (min-width: 1101px) {
+      body { padding-left: 232px; }
+      .tabbar {
+        position: fixed; top: 0; left: 0; bottom: 0; width: 232px; margin: 0; padding: 28px 14px;
+        background: var(--card); border-right: 1px solid var(--line);
+        backdrop-filter: none; -webkit-backdrop-filter: none; overflow-y: auto; z-index: 40;
+      }
+      .nav-label { display: block; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); padding: 0 14px 12px; }
+      .tabs { flex-direction: column; gap: 4px; overflow: visible; }
+      .tab-btn {
+        display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%;
+        text-align: left; border: 0; border-radius: 14px; background: transparent; padding: 12px 14px;
+      }
+      .tab-btn:hover { background: var(--bg); transform: none; }
+      .tab-btn[aria-selected="true"] { background: var(--ink); color: #fff; }
+      .tb-ko { display: block; font-size: 12px; font-weight: 500; color: var(--ink-3); }
+      .tab-btn[aria-selected="true"] .tb-ko { color: rgba(255,255,255,.65); }
+    }
+    /* image size match */
+    .ga-head.has-img, .event-head.has-img { grid-template-columns: 1fr minmax(260px, 420px); }
+    .ga-figure img { aspect-ratio: 19 / 10; object-fit: cover; }
+    @media (max-width: 760px) { .ga-head.has-img, .event-head.has-img { grid-template-columns: 1fr; } }
+    .edu + .edu { margin-top: 14px; }
   </style>
 </head>
 <body>
   <div class="wrap">
 
     <div class="topbar">
-      <span class="logo"><i aria-hidden="true"></i>Portfolio · Game QA</span>
+      <span class="logo"><i aria-hidden="true"></i>Portfolio</span>
       <a class="top-mail" href="mailto:rlatkdgjs0304@naver.com">rlatkdgjs0304@naver.com</a>
     </div>
 
     <nav class="tabbar" aria-label="섹션 전환">
+      <p class="nav-label">Menu</p>
       <div class="tabs" role="tablist">
-        <button class="tab-btn" type="button" role="tab" data-tab="portfolio" aria-selected="true">Portfolio</button>
-        <button class="tab-btn" type="button" role="tab" data-tab="study" aria-selected="false">Study</button>
-        <button class="tab-btn" type="button" role="tab" data-tab="gameplay" aria-selected="false">GamePlay</button>
-        <button class="tab-btn" type="button" role="tab" data-tab="gameevent" aria-selected="false">GameEvent</button>
-        <button class="tab-btn" type="button" role="tab" data-tab="gameanalysis" aria-selected="false">GameAnalysis</button>
+        <button class="tab-btn" type="button" role="tab" data-tab="portfolio" aria-selected="true"><span class="tb-en">Portfolio</span><span class="tb-ko">프로젝트</span></button>
+        <button class="tab-btn" type="button" role="tab" data-tab="study" aria-selected="false"><span class="tb-en">Study</span><span class="tb-ko">학습 계획</span></button>
+        <button class="tab-btn" type="button" role="tab" data-tab="gameplay" aria-selected="false"><span class="tb-en">GamePlay</span><span class="tb-ko">플레이 기록</span></button>
+        <button class="tab-btn" type="button" role="tab" data-tab="gameevent" aria-selected="false"><span class="tb-en">GameEvent</span><span class="tb-ko">이벤트 기획</span></button>
+        <button class="tab-btn" type="button" role="tab" data-tab="gameanalysis" aria-selected="false"><span class="tb-en">GameAnalysis</span><span class="tb-ko">게임 분석</span></button>
       </div>
     </nav>
 
@@ -638,7 +665,7 @@
       <div>
         <span class="role"><b aria-hidden="true"></b>GAME QA 지원자</span>
         <h1><small>안녕하세요, 저는</small>김상헌</h1>
-        <p class="tagline">게임의 완성도를 <em>끝까지 책임지는</em><br>QA 엔지니어</p>
+        <p class="tagline">버그를 찾고, <em>재현하고</em>,<br>기록합니다</p>
         <div class="hero-cta">
           <a class="btn btn-dark" href="#projects">프로젝트 보기
             <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -702,7 +729,7 @@
               <div>
                 <p class="pc-desc">
                   시대 · 지역 · 유형 3개 축으로 유물 카드를 모아 시너지 점수를 겨루는 보드게임.
-                  규칙과 점수 체계를 직접 설계하고, 실물 프로토타입과 직접 만든 디스코드 봇으로
+                  규칙과 점수 체계를 직접 설계하고, 실물 프로토타입과 자체 제작 디스코드 봇으로
                   오프라인 · 온라인 양쪽에서 반복 검증했습니다.
                 </p>
 
@@ -772,7 +799,6 @@
                 <p class="pc-desc">
                   해킹당한 스마트폰으로 최종 합격 전화를 지켜내는 메타 퍼즐 게임.
                   스마트폰 UI 전체가 퍼즐의 단서가 되고, 감염된 OS가 조작을 방해합니다.
-                  스토브 인디에 2026.06.17 출시했습니다.
                 </p>
                 <ul class="list">
                   <li>스토브 인디 출시 완료 (2026.06.17 · 12세 이용가)</li>
@@ -814,7 +840,7 @@
                   <div><b>10</b><span>내가 발견·픽스</span></div>
                   <div><b>7</b><span>유형 분류</span></div>
                 </div>
-                <p class="bq-insight"><b>공통 원인 추정</b> 종료 버튼 중복 클릭 계열(#10 · #12 · #16 · #22)이 스테이지마다 반복됐습니다. 스테이지별로 막지 않고 입력 잠금을 한곳에서 공통 처리하면 재발을 줄일 수 있다고 정리했습니다. 또 #14 · #20처럼 입력 한 번으로 클리어가 되는 버그는 진행 자체를 무너뜨려 우선순위를 높게 잡았습니다.</p>
+                <p class="bq-insight"><b>공통 원인 추정</b> 종료 버튼 중복 클릭 계열(#10 · #12 · #16 · #22)이 스테이지마다 반복됐습니다. 스테이지별로 막지 않고 입력 잠금을 한곳에서 공통 처리하면 재발을 줄일 수 있다고 정리했습니다. #14 · #20처럼 입력 한 번으로 클리어되는 버그는 스테이지 의도를 깨뜨려 우선순위를 높게 잡았습니다.</p>
                 <p class="mini-label">대표 버그 리포트</p>
                 <div class="bq-reps"><div class="bq-rep"><div class="bq-rep-h"><i>#14</i><b>마우스 감도 스테이지 클리어 조건 우회</b><span class="bq-sev">심각도 높음</span></div>
 <dl><dt>재현 절차</dt><dd>마우스 감도 스테이지 진입 → 목표 개수를 채우기 전에 버튼 3개만 클릭</dd><dt>기대 결과</dt><dd>정해진 조건을 모두 충족해야 클리어</dd><dt>실제 결과</dt><dd>버튼 3개만 눌러도 스테이지 클리어 처리</dd></dl></div><div class="bq-rep"><div class="bq-rep-h"><i>#20</i><b>실패 연출 중 입력으로 클리어 전환</b><span class="bq-sev">심각도 높음</span></div>
@@ -920,7 +946,7 @@
               <div>
                 <p class="pc-desc">
                   교통체증으로 멈춰 선 도로를 뒤에서부터 들이받아 뚫고 나가는 3D 파괴 레이싱 게임.
-                  얼마나 많이, 얼마나 멀리 부쉈는지가 곧 재화가 되고, 한 판은 2~3분 안에 끝납니다.
+                  부순 양과 달린 거리가 재화가 되고, 한 판은 2~3분 안에 끝납니다.
                 </p>
                 <ul class="list">
                   <li>3-2-1 카운트다운에 맞춘 부스터 스타트, 타이밍이 맞으면 퍼펙트 스타트</li>
@@ -1042,6 +1068,13 @@
             <p class="edu-major">게임콘텐츠전공 · 전문학사</p>
           </div>
         </div>
+        <div class="edu reveal">
+          <span class="edu-date">2019.03 — 2022.02</span>
+          <div>
+            <p class="edu-school"><a>서울공업고등학교</a></p>
+            <p class="edu-major">그래픽아트과 · 졸업</p>
+          </div>
+        </div>
       </section>
     </main>
     </div>
@@ -1049,7 +1082,6 @@
     <div class="view" data-view="study" hidden>
       <section class="section">
         <div class="sec-head reveal"><div><p class="sec-en">Study</p><h2>학습 계획표</h2></div></div>
-        <p class="lead">「클로드 코워크 with 스킬, 플러그인」을 파트별로 공부하며 이론 · 실습 · 응용을 정리합니다. 잘 모르는 내용은 유튜브에서 찾아보고 아래 참고 링크에 남겨둡니다.</p>
         <div class="goal-row">
           <div class="goal-card">
             <div><p class="mini-label">목표</p><p class="goal-text">9월 28일까지 Part 1까지 끝내기</p></div>
@@ -1068,7 +1100,6 @@
       <section class="section">
         <div class="sec-head reveal"><div><p class="sec-en">GamePlay</p><h2>게임 플레이 트래커</h2></div></div>
         <div class="tab-summary" style="--c:var(--mint);--c-d:var(--mint-d);--c-soft:var(--mint-soft)"><p class="tab-summary-label">SUMMARY · 요약</p><ol><li><span class="sum-n">1</span><p>앱스토어 인기 순위 1~12위 게임을 9/17부터 하루 1개씩 순위 순서대로 플레이해 12개를 모두 완료했습니다.</p></li><li><span class="sum-n">2</span><p>MMORPG, 전략 SLG, 방치형, 머지, 매치3 퍼즐, 타워 디펜스, 스포츠, AR까지 서로 다른 장르를 고루 경험했습니다.</p></li><li><span class="sum-n">3</span><p>게임마다 1시간 플레이 기준 도달 레벨·티어, 장르, 한 줄 설명을 기록해 장르별 초반 구간의 구조를 비교할 수 있게 정리했습니다.</p></li></ol></div>
-        <p class="lead">앱스토어 인기 순위 1~12위 게임을 하루 1개씩 순서대로 플레이하며 레벨, 장르, 게임 설명을 기록합니다. (9/17 ~ 9/28)</p>
         <div class="gp-prog">
           <div class="g-top"><span class="g-name">플레이 진행률</span><span class="g-num" data-gp-progress-num>12 / 12</span></div>
           <div class="g-track"><div class="g-fill" data-gp-progress-fill style="width:0%"></div></div>
@@ -1081,7 +1112,6 @@
       <section class="section">
         <div class="sec-head reveal"><div><p class="sec-en">GameEvent</p><h2>이벤트 기획</h2></div></div>
         <div class="tab-summary" style="--c:var(--pink);--c-d:var(--pink-d);--c-soft:var(--pink-soft)"><p class="tab-summary-label">SUMMARY · 요약</p><ol><li><span class="sum-n">1</span><p>트렌드 코리아 2026의 키워드 '픽셀 라이프'를 쿠키런: 킹덤에 적용해 7일 출석형 이벤트 「오늘의 쿠키 한 조각」을 기획했습니다.</p></li><li><span class="sum-n">2</span><p>매일 5분 안에 끝나는 미션과 확률 없는 확정 보상으로, 촘촘한 이벤트 일정에 지친 라이트·복귀 유저를 겨냥했습니다.</p></li><li><span class="sum-n">3</span><p>매출보다 리텐션 방어가 목표이며, 이벤트 기간 DAU +8~12%, 7일 완주율 40% 이상을 KPI로 잡았습니다.</p></li></ol></div>
-        <p class="lead">트렌드 분석을 바탕으로 라이브 서비스 게임의 이벤트를 기획한 자료입니다. 배경 분석 → 문제 진단 → 컨셉 설계 → 콘텐츠·일정·KPI 순으로 정리합니다.</p>
         <div data-gameevent-list></div>
       </section>
     </div>
@@ -1089,15 +1119,14 @@
     <div class="view" data-view="gameanalysis" hidden>
       <section class="section">
         <div class="sec-head reveal"><div><p class="sec-en">GameAnalysis</p><h2>게임 분석</h2></div></div>
-        <div class="tab-summary" style="--c:var(--violet);--c-d:var(--violet-d);--c-soft:var(--violet-soft)"><p class="tab-summary-label">SUMMARY · 요약</p><ol><li><span class="sum-n">1</span><p>트릭컬 리바이브 3주년(최대 600회 무료 뽑기)을 기준으로, 재미를 [시스템 → 행동 → 감정] 흐름으로 분석했습니다.</p></li><li><span class="sum-n">2</span><p>핵심은 볼따구로 생기는 장난스러운 애착, 성격 시너지와 상성 사이의 덱 선택, 누적 출석처럼 부담을 줄인 설계입니다.</p></li><li><span class="sum-n">3</span><p>대량 획득이 사도 한 명 한 명에 대한 애착을 묻어 버리는 충돌을 '재미가 끊기는 지점'으로 짚고 개선안을 제시했습니다.</p></li></ol></div>
-        <p class="lead">직접 플레이하며 게임이 왜 재미있는지, 어떤 장치가 플레이어를 붙잡는지 분석한 자료입니다.</p>
+        <div class="tab-summary" style="--c:var(--violet);--c-d:var(--violet-d);--c-soft:var(--violet-soft)"><p class="tab-summary-label">SUMMARY · 요약</p><ol><li><span class="sum-n">1</span><p>트릭컬 리바이브 3주년(최대 600회 무료 뽑기)을 기준으로, 재미를 [시스템 → 행동 → 감정] 흐름으로 분석했습니다.</p></li><li><span class="sum-n">2</span><p>핵심은 볼따구로 생기는 장난스러운 애착, 성격 시너지와 상성 사이의 덱 선택, 누적 출석처럼 부담을 줄인 설계입니다.</p></li><li><span class="sum-n">3</span><p>대량 획득이 사도 한 명 한 명에 대한 애착을 묻는 문제를 '재미가 끊기는 지점'으로 정리하고 개선안을 붙였습니다.</p></li></ol></div>
         <div data-analysis-list></div>
       </section>
     </div>
 
     <footer class="reveal">
       <div>
-        <h2>게임의 완성도를<br>끝까지 책임지겠습니다.</h2>
+        <h2>읽어 주셔서<br>감사합니다.</h2>
         <a class="mail" href="mailto:rlatkdgjs0304@naver.com">rlatkdgjs0304@naver.com</a>
       </div>
       <p class="copyright">© 2026 KIM SANG HEON</p>
@@ -1285,7 +1314,7 @@
       { part: 5, num: 16, title: "게임 QA 업무에 적용하기", done: false, link: "",
         theory: "채용공고 자동 정리, 버그 리포트 표준화, 테스트 케이스·체크리스트 자동 생성",
         practice: "실제 채용공고 3개로 정리 스킬을 테스트해보기",
-        apply: "데브시스터즈 등 목표 기업 지원 준비에 바로 활용하기" },
+        apply: "지원할 회사 공고 정리에 활용하기" },
       { part: 5, num: 17, title: "학습과 포트폴리오 관리", done: false, link: "",
         theory: "학습 자료 정리용 개인 스킬, 프로젝트 문서화 자동화",
         practice: "진행 중인 프로젝트 하나를 골라 문서화를 자동화해보기",
@@ -1454,7 +1483,7 @@
           "트렌드 코리아 2026(김난도 외)이 제시한 키워드 \"픽셀 라이프(Pixelated Life)\"는 소비가 크고 무거운 단위가 아니라 작고 빠른 단위로 쪼개져 이뤄지는 현상을 가리킨다. 하나의 큰 성공을 좇기보다 짧은 시간 안에 성취를 반복적으로 확인하려는 심리가 핵심이다.",
           "라이브 서비스 게임에서는 유저가 한 번에 투입하는 시간과 집중력이 줄면서, 장기 목표보다 하루 안에 끝나는 짧은 루틴에서 성취감을 확인하려는 경향이 커진다. 콘텐츠 설계 방향도 \"한 판 크게\"가 아니라 \"조금씩 자주\"로 옮겨가야 한다는 의미다.",
           "대상 게임은 쿠키런:킹덤(2021년 1월 21일 글로벌 출시, 서비스 5년차 이상). 왕국 버닝타임(3~4일 주기), 대무역시대(약 1주), 길드 명예 이벤트(7~8일) 등 반복 이벤트가 촘촘한 라이브 서비스 게임으로, 유저 커뮤니티에서는 재화 수급 이벤트 기간은 짧은 반면 한정 뽑기 기간은 길어 무과금 진행이 어렵다는 점, 한정 쿠키 등장률이 0.301%로 낮고 천장이 250회에 달해 피로도가 누적된다는 불만이 꾸준히 관찰된다.",
-          "이는 픽셀 라이프가 지목하는 문제와 정확히 겹친다. 유저는 장기간 쌓아야 하는 확률형 보상보다, 짧은 시간 투입으로 확정적인 성취를 자주 얻길 원한다."
+          "이 불만은 픽셀 라이프가 설명하는 현상과 같은 방향이다. 유저는 장기간 쌓아야 하는 확률형 보상보다, 짧은 시간 투입으로 확정적인 성취를 자주 얻길 원한다."
         ],
         target: [
           "쿠키런:킹덤은 하루 사이클로 촘촘하게 짜인 반복 이벤트가 거의 상시로 겹치는 구조라, 핵심 장기 유저일수록 이벤트를 숙제처럼 대부분 챙겨야 한다는 부담이 있다.",
@@ -1463,7 +1492,7 @@
         concept: {
           name: "오늘의 쿠키 한 조각",
           desc: "매일 로그인하면 5분 내로 끝나는 초경량 미션 3개를 제공하고, 완료 즉시 확정 보상(확률 없음)을 지급한다. 7일 연속 참여하면 하루하루 모은 조각들이 합쳐져 하나의 픽셀 아트 일러스트(한정 쿠키 그림)를 완성하는 \"쿠키 조각 앨범\" UI로 성취를 시각화한다.",
-          design: "확률형 아이템 피로도가 높다는 기존 유저 불만을 정면으로 피해 가는 확정 보상 구조이며, 참여 단위를 짧게 쪼개 라이트·복귀 유저도 부담 없이 챙길 수 있게 한다. 일별 미션은 기존 시스템 안에서 한 번의 행위만으로 완료되게 설계해, 새로 배워야 할 규칙이 없다."
+          design: "확률형 아이템 피로도에 대한 기존 불만을 고려한 확정 보상 구조이며, 참여 단위를 짧게 쪼개 라이트·복귀 유저도 부담 없이 챙길 수 있게 한다. 일별 미션은 기존 시스템 안에서 한 번의 행위만으로 완료되게 설계해, 새로 배워야 할 규칙이 없다."
         },
         missions: [
           ["1일차", "몬스터 3마리 처치", "쿠키 조각 1개 + 별가루 50"],
@@ -1485,7 +1514,7 @@
           "보상이 모두 확정 지급이라 확률형 재화 구매를 유도하지 않는다. 신규 결제 유도보다 재방문(리텐션) 확대를 주된 효과로 설계했으며, 별도 유료 상품은 만들지 않는 것을 원칙으로 하고 필요할 경우 이벤트 테마 코스튬을 상점에 한정 판매하는 수준으로 수익화를 최소화한다.",
           "기존 시스템(로그인, 상점, 강화 등)을 재사용하므로 신규 개발 비용은 낮고, 주요 비용은 마케팅(SNS 티저, 인플루언서 협업) 쪽에 집중된다."
         ],
-        highlight: "이 이벤트의 핵심 가치는 매출 극대화가 아니라, 확률형 아이템 피로도로 이탈 위험이 큰 유저층을 붙잡는 리텐션 방어형 이벤트라는 점이다.",
+        highlight: "이 이벤트의 목적은 매출보다 리텐션 방어에 있다. 확률형 아이템 피로도로 이탈 위험이 큰 유저층을 붙잡는 것이 목표다.",
         kpi: [
           ["DAU 증가율", "이벤트 기간 중 평균 DAU +8~12%", "이벤트 전후 7일 비교"],
           ["라이트·복귀 유저 재방문율", "이벤트 기간 중 +15퍼센트포인트", "코호트별 로그인 추적"],
@@ -1658,19 +1687,19 @@
         overview: [
           "판타지 세계 '엘리아스'에서 세계수 교단의 교주가 되어 '사도'를 모으고 키우는 수집형 RPG입니다. 원작 「트릭컬」은 2021년 한 차례 서비스를 종료했고, 약 2년 뒤 「트릭컬 리바이브」로 다시 출시되었습니다.",
           "3주년 업데이트에서는 이벤트 기간 최대 600회 무료 뽑기, 접속 즉시 모집권 60장, 15일 누적 출석 확정 모집권을 지급했고, 애니메이션 방영과 겹치며 한국 구글 플레이 매출 4위로 출시 후 최고 순위를 기록했습니다.",
-          "\"귀엽다\", \"뽑기가 많다\"처럼 겉으로 보이는 특징을 나열하기보다, 각 재미를 [시스템 → 플레이어가 하게 되는 행동 → 그때 드는 감정]의 흐름으로 풀어 '왜 재미있는가'를 설명하는 데 집중했습니다."
+          "각 재미요소는 [시스템 → 플레이어 행동 → 감정] 순서로 정리했습니다."
         ],
         funElements: [
           { title: "귀여운 것을 괴롭히고 싶은 마음을 허락한다", tag: "감정 · 애착",
-            desc: "시스템: 말랑한 볼살이 시그니처인 아트와, 그 볼을 직접 잡아당기는 '볼따구' 상호작용. → 행동: 사도를 볼 때마다 괜히 한 번씩 당겨 보게 된다. → 감정: 너무 귀여운 것을 꼬집고 싶어지는 '귀여운 공격성(cute aggression)'을 게임이 공식적으로 받아준다. 쓰다듬기가 아니라 '살짝 괴롭히는' 교감이라 장난스러운 애착이 생기고, 이것이 다른 수집형 RPG와 결정적으로 갈리는 지점입니다." },
+            desc: "시스템: 말랑한 볼살이 시그니처인 아트와, 그 볼을 직접 잡아당기는 '볼따구' 상호작용. → 행동: 사도를 볼 때마다 괜히 한 번씩 당겨 보게 된다. → 감정: 너무 귀여운 것을 꼬집고 싶어지는 '귀여운 공격성(cute aggression)'을 게임이 공식적으로 받아준다. 쓰다듬기보다 '살짝 괴롭히는' 쪽의 교감이라 장난스러운 애착이 생기고, 다른 수집형 RPG와 여기서 차이가 납니다." },
           { title: "순혈 덱과 상성 사이의 딜레마", tag: "전략 · 선택",
-            desc: "시스템: 같은 성격 사도 6명을 모으면 HP와 피해량이 100% 오르는 시너지, 그리고 순수 > 냉정 > 광기 > 순수의 3각 상성과 활발 ↔ 우울의 상호 상성. → 행동: '한 성격으로 몰아 시너지를 챙길까, 상대 상성을 보고 섞을까'를 매번 저울질한다. → 감정: 자동 전투인데도 덱을 짜는 순간에 머리를 쓰게 되고, 내 판단이 맞아떨어졌을 때 확실한 성취감이 남습니다." },
+            desc: "시스템: 같은 성격 사도 6명을 모으면 HP와 피해량이 100% 오르는 시너지, 그리고 순수 > 냉정 > 광기 > 순수의 3각 상성과 활발 ↔ 우울의 상호 상성. → 행동: '한 성격으로 몰아 시너지를 챙길까, 상대 상성을 보고 섞을까'를 매번 저울질한다. → 감정: 자동 전투인데도 덱을 짤 때는 고민하게 되고, 판단이 맞으면 성취감이 생깁니다." },
           { title: "600뽑기는 '양'이 아니라 '선택지'를 준다", tag: "수집 · 실험",
-            desc: "시스템: 이벤트 기간 최대 600회 무료 뽑기와 모집권 대량 지급. → 행동: 평소엔 사도가 모자라 못 해 보던 6인 단일 성격 덱을 처음으로 직접 맞춰 보고, 성격별 덱을 바꿔 가며 실험한다. → 감정: 대량 보상의 진짜 가치는 숫자가 아니라 '이제 이 조합을 해 볼 수 있다'는 해방감입니다. 이벤트가 위의 시너지 퍼즐을 열어 주는 열쇠 역할을 합니다." },
+            desc: "시스템: 이벤트 기간 최대 600회 무료 뽑기와 모집권 대량 지급. → 행동: 평소엔 사도가 모자라 못 해 보던 6인 단일 성격 덱을 처음으로 직접 맞춰 보고, 성격별 덱을 바꿔 가며 실험한다. → 감정: 뽑기 횟수 자체보다 '이제 이 조합을 해 볼 수 있다'는 점이 크게 느껴집니다. 2번의 시너지 덱을 실제로 시험해 볼 수 있게 해 주는 이벤트입니다." },
           { title: "놓쳐도 괜찮은 출석", tag: "리텐션 · 심리",
-            desc: "시스템: '연속'이 아니라 '누적' 15일 출석으로 확정 모집권을 지급. → 행동: 하루 빠져도 포기하지 않고 다음 날 다시 들어온다. → 감정: 연속 출석은 한 번 끊기면 손해 본 느낌(손실 회피) 때문에 오히려 접게 만들기도 하는데, 누적 방식은 그 부담을 없애 '부담 없이 계속하는' 관계를 만듭니다." },
+            desc: "시스템: '연속'이 아니라 '누적' 15일 출석으로 확정 모집권을 지급. → 행동: 하루 빠져도 포기하지 않고 다음 날 다시 들어온다. → 감정: 연속 출석은 한 번 끊기면 손해 본 느낌(손실 회피) 때문에 오히려 접게 만들기도 하는데, 누적 방식에는 이 부담이 없습니다." },
           { title: "한 번 죽었다 살아난 게임의 3주년", tag: "서사 · 소속감",
-            desc: "시스템: 서비스 종료 후 약 2년 만의 재출시라는 이력, 3주년에 맞춘 애니메이션 방영과 오케스트라 콘서트. → 행동: 유저가 3주년을 단순한 이벤트가 아니라 '함께 살려 낸 게임의 생일'로 받아들이고 축하에 참여한다. → 감정: 게임 밖 서사가 커뮤니티의 소속감으로 이어지고, 대형 보상과 맞물려 복귀 유저가 돌아올 명분이 됩니다." }
+            desc: "시스템: 서비스 종료 후 약 2년 만의 재출시라는 이력, 3주년에 맞춘 애니메이션 방영과 오케스트라 콘서트. → 행동: 유저가 3주년을 '다시 살아난 게임의 생일'로 보고 축하에 참여한다. → 감정: 이 이력이 커뮤니티 소속감으로 이어지고, 대형 보상과 함께 복귀 유저가 돌아올 계기가 됩니다." }
         ],
         weakPoints: [
           { title: "대량 획득이 애착을 희석시킨다", tag: "애착 ↔ 수집",
@@ -1680,7 +1709,7 @@
           { title: "이벤트 이후 보상 절벽", tag: "리텐션",
             desc: "600뽑기 기간이 끝나면 평소 수급량과의 차이가 커서 재미가 갑자기 꺼질 수 있습니다. 이벤트 직후 2~3주간 보상을 단계적으로 줄이는 연착륙 출석을 붙이면, 3주년에 들어온 유저를 다음 업데이트까지 이어 줄 수 있습니다." }
         ],
-        summary: "트릭컬 리바이브의 재미는 '귀여운 것을 괴롭히는 장난스러운 애착'에서 출발해, 성격 시너지와 상성 사이의 선택으로 깊어집니다. 3주년 600뽑기는 그 선택지를 한꺼번에 열어 준 장치였고, 누적 출석과 '살아 돌아온 게임'이라는 서사가 유저를 머물게 합니다. 다만 대량 획득이 개별 애착을 묻어 버리는 구조적 충돌이 있어, 이를 풀어 주는 설계가 다음 과제라고 봅니다."
+        summary: "트릭컬 리바이브의 재미는 볼따구로 생기는 장난스러운 애착에서 시작해, 성격 시너지와 상성 사이의 선택으로 이어집니다. 3주년 600뽑기는 그 선택을 직접 해 볼 수 있게 했고, 누적 출석과 재출시 이력이 유저를 붙잡습니다. 다만 대량 획득이 사도 한 명 한 명에 대한 애착을 묻는 문제가 있어, 이 부분을 보완하는 설계가 필요하다고 봅니다."
       }
     ];
 
