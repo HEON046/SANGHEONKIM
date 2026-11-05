@@ -645,6 +645,16 @@
     .report-open:hover { background: var(--ink); color: #fff; }
     .report-frame-wrap { border: 1px solid #DDE3EA; border-radius: 14px; overflow: hidden; background: #fff; }
     .report-frame { display: block; width: 100%; height: min(86vh, 1100px); min-height: 560px; border: 0; }
+    .report-acts { display: flex; flex-wrap: wrap; gap: 8px; }
+    .report-full { display: inline-flex; align-items: center; gap: 7px; background: none; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
+    .report-full svg { width: 15px; height: 15px; }
+    .report-frame-wrap { position: relative; }
+    .report-frame-wrap:fullscreen, .report-frame-wrap.is-full { border: 0; border-radius: 0; background: #fff; }
+    .report-frame-wrap.is-full { position: fixed; inset: 0; z-index: 9999; }
+    .report-frame-wrap:fullscreen .report-frame, .report-frame-wrap.is-full .report-frame { height: 100vh; height: 100dvh; min-height: 0; }
+    .report-exit { position: absolute; top: 14px; right: 18px; z-index: 2; font: inherit; font-size: 13px; font-weight: 700; color: #fff; background: rgba(15,27,45,.88); border: 0; border-radius: 999px; padding: 8px 14px; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+    .report-exit span { opacity: .6; font-weight: 500; margin-left: 4px; }
+    .report-exit[hidden] { display: none; }
   </style>
 </head>
 <body>
@@ -1136,8 +1146,8 @@
       <section class="section">
         <div class="sec-head reveal"><div><p class="sec-en">Report</p><h2>매출 순위 분석 보고서</h2></div></div>
         <div class="tab-summary" style="--c:var(--blue);--c-d:var(--blue-d);--c-soft:var(--blue-soft)"><p class="tab-summary-label">SUMMARY · 요약</p><ol><li><span class="sum-n">1</span><p>「승리의 여신: 니케」가 4주년 업데이트 후 1주 만에 한국 구글 플레이 매출 35위에서 5위로 오른 이유를 순위 자료, 언론 보도, 커뮤니티 반응으로 분석했습니다.</p></li><li><span class="sum-n">2</span><p>신규 SSR과 특수 모집을 가장 유력한 원인으로 보되, 가설 6개를 근거와 약점으로 비교해 사실과 추정을 구분했습니다.</p></li><li><span class="sum-n">3</span><p>매출 자료가 없다는 한계를 밝히고, 모집 종료일(11/19, 11/26) 전후 순위로 가설을 검증하는 계획을 세웠습니다.</p></li></ol></div>
-        <div class="report-bar"><span class="report-meta">기준일 2026-11-05 · 인터랙티브 보고서 (그래프에 마우스를 올리면 상세 수치 표시)</span><a class="report-open" id="reportNewTab" href="#report" role="button">새 탭에서 크게 보기</a></div>
-        <div class="report-frame-wrap"><iframe id="reportFrame" class="report-frame" title="니케 매출 순위 분석 보고서" loading="lazy"></iframe></div>
+        <div class="report-bar"><span class="report-meta">기준일 2026-11-05 · 인터랙티브 보고서 (그래프에 마우스를 올리면 상세 수치 표시)</span><div class="report-acts"><button class="report-open report-full" type="button" id="reportFull" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>전체화면</button><a class="report-open" id="reportNewTab" href="#report" role="button">새 탭에서 크게 보기</a></div></div>
+        <div class="report-frame-wrap"><button class="report-exit" type="button" id="reportExit" hidden>✕ 닫기 <span>Esc</span></button><iframe id="reportFrame" class="report-frame" title="니케 매출 순위 분석 보고서" loading="lazy"></iframe></div>
       </section>
     </div>
 
@@ -13578,6 +13588,44 @@ table.compact caption{font-size:16px}
     });
     var loaded = false;
     function load() { if (loaded || view.hidden) return; loaded = true; frame.srcdoc = raw; }
+
+    // 전체화면: 지원하면 Fullscreen API, 아니면(아이폰 Safari 등) 화면을 덮는 방식
+    var wrap = frame.parentNode;
+    var fullBtn = document.getElementById("reportFull");
+    var exitBtn = document.getElementById("reportExit");
+    function isFs() { return (document.fullscreenElement || document.webkitFullscreenElement) === wrap; }
+    function sync() {
+      var on = isFs() || wrap.classList.contains("is-full");
+      exitBtn.hidden = !on;
+      fullBtn.setAttribute("aria-pressed", String(on));
+      document.body.style.overflow = wrap.classList.contains("is-full") ? "hidden" : "";
+      if (on) setTimeout(function () { frame.focus(); }, 100);
+    }
+    function overlay() { wrap.classList.add("is-full"); sync(); }
+    fullBtn.addEventListener("click", function () {
+      load();
+      var req = wrap.requestFullscreen || wrap.webkitRequestFullscreen;
+      if (!req) { overlay(); return; }
+      try {
+        var p = req.call(wrap);
+        if (p && p.catch) p.catch(overlay);
+      } catch (err) { overlay(); }
+    });
+    exitBtn.addEventListener("click", function () {
+      if (isFs()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      wrap.classList.remove("is-full");
+      sync();
+    });
+    document.addEventListener("fullscreenchange", sync);
+    document.addEventListener("webkitfullscreenchange", sync);
+    function onEsc(e) {
+      if (e.key === "Escape" && wrap.classList.contains("is-full")) { wrap.classList.remove("is-full"); sync(); }
+    }
+    document.addEventListener("keydown", onEsc);
+    // 보고서 안에 초점이 있을 때 누른 Esc도 받는다
+    frame.addEventListener("load", function () {
+      try { frame.contentWindow.addEventListener("keydown", onEsc); } catch (err) {}
+    });
     load();
     new MutationObserver(load).observe(view, { attributes: true, attributeFilter: ["hidden"] });
   })();
