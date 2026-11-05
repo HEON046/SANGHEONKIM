@@ -655,6 +655,90 @@
     .report-exit { position: absolute; top: 14px; right: 18px; z-index: 2; font: inherit; font-size: 13px; font-weight: 700; color: #fff; background: rgba(15,27,45,.88); border: 0; border-radius: 999px; padding: 8px 14px; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
     .report-exit span { opacity: .6; font-weight: 500; margin-left: 4px; }
     .report-exit[hidden] { display: none; }
+  
+    /* ---------- dokkaebi analysis (게임 분석서) ---------- */
+    .dk { --accent: var(--mint-d); }
+    .dk .dk-meta { font-size: 14px; color: var(--ink-3); margin: 0 0 18px; }
+    .dk .notice { background: var(--lemon-soft); border-radius: 16px; padding: 16px 20px; font-size: 14.5px; line-height: 1.75; color: var(--ink); margin: 0 0 18px; }
+    .dk .notice strong { display: block; font-size: 15.5px; font-weight: 900; margin-bottom: 4px; }
+    .dk .dk-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; font-size: 14px; color: var(--ink-2); margin: 0 0 18px; }
+    .dk .tag {
+      display: inline-block; font-family: var(--font-kr); font-size: 12px; font-weight: 700; line-height: 1;
+      padding: 5px 10px; border-radius: 999px; vertical-align: 1px; margin: 0 2px; white-space: nowrap;
+    }
+    .dk .t-play { color: var(--mint-d);   background: var(--mint-soft); }
+    .dk .t-off  { color: var(--blue-d);   background: var(--blue-soft); }
+    .dk .t-data { color: var(--peach-d);  background: var(--peach-soft); }
+    .dk .t-comm { color: var(--violet-d); background: var(--violet-soft); }
+    .dk .t-est  { color: var(--pink-d);   background: var(--pink-soft); }
+    .dk .dk-toc { background: var(--card); border-radius: var(--r-md); box-shadow: var(--shadow); padding: 20px 24px; margin: 0 0 8px; }
+    .dk .dk-toc ol { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px 18px; }
+    .dk .dk-toc a { display: block; padding: 6px 0; font-size: 14.5px; font-weight: 500; color: var(--ink-2); text-decoration: none; }
+    .dk .dk-toc a:hover { color: var(--ink); }
+    .dk .dk-toc b { font-family: var(--font-mono); font-weight: 700; color: var(--blue-d); margin-right: 8px; }
+    .dk section[id^="dk-s"] {
+      background: var(--card); border-radius: var(--r-lg); box-shadow: var(--shadow);
+      margin-top: 22px; padding: 0; overflow: hidden; scroll-margin-top: 16px;
+    }
+    .dk section[id^="dk-s"] > h2 {
+      display: flex; align-items: center; gap: 16px; background: var(--c-soft);
+      padding: 22px 32px; font-size: clamp(21px, 2.6vw, 26px); font-weight: 900; letter-spacing: -0.02em; line-height: 1.3;
+    }
+    .dk section[id^="dk-s"] > h2 .n {
+      flex: none; width: 48px; height: 48px; border-radius: 16px; background: var(--c); color: #fff;
+      display: grid; place-items: center; font-family: var(--font-mono); font-weight: 700; font-size: 18px;
+      box-shadow: 0 8px 18px -8px var(--c);
+    }
+    .dk .dk-body { padding: 24px 32px 32px; font-size: 15.5px; color: var(--ink-2); line-height: 1.85; }
+    .dk .dk-body p { margin: 8px 0; }
+    .dk .dk-body ul { margin: 8px 0; padding-left: 20px; }
+    .dk .dk-body li { margin: 6px 0; }
+    .dk .dk-body b { color: var(--ink); }
+    .dk .dk-body h3 {
+      display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 900; color: var(--ink); margin: 28px 0 10px;
+    }
+    .dk .dk-body h3::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex: none; }
+    .dk .dk-body a { color: var(--blue-d); }
+    .dk .blank { color: var(--ink-3); }
+    .dk .table-scroll { overflow-x: auto; margin: 14px 0; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+    .dk table { border-collapse: collapse; width: 100%; font-size: 14.5px; min-width: 520px; }
+    .dk th, .dk td { padding: 11px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); color: var(--ink-2); }
+    .dk th { background: var(--bg); color: var(--ink); font-weight: 700; white-space: nowrap; }
+    .dk tr:last-child td { border-bottom: 0; }
+    .dk td.num, .dk th.num { text-align: center; font-variant-numeric: tabular-nums; }
+    .dk .claim { background: var(--c-soft); border-left: 6px solid var(--c); border-radius: 18px; padding: 20px 24px; margin: 12px 0; }
+    .dk .claim .big { font-size: 18px; font-weight: 800; line-height: 1.6; color: var(--ink); margin: 0 0 10px; }
+    .dk .claim ul { margin: 0; }
+    .dk .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+    .dk .dkcard { background: var(--bg); border-radius: 18px; padding: 18px 20px; font-size: 14.5px; line-height: 1.75; }
+    .dk .dkcard h4 { margin: 0 0 8px; font-size: 16px; font-weight: 900; color: var(--ink); }
+    .dk .flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: stretch; margin: 14px 0; }
+    .dk .flow .dkbox { flex: 1 1 130px; background: var(--c-soft); border-radius: 16px; padding: 12px 14px; font-size: 14px; color: var(--ink-2); }
+    .dk .flow .dkbox b { display: block; font-family: var(--font-mono); font-size: 13px; color: var(--c-d); margin-bottom: 2px; }
+    .dk .flow .arr { align-self: center; color: var(--ink-3); font-weight: 700; }
+    .dk .dkchip { display: inline-block; font-size: 12.5px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--bg); color: var(--ink-3); white-space: nowrap; }
+    .dk .j-strong { color: var(--mint-d); background: var(--mint-soft); }
+    .dk .j-mid { color: var(--peach-d); background: var(--peach-soft); }
+    .dk .j-weak { color: var(--ink-3); background: var(--bg); }
+    .dk .j-unk { color: var(--pink-d); background: var(--pink-soft); }
+    .dk figure { margin: 14px 0; }
+    .dk figcaption { font-size: 13px; color: var(--ink-3); margin-top: 8px; line-height: 1.6; }
+    .dk svg { max-width: 100%; height: auto; display: block; }
+    .dk .ax { stroke: var(--line); }
+    .dk .lbl { fill: var(--ink-3); font-size: 12px; }
+    .dk .ln-a { stroke: var(--accent); fill: none; stroke-width: 3; }
+    .dk .dt-a { fill: var(--accent); }
+    .dk .ln-b { stroke: var(--blue); fill: none; stroke-width: 3; stroke-dasharray: 6 4; }
+    .dk .dt-b { fill: var(--blue); }
+    .dk .src li { font-size: 14px; word-break: break-all; }
+    .dk .dk-foot { margin-top: 28px; padding: 0 4px; font-size: 13px; color: var(--ink-3); line-height: 1.7; }
+    @media (max-width: 640px) {
+      .dk .grid2 { grid-template-columns: 1fr; }
+      .dk .flow .arr { display: none; }
+      .dk section[id^="dk-s"] > h2 { padding: 18px 20px; gap: 12px; }
+      .dk section[id^="dk-s"] > h2 .n { width: 40px; height: 40px; border-radius: 13px; font-size: 16px; }
+      .dk .dk-body { padding: 20px 20px 24px; }
+    }
   </style>
 </head>
 <body>
@@ -674,6 +758,7 @@
         <button class="tab-btn" type="button" role="tab" data-tab="gameevent" aria-selected="false"><span class="tb-en">GameEvent</span><span class="tb-ko">이벤트 기획</span></button>
         <button class="tab-btn" type="button" role="tab" data-tab="gameanalysis" aria-selected="false"><span class="tb-en">GameAnalysis</span><span class="tb-ko">게임 분석</span></button>
         <button class="tab-btn" type="button" role="tab" data-tab="report" aria-selected="false"><span class="tb-en">Report</span><span class="tb-ko">순위 분석</span></button>
+        <button class="tab-btn" type="button" role="tab" data-tab="dokkaebi" aria-selected="false"><span class="tb-en">Dokkaebi</span><span class="tb-ko">도깨비의세계 분석서</span></button>
       </div>
     </nav>
 
@@ -1148,6 +1233,413 @@
         <div class="tab-summary" style="--c:var(--blue);--c-d:var(--blue-d);--c-soft:var(--blue-soft)"><p class="tab-summary-label">SUMMARY · 요약</p><ol><li><span class="sum-n">1</span><p>「승리의 여신: 니케」가 4주년 업데이트 후 1주 만에 한국 구글 플레이 매출 35위에서 5위로 오른 이유를 순위 자료, 언론 보도, 커뮤니티 반응으로 분석했습니다.</p></li><li><span class="sum-n">2</span><p>신규 SSR과 특수 모집을 가장 유력한 원인으로 보되, 가설 6개를 근거와 약점으로 비교해 사실과 추정을 구분했습니다.</p></li><li><span class="sum-n">3</span><p>매출 자료가 없다는 한계를 밝히고, 모집 종료일(11/19, 11/26) 전후 순위로 가설을 검증하는 계획을 세웠습니다.</p></li></ol></div>
         <div class="report-bar"><span class="report-meta">기준일 2026-11-05 · 인터랙티브 보고서 (그래프에 마우스를 올리면 상세 수치 표시)</span><div class="report-acts"><button class="report-open report-full" type="button" id="reportFull" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>전체화면</button><a class="report-open" id="reportNewTab" href="#report" role="button">새 탭에서 크게 보기</a></div></div>
         <div class="report-frame-wrap"><button class="report-exit" type="button" id="reportExit" hidden>✕ 닫기 <span>Esc</span></button><iframe id="reportFrame" class="report-frame" title="니케 매출 순위 분석 보고서" loading="lazy"></iframe></div>
+      </section>
+    </div>
+
+    <div class="view dk" data-view="dokkaebi" hidden>
+      <section class="section">
+        <div class="sec-head"><div><p class="sec-en">Game Analysis Report</p><h2>도깨비의세계 게임 분석서</h2></div><p class="sec-note">Kakao Games · 슈퍼캣 · 2.5D MMORPG · 순위 기준일 2026-10-29</p></div>
+        <div class="tab-summary" style="--c:var(--mint);--c-d:var(--mint-d);--c-soft:var(--mint-soft)"><p class="tab-summary-label">SUMMARY · 요약</p><ol>
+<li><span class="sum-n">1</span><p>출시 3주 만에 양 스토어 최상위에 오른 「도깨비의세계」의 성과 요인을 MDA 프레임워크와 코어 루프→메타→수익화 순서로 분석했습니다.</p></li>
+<li><span class="sum-n">2</span><p>출시 초반 순위는 퍼블리셔 화력과 사전예약이, 3주 유지는 과금 부담 인식과 협력 중심 콘텐츠가 받쳤을 것으로 추정합니다.</p></li>
+<li><span class="sum-n">3</span><p>직접 플레이는 2026-11-03 하루(약 6시간, 30레벨, PC, 무과금)뿐이라 리텐션·소셜·과금 구조는 확정하지 못했고, 확인하지 못한 칸은 "미기록"으로 표시했습니다.</p></li>
+</ol></div>
+        <p class="dk-meta">작성일 2026-11-05 · 양식: MDA 프레임워크 + 코어 루프→메타→수익화 (표준 양식이 아닌 합성 양식)</p>
+<div class="notice">
+  <strong>이 문서는 1일(약 6시간, 30레벨) 플레이만 반영한 초안입니다</strong>
+  플레이 일지는 없고, 플레이 직후 구두로 정리한 메모를 <span class="tag t-play">플레이</span> 근거로 반영했습니다. 메모에 없는 항목은 "미기록"으로 남겼습니다.
+  2일차 이후(성장 정체, 리텐션, 일일·이벤트·소셜 콘텐츠)는 확인하지 못했습니다.
+  순위 수치는 수기 정리한 모바일인덱스 스냅샷, 기본 사실은 기사·나무위키 조사 내용만 사용했고, 플레이하지 않은 부분은 <span class="tag t-est">추정</span> 가안입니다.
+  장르·출시일·퍼블리셔는 기사 기준이라 공식 공지에서 재확인 후 <span class="tag t-off">공식</span>으로 승격해야 합니다.
+</div>
+
+<div class="dk-legend">
+  근거 표시:
+  <span class="tag t-play">플레이</span> 직접 플레이
+  <span class="tag t-off">공식</span> 공식·기사(재확인 전 기사는 "기사" 병기)
+  <span class="tag t-data">데이터</span> 모바일인덱스
+  <span class="tag t-comm">커뮤니티</span> 반응만
+  <span class="tag t-est">추정</span> 해석·가안
+</div>
+
+<nav class="dk-toc" aria-label="목차">
+<ol>
+  <li><a href="#dk-s0" data-dk-go="dk-s0"><b>0</b>기본 정보</a></li>
+  <li><a href="#dk-s1" data-dk-go="dk-s1"><b>1</b>요약</a></li>
+  <li><a href="#dk-s2" data-dk-go="dk-s2"><b>2</b>범위와 방법</a></li>
+  <li><a href="#dk-s3" data-dk-go="dk-s3"><b>3</b>맥락 분석</a></li>
+  <li><a href="#dk-s4" data-dk-go="dk-s4"><b>4</b>시장 성과</a></li>
+  <li><a href="#dk-s5" data-dk-go="dk-s5"><b>5</b>게임 구조 (MDA)</a></li>
+  <li><a href="#dk-s6" data-dk-go="dk-s6"><b>6</b>초반 경험</a></li>
+  <li><a href="#dk-s7" data-dk-go="dk-s7"><b>7</b>메타·리텐션·운영</a></li>
+  <li><a href="#dk-s8" data-dk-go="dk-s8"><b>8</b>수익화</a></li>
+  <li><a href="#dk-s9" data-dk-go="dk-s9"><b>9</b>UX·품질</a></li>
+  <li><a href="#dk-s10" data-dk-go="dk-s10"><b>10</b>비교 분석</a></li>
+  <li><a href="#dk-s11" data-dk-go="dk-s11"><b>11</b>성과 요인 해석</a></li>
+  <li><a href="#dk-s12" data-dk-go="dk-s12"><b>12</b>개선 제안</a></li>
+  <li><a href="#dk-s13" data-dk-go="dk-s13"><b>13</b>직무 관점</a></li>
+  <li><a href="#dk-s14" data-dk-go="dk-s14"><b>14</b>한계와 후속 과제</a></li>
+  <li><a href="#dk-s15" data-dk-go="dk-s15"><b>15</b>부록</a></li>
+</ol>
+</nav>
+
+<!-- 0 -->
+<section id="dk-s0" style="--c:var(--blue);--c-d:var(--blue-d);--c-soft:var(--blue-soft)">
+<h2><span class="n">0</span>기본 정보</h2><div class="dk-body">
+<div class="table-scroll"><table>
+<tr><th>분석 대상</th><td>도깨비의세계 (Kakao Games Corp.)</td></tr>
+<tr><th>순위 기준일</th><td>2026-10-29 (순위는 계속 변하므로 이 날짜의 스냅샷) <span class="tag t-data">데이터</span></td></tr>
+<tr><th>플레이 기간</th><td>2026-11-03 하루 (당초 계획은 7일이었으나 1일만 수행) <span class="tag t-play">플레이</span></td></tr>
+<tr><th>누적 플레이 시간</th><td>약 6시간, 30레벨 도달 <span class="tag t-play">플레이</span></td></tr>
+<tr><th>기기·OS·네트워크</th><td>PC <span class="tag t-play">플레이</span> / OS·네트워크는 <span class="blank">미기록</span></td></tr>
+<tr><th>계정</th><td>신규 1개 (계획)</td></tr>
+<tr><th>과금</th><td>무과금 (0원, 1일) <span class="tag t-play">플레이</span></td></tr>
+<tr><th>장르</th><td>2.5D MMORPG (2D 도트 캐릭터 + 3D 배경) <span class="tag t-off">기사</span> 파이낸셜뉴스</td></tr>
+<tr><th>출시일</th><td>2026-10-08 (사전 다운로드 10/6) <span class="tag t-off">기사</span> 파이낸셜뉴스·인벤</td></tr>
+<tr><th>개발·퍼블리싱</th><td>슈퍼캣·카카오게임즈 <span class="tag t-off">기사</span></td></tr>
+<tr><th>플랫폼</th><td>Android, iOS, PC <span class="tag t-off">기사</span> 나무위키·데일리한국</td></tr>
+<tr><th>원작 IP</th><td>네이버 웹소설·웹툰 「멸귀수도전」 <span class="tag t-off">기사</span></td></tr>
+</table></div>
+</div></section>
+
+<!-- 1 -->
+<section id="dk-s1" style="--c:var(--mint);--c-d:var(--mint-d);--c-soft:var(--mint-soft)">
+<h2><span class="n">1</span>요약</h2><div class="dk-body">
+<div class="claim">
+  <p class="big">도깨비의세계가 출시 3주 만에 양 스토어 최상위에 오른 것은 하나의 원인이 아니라, 퍼블리셔의 출시 화력과 "부담 낮은 과금" 이미지, 협력 중심 MMORPG라는 차별점이 겹친 결과로 보는 것이 가장 자연스럽다. <span class="tag t-est">추정</span></p>
+  <ul>
+    <li><b>근거 1</b> — 순위 곡선이 이클립스와 반대다. 10/1에는 권외였고 10/29 구글 매출 1위·앱스토어 2위이며, 이클립스는 9/17 양 스토어 1위에서 10/29 10위로 내려왔다. <span class="tag t-data">데이터</span></li>
+    <li><b>근거 2</b> — 출시 직후부터 상위권이었다. 출시일 양 스토어 인기 1위, 10/13(출시 5일째) 구글 매출 1위 보도가 있다. 즉 "3주 만에 오른" 게임이 아니라 "출시 때부터 오른 뒤 3주간 유지한" 게임이다. <span class="tag t-off">기사</span></li>
+    <li><b>근거 3</b> — 멤버십·패스·치장 중심 과금이라는 보도가 다수이나 확률 요소가 남아 있다는 반론도 있어, 과금 구조는 아직 확정할 수 없다. <span class="tag t-off">기사</span> <span class="tag t-comm">커뮤니티</span></li>
+    <li><b>한계</b> — 매출액·유저 수·리텐션 수치가 없고, 플레이 근거는 2026-11-03 하루(약 6시간, 30레벨) 분량뿐이다.</li>
+  </ul>
+</div>
+</div></section>
+
+<!-- 2 -->
+<section id="dk-s2" style="--c:var(--peach);--c-d:var(--peach-d);--c-soft:var(--peach-soft)">
+<h2><span class="n">2</span>분석 범위와 방법</h2><div class="dk-body">
+<ul>
+  <li><b>분석 질문</b>: 2026-10-08 출시 신작이 약 3주 만에 양 스토어 최상위에 오른 이유는 무엇인가. 부가: 이 순위는 얼마나 갈 수 있는가, 이클립스와 무엇이 다른가.</li>
+  <li><b>방법</b>: MDA 프레임워크(Hunicke·LeBlanc·Zubek)로 체험→동작→규칙 순서로 역추적하고, 코어 루프→메타→수익화 순서로 구조를 본다.</li>
+  <li><b>자료</b>: 모바일인덱스 순위 스냅샷(수기 정리), 기사와 나무위키 조사 결과, 공식 링크 목록. 직접 플레이 자료는 2026-11-03 하루(약 6시간, 30레벨)의 플레이 메모다.</li>
+  <li><b>양식에 대한 설명</b>: 학술 프레임워크와 업계 분석 순서를 합친 양식이며, 정해진 표준 양식이 아니다.</li>
+</ul>
+</div></section>
+
+<!-- 3 -->
+<section id="dk-s3" style="--c:var(--pink);--c-d:var(--pink-d);--c-soft:var(--pink-soft)">
+<h2><span class="n">3</span>맥락 분석</h2><div class="dk-body">
+<div class="grid2">
+  <div class="dkcard"><h4>개발사·퍼블리셔</h4>슈퍼캣이 개발하고 카카오게임즈가 퍼블리싱한다. <span class="tag t-off">기사</span> 같은 퍼블리셔의 기존 상위작은 오딘: 발할라 라이징(10/29 구글 16위·앱스토어 27위). <span class="tag t-data">데이터</span> 기사는 최근 신작 부진 속 "실적 반등"을 노린 작품으로 소개한다. <span class="tag t-off">기사</span></div>
+  <div class="dkcard"><h4>장르와 차별점</h4>2.5D MMORPG. 정해진 직업 없이 스킬(도술)을 조합하고, 일반 필드 PK를 배제하며 협력 중심이라는 설명이 있다. <span class="tag t-off">기사</span> 바람의나라2와의 유사성 논란 보도도 있다. <span class="tag t-off">기사</span></div>
+  <div class="dkcard"><h4>출시 시점과 마케팅</h4>당초 3분기 출시 예정에서 10월로 연기, 10/6 사전 다운로드, 10/8 출시. 사전 다운로드 6시간 만에 앱스토어 1위, 캐릭터명 선점 조기 마감 보도. <span class="tag t-off">기사</span> 구글 플레이 할인 이벤트 언급. <span class="tag t-off">기사</span></div>
+  <div class="dkcard"><h4>같은 시기 시장</h4>10/29 기준 합성·스토리 장르가 강세이고, 4X 전략(WOS·킹샷)이 상위권을 유지한다. <span class="tag t-data">데이터</span> MMORPG 중에서는 이클립스(10위)·리니지M(9위)이 함께 있다. <span class="tag t-data">데이터</span></div>
+</div>
+</div></section>
+
+<!-- 4 -->
+<section id="dk-s4" style="--c:var(--violet);--c-d:var(--violet-d);--c-soft:var(--violet-soft)">
+<h2><span class="n">4</span>시장 성과</h2><div class="dk-body">
+<div class="table-scroll"><table>
+<thead><tr><th>날짜</th><th class="num">구글(매출)</th><th class="num">앱스토어</th><th class="num">이클립스 (구글/앱)</th><th>출처·메모</th></tr></thead>
+<tbody>
+<tr><td>9/3</td><td class="num">권외</td><td class="num">권외</td><td class="num">권외 / 권외</td><td><span class="tag t-data">데이터</span> 출시 전</td></tr>
+<tr><td>9/17</td><td class="num">권외</td><td class="num">권외</td><td class="num"><b>1 / 1</b></td><td><span class="tag t-data">데이터</span></td></tr>
+<tr><td>10/1</td><td class="num">권외</td><td class="num">권외</td><td class="num">2 / 9</td><td><span class="tag t-data">데이터</span> 출시 전</td></tr>
+<tr><td>10/8 (출시일)</td><td class="num blank">미기록</td><td class="num blank">미기록</td><td class="num blank">—</td><td><span class="tag t-off">기사</span> 양 스토어 <b>인기</b> 1위 (매출 아님)</td></tr>
+<tr><td>10/13 (5일째)</td><td class="num"><b>1</b></td><td class="num blank">미기록</td><td class="num blank">—</td><td><span class="tag t-off">기사</span> 연합뉴스·MTN, 원문 확인 필요</td></tr>
+<tr><td><b>10/29 (22일째)</b></td><td class="num"><b>1</b></td><td class="num"><b>2</b></td><td class="num">10 / 10</td><td><span class="tag t-data">데이터</span></td></tr>
+<tr><td>10/30 ~ 11/4</td><td class="num blank" colspan="3">미기록 — 매일 같은 시각에 모바일인덱스에서 기록해 채울 것</td><td></td></tr>
+</tbody></table></div>
+
+<figure>
+<svg viewBox="0 0 640 260" role="img" aria-label="구글 매출 순위 추이: 도깨비의세계는 10/13과 10/29에 1위, 이클립스는 9/17 1위에서 10/29 10위로 하락">
+  <!-- y: rank 1 at 40, rank 12 at 210 -->
+  <line class="ax" x1="60" y1="40" x2="620" y2="40"/><line class="ax" x1="60" y1="125" x2="620" y2="125"/><line class="ax" x1="60" y1="210" x2="620" y2="210"/>
+  <text class="lbl" x="14" y="44">1위</text><text class="lbl" x="14" y="129">6위</text><text class="lbl" x="8" y="214">12위↓</text>
+  <!-- x: 9/3=80, 9/17=170, 10/1=260, 10/13=400, 10/29=580 -->
+  <text class="lbl" x="66" y="240">9/3</text><text class="lbl" x="156" y="240">9/17</text><text class="lbl" x="246" y="240">10/1</text><text class="lbl" x="380" y="240">10/13</text><text class="lbl" x="562" y="240">10/29</text>
+  <!-- 이클립스 구글: 9/17 1, 10/1 2, 10/29 10 -->
+  <polyline class="ln-b" points="170,40 260,50 580,193"/>
+  <circle class="dt-b" cx="170" cy="40" r="5"/><circle class="dt-b" cx="260" cy="50" r="5"/><circle class="dt-b" cx="580" cy="193" r="5"/>
+  <text class="lbl" x="476" y="170">이클립스 10위</text>
+  <!-- 도깨비 구글: 10/13 1, 10/29 1 (사이는 미확인이므로 점선 없이 두 점) -->
+  <circle class="dt-a" cx="400" cy="40" r="6"/><circle class="dt-a" cx="580" cy="40" r="6"/>
+  <line x1="406" y1="40" x2="574" y2="40" stroke="var(--accent)" stroke-width="2" stroke-dasharray="2 5"/>
+  <text class="lbl" x="420" y="30" style="fill:var(--accent)">도깨비의세계 (사이 구간 미확인)</text>
+</svg>
+<figcaption>구글 매출 순위. 도깨비의세계는 기록된 두 시점(10/13 기사, 10/29 스냅샷)만 점으로 찍었고 사이는 이은 선이 아니라 점선 표시다. 이클립스는 스냅샷 3점. 순위만 보여주며 매출액은 알 수 없다.</figcaption>
+</figure>
+
+<ul>
+  <li><b>관찰</b>: 두 게임의 곡선은 반대다. 다만 도깨비의세계는 "상승"이 아니라 "출시 직후 정점 도달 후 유지"일 가능성이 크다(10/13 1위 → 10/29 1위). <span class="tag t-data">데이터</span> <span class="tag t-off">기사</span></li>
+  <li>읽는 법: 일별 흐름은 4개 시점뿐이라 알 수 없고, 10/29 캡처에는 순위 종류 표시가 없어 매출 순위로 간주했다. <span class="tag t-data">데이터</span></li>
+</ul>
+</div></section>
+
+<!-- 5 -->
+<section id="dk-s5" style="--c:var(--blue);--c-d:var(--blue-d);--c-soft:var(--blue-soft)">
+<h2><span class="n">5</span>게임 구조 (MDA)</h2><div class="dk-body">
+<div class="notice"><strong>일부만 플레이로 확인했습니다</strong>5-1 체험 표는 기사·나무위키에서 유추한 가안이 대부분이고, 5-2·5-3의 <span class="tag t-play">플레이</span> 표시 항목만 1일차 플레이 메모로 확인했습니다.</div>
+
+<h3>5-1. 체험 (Aesthetics)</h3>
+<div class="table-scroll"><table>
+<thead><tr><th>체험 유형</th><th>가안</th><th>근거</th></tr></thead>
+<tbody>
+<tr><td>감각 (Sensation)</td><td>○</td><td>2D 도트 캐릭터 + 3D 배경이라는 시각 조합 <span class="tag t-off">기사</span></td></tr>
+<tr><td>환상 (Fantasy)</td><td>○</td><td>한국 도깨비 세계관, 원작 웹소설·웹툰 IP <span class="tag t-off">기사</span></td></tr>
+<tr><td>서사 (Narrative)</td><td>△</td><td>원작 IP 기반이나 게임 내 서사 비중은 미확인 <span class="tag t-est">추정</span></td></tr>
+<tr><td>도전 (Challenge)</td><td>△</td><td>"부담 없이 즐기는 힐링"이라는 평가로 보아 난이도 압박은 낮을 것으로 봤으나, 실제로는 30레벨 전에 여우 보스에서 막혔다 <span class="tag t-play">플레이</span> <span class="tag t-off">기사</span> 경향게임스</td></tr>
+<tr><td>교류 (Fellowship)</td><td>○</td><td>협력 중심, 일반 필드 PK 배제 <span class="tag t-off">기사</span></td></tr>
+<tr><td>발견 (Discovery)</td><td>○</td><td>도술 조합 탐색 <span class="tag t-off">기사</span> 나무위키 <span class="tag t-est">추정</span></td></tr>
+<tr><td>표현 (Expression)</td><td>○</td><td>직업 고정 없는 도술 조합, 치장 중심 상품 <span class="tag t-off">기사</span></td></tr>
+<tr><td>몰입·시간 보내기 (Submission)</td><td>○</td><td>MMORPG 특성상 반복 성장 구조 <span class="tag t-est">추정</span></td></tr>
+</tbody></table></div>
+<p style="font-size:13px;color:var(--muted)">체험 8유형 용어는 MDA 논문 분류이며, 원문 PDF 대조를 아직 하지 않았다.</p>
+
+<h3>5-2. 동작 (Dynamics)</h3>
+<ul>
+  <li><b>반복 행동 3가지</b>: 사냥, 퀘스트, 이동 <span class="tag t-play">플레이</span></li>
+  <li><b>한 사이클의 길이와 보상</b>: 퀘스트 하나에 약 5분 <span class="tag t-play">플레이</span> / 보상 종류와 크기는 <span class="blank">미기록</span></li>
+  <li><b>목표 제시 방식</b>: 목표가 퀘스트 형태로 제시된다 <span class="tag t-play">플레이</span> / 단기·중기·장기 구분은 <span class="blank">미기록</span></li>
+</ul>
+<div class="flow" aria-label="코어 루프 도식">
+  <div class="dkbox"><b>행동</b>사냥·퀘스트·협력</div><div class="arr">→</div>
+  <div class="dkbox"><b>보상</b>경험치·재화·도술 재료</div><div class="arr">→</div>
+  <div class="dkbox"><b>성장</b>레벨·도술 강화·치장</div><div class="arr">→</div>
+  <div class="dkbox"><b>새 행동</b>상위 지역·고난도 협력</div>
+</div>
+<p style="font-size:13px;color:var(--muted)">위 도식은 장르 일반 구조에 근거한 가안이다. 플레이 메모의 루프(사냥 → 파밍 → 성장 요소 → 보스 → 반복)와 큰 틀은 같고, 도식의 "협력"과 "도술 재료"는 30레벨까지 확인하지 못했다. <span class="tag t-est">추정</span> <span class="tag t-play">플레이</span></p>
+
+<h3>5-3. 규칙 (Mechanics)</h3>
+<ul>
+  <li><b>성장 수단</b>: 직업 없이 도술(스킬) 조합으로 성장 방향이 갈린다 <span class="tag t-off">기사</span>. 레벨·장비 연결은 <span class="blank">미확인</span>.</li>
+  <li><b>재화 흐름</b>: 사냥으로 아이템을 파밍하고 강화 등 성장 요소에 쓴다 <span class="tag t-play">플레이</span> / 재화 종류와 획득·소비 경로는 <span class="blank">미기록</span></li>
+  <li><b>콘텐츠 개방 속도</b>: 30레벨까지 새 콘텐츠가 빠르게 열렸다 <span class="tag t-play">플레이</span> / 개방 순서는 <span class="blank">미기록</span></li>
+</ul>
+
+<h3>5-4. 연결 점검</h3>
+<ul>
+  <li>"직업 없는 도술 조합"(규칙) → 빌드 실험과 협력 역할 분담(동작) → 표현·교류 체험으로 이어지는 것이 설계 의도로 보인다. <span class="tag t-est">추정</span></li>
+  <li>어긋날 수 있는 지점: 조합 자유도가 높을수록 최적 조합이 수렴하고 밸런스 불만이 생긴다. 10/14·10/21에 도술 밸런스 개편이 있었다는 기록이 이 가능성과 맞는다. <span class="tag t-off">기사</span> 나무위키 <span class="tag t-comm">커뮤니티</span> 갤러리의 밸런스 글</li>
+</ul>
+</div></section>
+
+<!-- 6 -->
+<section id="dk-s6" style="--c:var(--mint);--c-d:var(--mint-d);--c-soft:var(--mint-soft)">
+<h2><span class="n">6</span>초반 경험 (FTUE)</h2><div class="dk-body">
+<div class="notice"><strong>1일차 기준</strong>아래는 1일(약 6시간, 30레벨) 플레이 메모입니다. 시간·탭 수 등 수치는 대략적인 기억이며, "미기록" 칸은 메모가 없는 항목입니다.</div>
+<div class="table-scroll"><table>
+<thead><tr><th>관찰 항목</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td>설치→첫 전투 시간·탭 수</td><td>첫 전투까지 약 10분 <span class="tag t-play">플레이</span> / 탭 수는 <span class="blank">미기록</span> (사전 다운로드 제공 <span class="tag t-off">기사</span>)</td></tr>
+<tr><td>튜토리얼 방식·건너뛰기</td><td>건너뛸 수 있다 <span class="tag t-play">플레이</span></td></tr>
+<tr><td>첫 보상 시점·크기</td><td>튜토리얼에서 첫 스킬과 재화를 지급 <span class="tag t-play">플레이</span> / 재화 종류와 양은 <span class="blank">미기록</span></td></tr>
+<tr><td>게임을 이해한 순간</td><td>몬스터를 사냥해 아이템을 파밍하고, 보스에서 막히면 캐릭터를 성장시키고 싶어져 과금 의욕이 생기는 구조임을 이해했다 <span class="tag t-play">플레이</span></td></tr>
+<tr><td>첫 과금 팝업 시점</td><td>튜토리얼이 끝나고 메인 마을에 도착했을 때 <span class="tag t-play">플레이</span></td></tr>
+<tr><td>이탈하고 싶었던 순간</td><td>반복적인 행동만 요구받는다고 느꼈을 때 <span class="tag t-play">플레이</span></td></tr>
+<tr><td>1일차 vs 7일차 판단 차이</td><td>1일만 플레이해 비교할 수 없다</td></tr>
+</tbody></table></div>
+<p>타인의 초반 평가: 전문 매체는 "부담 없이 즐기는 힐링 K-판타지"(경향게임스), 게임메카 80점으로 평가했다. 이는 <span class="tag t-off">기사</span>이다. 내 플레이와 비교하면, "부담 없는 힐링"과 달리 보스에서 막혀 과금 의욕이 생겼고 반복 퀘스트가 지루했다. 다만 6시간·30레벨 기준이라 평가 전체와 일치·불일치를 단정하기는 이르다. 게임메카 링크는 열람이 불안정했으므로 인용 전 재확인이 필요하다.</p>
+</div></section>
+
+<!-- 7 -->
+<section id="dk-s7" style="--c:var(--peach);--c-d:var(--peach-d);--c-soft:var(--peach-soft)">
+<h2><span class="n">7</span>메타·리텐션·라이브 운영</h2><div class="dk-body">
+<h3>확인된 운영 이력</h3>
+<div class="table-scroll"><table>
+<thead><tr><th>날짜</th><th>사건</th><th>근거</th></tr></thead>
+<tbody>
+<tr><td>10/6</td><td>사전 다운로드</td><td><span class="tag t-off">기사</span></td></tr>
+<tr><td>10/8</td><td>정식 출시, 양 스토어 인기 1위</td><td><span class="tag t-off">기사</span></td></tr>
+<tr><td>10/13</td><td>구글 매출 1위 보도</td><td><span class="tag t-off">기사</span></td></tr>
+<tr><td>10/14</td><td>업데이트</td><td><span class="tag t-off">나무위키 인용</span> 공식 공지 대조 필요</td></tr>
+<tr><td>10/21</td><td>업데이트·도술 밸런스 개편</td><td><span class="tag t-off">나무위키 인용</span> 공식 공지 대조 필요</td></tr>
+<tr><td>10/28</td><td>긴급 라이브 방송</td><td>공식 유튜브 영상, 내용 미확인</td></tr>
+<tr><td>10/29~11/4</td><td>이벤트·점검·공지</td><td class="blank">미기록 (공식 공지 목록에서 채울 것. 플레이가 1일뿐이라 접속 중 확인한 이벤트도 없음)</td></tr>
+</tbody></table></div>
+<ul>
+  <li><b>메타가 코어 루프를 강화하는 방식</b>: <span class="blank">미기록</span> (일일 접속 보상·출석·미션은 확인하지 못함)</li>
+  <li><b>무과금 접근 범위</b>: 무과금으로 30레벨까지 진행했으나 여우 보스(이름 미확인)에서 막혔다 <span class="tag t-play">플레이</span> / 이후 구간은 <span class="blank">미기록</span></li>
+  <li><b>커뮤니티 반응</b>: 마이너 갤러리 글은 밸런스·사냥 효율·뉴비 질문 중심이다. <span class="tag t-comm">커뮤니티</span> 이는 반응이며 사실이 아니다.</li>
+  <li><b>운영진 대응</b>: 개발진이 성장 정체 구간 개선과 재화 획득량 조정을 예고했다는 보도가 있다. <span class="tag t-off">기사</span> 뷰어스</li>
+  <li><b>7일 이후 리텐션</b>: 구글 1위가 22일째까지 유지된 점은 출시 직후 이탈이 순위를 무너뜨릴 만큼 크지는 않았음을 시사하나, 유저 수·리텐션은 외부에서 알 수 없다. 이후 유지 여부는 업데이트 주기와 성장 정체 구간 개선에 달려 있다. <span class="tag t-est">추정</span></li>
+</ul>
+</div></section>
+
+<!-- 8 -->
+<section id="dk-s8" style="--c:var(--pink);--c-d:var(--pink-d);--c-soft:var(--pink-soft)">
+<h2><span class="n">8</span>수익화 (BM)</h2><div class="dk-body">
+<div class="notice"><strong>이번 분석에서 가장 중요한 확인 지점</strong>보도는 "착한 BM"에 쏠려 있지만 확률 요소가 남아 있다는 반론이 있습니다. 가이드라인에 따라 아래 두 입장을 나란히 두고, 상품 목록·가격·확률 고지는 공식 자료와 직접 플레이로 판정해야 합니다.</div>
+<div class="grid2">
+  <div class="dkcard"><h4>보도의 입장</h4>확률형 중심이 아닌 멤버십·패스·치장 중심, 30일 멤버십, "착한 과금", 과금은 낮추고 체류는 늘리는 설계. <span class="tag t-off">기사</span> 경향게임스·뷰어스·뉴스후플러스·뉴시스(9/21 "확률형 과금 뺐다")</div>
+  <div class="dkcard"><h4>반론</h4>확률 요소가 남아 있다는 분석, 멤버십을 안 사면 손해인지에 대한 논의. 공식 공지를 근거로 든다고 소개된 영상이며 본문은 미확인. <span class="tag t-comm">커뮤니티</span></div>
+</div>
+<div class="table-scroll"><table>
+<thead><tr><th>항목</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td>재화 종류·획득/소비</td><td>튜토리얼에서 재화를 받았고, 사냥으로 아이템을 파밍해 강화 등 성장 요소에 쓴다 <span class="tag t-play">플레이</span> / 재화 종류와 수치는 <span class="blank">미기록</span></td></tr>
+<tr><td>과금 상품·가격대</td><td class="blank">미기록 (스토어 인앱 구매 목록에서 확인)</td></tr>
+<tr><td>첫 과금 유도 시점</td><td>튜토리얼 종료 후 메인 마을 도착 시 첫 과금 팝업 <span class="tag t-play">플레이</span></td></tr>
+<tr><td>마찰 지점과 해결 수단</td><td>여우 보스(이름 미확인)에서 막혔다. 해결 수단은 캐릭터 성장이며, 이 지점에서 과금 의욕이 생겼다 <span class="tag t-play">플레이</span> / 막혔을 때 선택지(대기·과금·다른 콘텐츠)는 <span class="blank">미기록</span></td></tr>
+<tr><td>무과금–과금 격차</td><td class="blank">미기록 (무과금으로만 플레이해 과금 쪽과 비교하지 못함)</td></tr>
+<tr><td>저가→고가 경로</td><td class="blank">미기록</td></tr>
+<tr><td>확률 요소·고지 위치</td><td>강화 등에 확률 요소가 있다 <span class="tag t-play">플레이</span> / 고지 위치는 <span class="blank">미기록</span> (게임산업법상 확률형 아이템 정보공개 제도 2024-03-22 시행 <span class="tag t-off">기사</span>)</td></tr>
+<tr><td>광고 시청 보상</td><td class="blank">미기록 (확인하지 못함)</td></tr>
+<tr><td>과금 총액·무과금 일수</td><td>0원, 무과금 1일 <span class="tag t-play">플레이</span></td></tr>
+</tbody></table></div>
+<p><b>매출 순위 1위와 "착한 과금"의 관계</b>: 순위만으로는 소액 다수 결제인지 고액 소수 결제인지 알 수 없다. 두 보도(착한 BM과 매출 1위)가 동시에 성립하는 이유는 결제 유저 수 자체가 크거나, 보도되지 않은 고액 상품이 있기 때문일 수 있다. 어느 쪽인지는 현재 자료로 판단할 수 없다. <span class="tag t-est">추정</span></p>
+</div></section>
+
+<!-- 9 -->
+<section id="dk-s9" style="--c:var(--violet);--c-d:var(--violet-d);--c-soft:var(--violet-soft)">
+<h2><span class="n">9</span>UX·품질</h2><div class="dk-body">
+<ul>
+  <li><b>스토어 평점</b>: 보도 기준 구글 4.6점. <span class="tag t-off">기사</span> 스토어 직접 확인 전.</li>
+  <li><b>비주얼</b>: 도트 형태라 감성이 있었다 <span class="tag t-play">플레이</span></li>
+  <li><b>화면 구성·메뉴 깊이·알림 방식</b>: <span class="blank">미기록</span></li>
+  <li><b>조작감</b>: PC로 플레이했는데 모바일 타겟 게임이라 그런지 조작감이 아쉬웠다 <span class="tag t-play">플레이</span> / 구체적으로 무엇이 불편했는지는 <span class="blank">미기록</span></li>
+  <li><b>로딩·용량·발열</b>: <span class="blank">미기록</span></li>
+  <li><b>버그·튕김·표기 오류</b>: 기록 <span class="blank">0건</span> (없다는 뜻이 아니라 기록하지 않았다는 뜻).</li>
+  <li>갤러리에 올라오는 불만과 버그 글은 개선 제안의 후보일 뿐, 직접 겪은 것과 겹칠 때만 근거로 쓴다. <span class="tag t-comm">커뮤니티</span></li>
+</ul>
+</div></section>
+
+<!-- 10 -->
+<section id="dk-s10" style="--c:var(--blue);--c-d:var(--blue-d);--c-soft:var(--blue-soft)">
+<h2><span class="n">10</span>비교 분석</h2><div class="dk-body">
+<p style="font-size:14px">비교작은 각각 최소 1시간 플레이 후 쓰는 것이 원칙이다. 현재는 순위 데이터와 선정 문서의 사실만 채웠고, 나머지는 미기록이다.</p>
+<div class="table-scroll"><table>
+<thead><tr><th>항목</th><th>도깨비의세계</th><th>이클립스</th><th>오딘: 발할라 라이징</th><th>가십하버</th></tr></thead>
+<tbody>
+<tr><td>퍼블리셔</td><td>Kakao Games</td><td>Smilegate</td><td>Kakao Games</td><td>Microfun</td></tr>
+<tr><td>장르</td><td>2.5D MMORPG <span class="tag t-off">기사</span></td><td class="blank">미기록</td><td class="blank">미기록</td><td>합성·스토리 <span class="tag t-data">데이터</span></td></tr>
+<tr><td>10/29 순위 (구글/앱)</td><td><b>1 / 2</b></td><td>10 / 10</td><td>16 / 27</td><td>5 / 3</td></tr>
+<tr><td>순위 곡선</td><td>권외→(출시)→1 유지</td><td>9/17 1위→하락, 10위권 유지</td><td class="blank">미기록</td><td>4시점 모두 상위권, 10/29 최고</td></tr>
+<tr><td>초반 경험</td><td class="blank">미기록</td><td class="blank">미기록</td><td class="blank">미기록</td><td class="blank">미기록</td></tr>
+<tr><td>수익화</td><td class="blank">8절 참고</td><td class="blank">미기록</td><td class="blank">미기록</td><td class="blank">미기록</td></tr>
+<tr><td>운영</td><td class="blank">7절 참고</td><td class="blank">미기록</td><td class="blank">미기록</td><td class="blank">미기록</td></tr>
+</tbody></table></div>
+<p>순위 데이터는 모두 <span class="tag t-data">데이터</span>다. 이클립스는 "실패 사례"가 아니라 10위권을 유지하는 "출시 후 유지" 사례로 읽어야 한다(선정 문서). 오딘과의 관계는 MTN 기사가 "오딘을 이을 구원투수"로 연결한다. <span class="tag t-off">기사</span></p>
+</div></section>
+
+<!-- 11 -->
+<section id="dk-s11" style="--c:var(--mint);--c-d:var(--mint-d);--c-soft:var(--mint-soft)">
+<h2><span class="n">11</span>성과 요인 해석</h2><div class="dk-body">
+<div class="table-scroll"><table>
+<thead><tr><th>가설</th><th>근거</th><th>반대 근거·공백</th><th>판단</th></tr></thead>
+<tbody>
+<tr>
+  <td>마케팅·사전예약</td>
+  <td>사전 다운로드 6시간 만에 앱스토어 1위, 캐릭터명 선점 조기 마감, 출시일 양 스토어 인기 1위 <span class="tag t-off">기사</span></td>
+  <td>인기 순위는 매출이 아니다. 화력은 출시 초반 설명이지 3주 유지의 설명으로는 약하다.</td>
+  <td><span class="dkchip j-strong">강함 (초반 한정)</span></td>
+</tr>
+<tr>
+  <td>초반 경험</td>
+  <td>"부담 없이 즐기는 힐링" 등 우호적 리뷰, 구글 4.6점 <span class="tag t-off">기사</span> / 첫 전투까지 약 10분, 튜토리얼 건너뛰기 가능, 새 콘텐츠가 빠르게 열림 <span class="tag t-play">플레이</span></td>
+  <td>반복 퀘스트가 지루해 접고 싶은 순간이 있었고, 보스에서 막혔다 <span class="tag t-play">플레이</span>. 6시간·30레벨 기준이라 유지력까지 판단하기엔 부족하다.</td>
+  <td><span class="dkchip j-mid">보통 (1일 플레이 한정)</span></td>
+</tr>
+<tr>
+  <td>수익화 구조</td>
+  <td>"착한 BM"이라 접근성이 높다는 보도 다수 <span class="tag t-off">기사</span></td>
+  <td>확률 요소 존재 주장 <span class="tag t-comm">커뮤니티</span>. 플레이에서도 강화 등에 확률 요소가 있었고, 보스에서 막혔을 때 과금 의욕이 생겼다 <span class="tag t-play">플레이</span>. 상품·가격은 미확인이고 매출 1위와 "착한 과금"이 병존하는 이유도 불명.</td>
+  <td><span class="dkchip j-mid">보통 (확인 필요)</span></td>
+</tr>
+<tr>
+  <td>이벤트·단기 상승</td>
+  <td>출시 이벤트, 구글 플레이 할인, 10/14·10/21 업데이트 <span class="tag t-off">기사</span></td>
+  <td>1위가 10/13부터 10/29까지 이어졌다면 단기 이벤트 하나로는 설명이 어렵다. 일별 데이터 없음.</td>
+  <td><span class="dkchip j-weak">약함</span> <span class="tag t-est">추정</span></td>
+</tr>
+<tr>
+  <td>장르·IP 수요</td>
+  <td>협력 중심 MMORPG라는 차별점, 원작 웹소설·웹툰 IP <span class="tag t-off">기사</span></td>
+  <td>같은 장르의 이클립스는 하락했다. IP 인지도의 크기는 자료 없음.</td>
+  <td><span class="dkchip j-mid">보통</span> <span class="tag t-est">추정</span></td>
+</tr>
+</tbody></table></div>
+<p><b>종합</b>: 출시 초반 순위는 퍼블리셔 화력과 사전예약이 이끌었고(강함), 3주 유지는 과금 부담 인식과 협력 중심 콘텐츠가 받쳤을 것으로 본다(보통). 비중을 "마케팅 4 : 과금·콘텐츠 6" 정도로 보는 것은 근거 없는 숫자이므로 쓰지 않는다. 플레이로 초반 경험과 BM을 확인한 뒤에야 두 번째 요인의 판단을 올리거나 내릴 수 있다. <span class="tag t-est">추정</span></p>
+</div></section>
+
+<!-- 12 -->
+<section id="dk-s12" style="--c:var(--peach);--c-d:var(--peach-d);--c-soft:var(--peach-soft)">
+<h2><span class="n">12</span>개선 제안</h2><div class="dk-body">
+<div class="notice"><strong>가안</strong>아래 제안은 보도·갤러리에 나온 문제에서 끌어온 것으로, 직접 플레이로 겪은 문제와 겹치는지 확인하기 전까지는 가설 수준입니다.</div>
+<div class="table-scroll"><table>
+<thead><tr><th>#</th><th>문제</th><th>근거</th><th>제안</th><th>기대 효과</th><th>위험</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>성장 정체 구간</td><td>개발진이 개선을 예고했다는 보도 <span class="tag t-off">기사</span> 갤러리 사냥 효율 불만 <span class="tag t-comm">커뮤니티</span> 직접 플레이에서도 여우 보스에서 막힘 <span class="tag t-play">플레이</span></td><td>정체 구간에서 무과금 경로(협력 콘텐츠 보상 등)를 명시하고 막힘 이유를 UI로 안내</td><td>중반 이탈 감소 <span class="tag t-est">추정</span></td><td>예고된 개선과 겹칠 수 있음. 재화 인플레이션</td></tr>
+<tr><td>2</td><td>도술 조합 밸런스 수렴</td><td>10/21 밸런스 개편 <span class="tag t-off">기사</span> 갤러리 밸런스 글 <span class="tag t-comm">커뮤니티</span></td><td>조합 사용률 공개 또는 시즌성 보정, 변경 사전 공지 확대</td><td>표현·발견 체험 유지 <span class="tag t-est">추정</span></td><td>빠른 메타 고착, 개발 부담</td></tr>
+<tr><td>3</td><td>BM 인식의 불일치(착한 과금 vs 확률 요소)</td><td>보도와 반론이 갈림 <span class="tag t-off">기사</span> <span class="tag t-comm">커뮤니티</span></td><td>확률 정보와 상품 구성을 한 화면에서 비교 가능하게 상점 UI 정리</td><td>신뢰 유지, 장기 결제 안정 <span class="tag t-est">추정</span></td><td>단기 매출 영향</td></tr>
+</tbody></table></div>
+</div></section>
+
+<!-- 13 -->
+<section id="dk-s13" style="--c:var(--pink);--c-d:var(--pink-d);--c-soft:var(--pink-soft)">
+<h2><span class="n">13</span>직무 관점 정리</h2><div class="dk-body">
+<div class="grid2">
+  <div class="dkcard"><h4>기획 관점 (가안)</h4>
+    <ul>
+      <li>"직업 없는 도술 조합"은 규칙 하나가 체험(표현·발견)과 BM(치장) 양쪽에 연결되는 구조다. 시스템 하나가 여러 층에 걸치는 설계의 예로 쓸 수 있다. <span class="tag t-est">추정</span></li>
+      <li>순위 데이터만으로 원인을 단정하지 않고 가설표로 나눈 방식은 이후 다른 게임 분석에도 재사용 가능하다.</li>
+    </ul>
+  </div>
+  <div class="dkcard"><h4>QA 관점</h4>
+    <ul>
+      <li>1일 플레이에서 기록한 버그는 0건이다(없었다는 뜻이 아니라 기록하지 않았다는 뜻). 이후 플레이에서는 재현 절차(환경·단계·기대/실제 결과)를 같은 양식으로 적는다.</li>
+      <li>밸런스 개편 이력(10/21)은 QA에서 "변경 후 회귀 확인 범위"를 논의하기 좋은 소재다. <span class="tag t-est">추정</span></li>
+    </ul>
+  </div>
+</div>
+</div></section>
+
+<!-- 14 -->
+<section id="dk-s14" style="--c:var(--violet);--c-d:var(--violet-d);--c-soft:var(--violet-soft)">
+<h2><span class="n">14</span>한계와 후속 과제</h2><div class="dk-body">
+<ul>
+  <li>5~9절은 1일차 플레이 메모와 기사 기반 가안이 섞여 있고, 상당 부분이 미기록이다.</li>
+  <li>플레이는 하루 약 6시간(30레벨)뿐이다. 2일차 이후의 성장 정체, 리텐션, 일일·이벤트 콘텐츠, 소셜 콘텐츠는 직접 확인하지 못했다. 단일 계정, PC 한 기기뿐이라 모바일 조작감·발열·용량은 확인하지 못했다.</li>
+  <li>매출액·유저 수·리텐션 수치 없음. 모바일인덱스는 순위만 제공한다.</li>
+  <li>순위 시점이 4개(9/3·9/17·10/1·10/29)뿐이고 10/13 1위는 기사 근거다. 일별 곡선을 그릴 수 없다.</li>
+  <li>장르·출시일·퍼블리셔는 기사 기준이며 공식 자료 재확인이 남았다. 상당수 링크가 본문 미확인(🔎) 상태다.</li>
+  <li>2일차 이후 내용은 모두 <span class="tag t-est">추정</span>이다.</li>
+</ul>
+<h3>후속 과제</h3>
+<ul>
+  <li>추가 플레이 후 5~9절의 미기록 칸 채우기 (스토어 상품·가격, 재화 종류, 확률 고지 위치, 광고 보상, 버그 등)</li>
+  <li>11/1~11/4 순위 기록 채우기, 4절 표 갱신</li>
+  <li>공식 공지로 출시일·과금·확률 정보 확인, 8절 판정</li>
+  <li>MDA 논문 원문에서 체험 8유형 용어·정의 대조</li>
+  <li>이클립스·오딘·가십하버 각 1시간 이상 플레이 후 10절 보강</li>
+</ul>
+</div></section>
+
+<!-- 15 -->
+<section id="dk-s15" style="--c:var(--blue);--c-d:var(--blue-d);--c-soft:var(--blue-soft)">
+<h2><span class="n">15</span>부록</h2><div class="dk-body">
+<h3>스크린샷 색인</h3>
+<div class="table-scroll"><table>
+<thead><tr><th>번호</th><th>날짜·시각</th><th>설명</th></tr></thead>
+<tbody><tr><td class="blank" colspan="3">없음 — 스크린샷을 남기지 않았다</td></tr></tbody></table></div>
+
+<h3>출처 목록 (조사일 2026-10-29, 본문 미확인 표시는 원본 링크 문서 기준)</h3>
+<ul class="src">
+  <li>순위: 모바일인덱스 실시간 순위 (수기 정리 스냅샷) — https://www.mobileindex.com/mi-chart/realtime-rank</li>
+  <li>출시·사전 다운로드: 파이낸셜뉴스 — https://www.fnnews.com/news/202610081358114020 (본문 확인)</li>
+  <li>구글 매출 1위(10/13): 연합뉴스 https://www.yna.co.kr/view/AKR20261013056800017 · MTN https://news.mtn.co.kr/article/2026101309100614158 (본문 미확인)</li>
+  <li>양 스토어 인기 1위: 인벤글로벌 https://www.invenglobal.com/articles/26958/world-of-dokkaebi-tops-popularity-charts-on-both-major-app-stores (본문 미확인)</li>
+  <li>리뷰·BM: 경향게임스 https://www.khgames.co.kr/news/articleView.html?idxno=309225 · 뷰어스 https://theviewers.co.kr/View.aspx?No=4262756 · 뉴시스 https://nwww.newsis.com/view/NISX20260921_0003798563 (본문 미확인)</li>
+  <li>정리본: 나무위키 도깨비의세계 (사실 확인의 출발점으로만 사용)</li>
+  <li>공식: 카카오게임즈 도깨비의세계 공지 https://forum.kakaogames.com/dokkaebi/postList/?code=notice (본문 미확인)</li>
+  <li>방법론: MDA — https://aaai.org/papers/ws04-04-001-mda-a-formal-approach-to-game-design-and-game-research/ · Game Ontology Project — https://dl.digra.org/index.php/dl/article/view/136</li>
+</ul>
+</div></section>
+
+
+        <p class="dk-foot">플레이 근거: 2026-11-03 하루 플레이 메모 · 양식: 2026-10-29_게임분석서_양식 · 본 문서는 Claude Code가 자료와 플레이 메모를 바탕으로 작성한 초안입니다.</p>
       </section>
     </div>
 
@@ -13630,5 +14122,17 @@ table.compact caption{font-size:16px}
     new MutationObserver(load).observe(view, { attributes: true, attributeFilter: ["hidden"] });
   })();
 </script>
+  <script>
+    /* ---------- dokkaebi view: 목차 이동 (해시 라우팅과 충돌하지 않도록 스크롤로 처리) ---------- */
+    (function () {
+      document.querySelectorAll("[data-dk-go]").forEach(function (a) {
+        a.addEventListener("click", function (e) {
+          e.preventDefault();
+          var t = document.getElementById(a.getAttribute("data-dk-go"));
+          if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
