@@ -638,6 +638,13 @@
     .ga-figure img { aspect-ratio: 19 / 10; object-fit: cover; }
     @media (max-width: 760px) { .ga-head.has-img, .event-head.has-img { grid-template-columns: 1fr; } }
     .edu + .edu { margin-top: 14px; }
+    /* ---------- report tab ---------- */
+    .report-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin: 22px 0 12px; }
+    .report-meta { font-size: 14px; color: var(--ink-3); }
+    .report-open { font-size: 14px; font-weight: 700; color: var(--ink); text-decoration: none; border: 1px solid var(--ink); border-radius: 999px; padding: 8px 16px; }
+    .report-open:hover { background: var(--ink); color: #fff; }
+    .report-frame-wrap { border: 1px solid #DDE3EA; border-radius: 14px; overflow: hidden; background: #fff; }
+    .report-frame { display: block; width: 100%; height: min(86vh, 1100px); min-height: 560px; border: 0; }
   </style>
 </head>
 <body>
@@ -656,6 +663,7 @@
         <button class="tab-btn" type="button" role="tab" data-tab="gameplay" aria-selected="false"><span class="tb-en">GamePlay</span><span class="tb-ko">플레이 기록</span></button>
         <button class="tab-btn" type="button" role="tab" data-tab="gameevent" aria-selected="false"><span class="tb-en">GameEvent</span><span class="tb-ko">이벤트 기획</span></button>
         <button class="tab-btn" type="button" role="tab" data-tab="gameanalysis" aria-selected="false"><span class="tb-en">GameAnalysis</span><span class="tb-ko">게임 분석</span></button>
+        <button class="tab-btn" type="button" role="tab" data-tab="report" aria-selected="false"><span class="tb-en">Report</span><span class="tb-ko">순위 분석</span></button>
       </div>
     </nav>
 
@@ -1121,6 +1129,15 @@
         <div class="sec-head reveal"><div><p class="sec-en">GameAnalysis</p><h2>게임 분석</h2></div></div>
         <div class="tab-summary" style="--c:var(--violet);--c-d:var(--violet-d);--c-soft:var(--violet-soft)"><p class="tab-summary-label">SUMMARY · 요약</p><ol><li><span class="sum-n">1</span><p>트릭컬 리바이브 3주년(최대 600회 무료 뽑기)을 기준으로, 재미를 [시스템 → 행동 → 감정] 흐름으로 분석했습니다.</p></li><li><span class="sum-n">2</span><p>핵심은 볼따구로 생기는 장난스러운 애착, 성격 시너지와 상성 사이의 덱 선택, 누적 출석처럼 부담을 줄인 설계입니다.</p></li><li><span class="sum-n">3</span><p>대량 획득이 사도 한 명 한 명에 대한 애착을 묻는 문제를 '재미가 끊기는 지점'으로 정리하고 개선안을 붙였습니다.</p></li></ol></div>
         <div data-analysis-list></div>
+      </section>
+    </div>
+
+    <div class="view" data-view="report" hidden>
+      <section class="section">
+        <div class="sec-head reveal"><div><p class="sec-en">Report</p><h2>매출 순위 분석 보고서</h2></div></div>
+        <div class="tab-summary" style="--c:var(--blue);--c-d:var(--blue-d);--c-soft:var(--blue-soft)"><p class="tab-summary-label">SUMMARY · 요약</p><ol><li><span class="sum-n">1</span><p>「승리의 여신: 니케」가 4주년 업데이트 후 1주 만에 한국 구글 플레이 매출 35위에서 5위로 오른 이유를 순위 자료, 언론 보도, 커뮤니티 반응으로 분석했습니다.</p></li><li><span class="sum-n">2</span><p>신규 SSR과 특수 모집을 가장 유력한 원인으로 보되, 가설 6개를 근거와 약점으로 비교해 사실과 추정을 구분했습니다.</p></li><li><span class="sum-n">3</span><p>매출 자료가 없다는 한계를 밝히고, 모집 종료일(11/19, 11/26) 전후 순위로 가설을 검증하는 계획을 세웠습니다.</p></li></ol></div>
+        <div class="report-bar"><span class="report-meta">기준일 2026-11-05 · 인터랙티브 보고서 (그래프에 마우스를 올리면 상세 수치 표시)</span><a class="report-open" id="reportNewTab" href="#" target="_blank" rel="noopener">새 탭에서 크게 보기</a></div>
+        <div class="report-frame-wrap"><iframe id="reportFrame" class="report-frame" title="니케 매출 순위 분석 보고서" loading="lazy"></iframe></div>
       </section>
     </div>
 
@@ -12370,6 +12387,1192 @@ loop();
 <\/script>
 </body>
 </html>
+</script>
+<script type="text/plain" id="report-nikke"><!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>「승리의 여신: 니케」 매출 순위 상승 요인 분석</title>
+<meta name="description" content="4주년 업데이트 이후 1주 만에 한국 구글 플레이 매출 35위에서 5위로 오른 니케의 순위 상승 요인을 자료와 한계와 함께 분석한 보고서">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+/* =========================================================
+   1. 디자인 토큰
+   ========================================================= */
+:root{
+  --ink:#0F1B2D;        /* 본문 */
+  --navy:#13294B;       /* 제목, 기본 강조 */
+  --blue:#1F5FAE;       /* 니케 데이터, 링크 */
+  --blue-soft:#9DB9DB;  /* 보조 데이터 */
+  --sky:#EEF4FB;        /* 니케 행 강조 배경 */
+  --paper:#F5F7FA;      /* 보조 배경 */
+  --line:#DDE3EA;
+  --line-strong:#B9C3CF;
+  --muted:#5B6878;
+  --grey:#A7B0BC;       /* 비교 대상 데이터 */
+  --amber:#9A6200;      /* 추정 표시 */
+  --red:#B3261E;        /* 확인 불가, 경고 */
+  --font:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --content:780px;
+}
+
+/* =========================================================
+   2. 기본
+   ========================================================= */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:#fff;color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
+a{color:var(--blue);text-underline-offset:3px}
+a:hover{color:var(--navy)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+p{margin:0 0 14px}
+h1,h2,h3,h4{color:var(--navy);margin:0}
+.num{font-variant-numeric:tabular-nums}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;background:var(--navy);color:#fff;padding:8px 14px;z-index:100}
+.skip:focus{top:12px}
+
+/* 읽기 진행 표시 */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--blue);z-index:60}
+
+/* =========================================================
+   3. 표지
+   ========================================================= */
+.masthead{border-bottom:1px solid var(--line)}
+.masthead-in{max-width:1180px;margin:0 auto;padding:56px 32px 40px}
+.kicker{font-size:14px;font-weight:700;letter-spacing:.06em;color:var(--blue);margin:0 0 16px}
+.masthead h1{font-size:clamp(30px,4.4vw,46px);line-height:1.28;font-weight:800;letter-spacing:-.02em;max-width:880px}
+.deck{font-size:clamp(17px,1.9vw,20px);color:#2E3C50;line-height:1.7;max-width:820px;margin:20px 0 28px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 32px;font-size:14px;color:var(--muted);margin:0;padding:0;list-style:none}
+.meta b{color:var(--ink);margin-right:8px}
+.tools{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{font:inherit;font-size:14px;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--line-strong);padding:7px 14px;cursor:pointer;border-radius:2px}
+.btn:hover{border-color:var(--navy)}
+
+/* 핵심 수치 띠 */
+.kpi-band{background:var(--paper);border-bottom:1px solid var(--line)}
+.kpi-band ul{max-width:1180px;margin:0 auto;padding:0 32px;list-style:none;display:grid;grid-template-columns:repeat(4,1fr)}
+.kpi-band li{border-left:1px solid var(--line)}
+.kpi-band li:first-child{border-left:0}
+.kpi{display:block;padding:26px 22px 24px;text-decoration:none;color:inherit;height:100%}
+.kpi-band li:first-child .kpi{padding-left:0}
+.kpi:hover .kpi-v,.kpi:focus-visible .kpi-v{color:var(--blue)}
+.kpi-v{display:block;font-size:clamp(28px,3.4vw,40px);font-weight:800;line-height:1.1;letter-spacing:-.02em;color:var(--navy);font-variant-numeric:tabular-nums}
+.kpi-v small{font-size:.5em;font-weight:700;margin-left:2px}
+.kpi-k{display:block;font-size:15px;font-weight:700;margin-top:10px;color:var(--ink)}
+.kpi-d{display:block;font-size:13px;color:var(--muted);line-height:1.5;margin-top:2px}
+.kpi-go{display:block;font-size:13px;font-weight:600;color:var(--blue);margin-top:8px}
+
+/* =========================================================
+   4. 본문 레이아웃
+   ========================================================= */
+.layout{max-width:1180px;margin:0 auto;padding:48px 32px 96px;display:grid;grid-template-columns:200px minmax(0,var(--content));gap:72px;justify-content:center;align-items:start}
+.toc{position:sticky;top:28px;font-size:14px}
+.toc-title{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--muted);margin:0 0 10px}
+.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+.toc a{display:flex;gap:10px;padding:6px 0 6px 14px;margin-left:-1px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;line-height:1.45}
+.toc a:hover{color:var(--ink)}
+.toc a.on{border-left-color:var(--blue);color:var(--navy);font-weight:700}
+.toc .no{flex:0 0 20px;font-variant-numeric:tabular-nums;color:var(--grey);font-weight:700}
+.toc a.on .no{color:var(--blue)}
+main{min-width:0}
+
+/* =========================================================
+   5. 요약과 읽는 법
+   ========================================================= */
+.summary h2{font-size:13px;letter-spacing:.08em;color:var(--muted);font-weight:700;margin-bottom:18px}
+.findings{list-style:none;margin:0;padding:0;counter-reset:f}
+.findings li{counter-increment:f;display:grid;grid-template-columns:44px 1fr;gap:0 4px;padding:18px 0;border-top:1px solid var(--line)}
+.findings li:last-child{border-bottom:1px solid var(--line)}
+.findings li::before{content:counter(f,decimal-leading-zero);font-size:15px;font-weight:800;color:var(--blue);padding-top:4px;font-variant-numeric:tabular-nums}
+.findings p{font-size:19px;font-weight:600;line-height:1.6;margin:0;color:var(--ink)}
+.findings .go{grid-column:2;font-size:13px;color:var(--muted);margin-top:6px}
+
+.howto{margin:28px 0 0;padding:16px 18px;background:var(--paper);font-size:14px;color:var(--muted);line-height:1.6}
+.howto dl{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:8px 0 0}
+.howto dt{margin:0}
+.howto dd{margin:0;align-self:center}
+
+/* 근거 성격 표시 */
+.tag{display:inline-block;font-size:12px;font-weight:700;line-height:1;padding:4px 6px 3px;border-radius:2px;vertical-align:2px;margin-right:6px;white-space:nowrap;letter-spacing:.02em}
+.tag.fact{background:var(--navy);color:#fff}
+.tag.ana{background:var(--sky);color:var(--blue);box-shadow:inset 0 0 0 1px #C8DAEF}
+.tag.est{background:#fff;color:var(--amber);box-shadow:inset 0 0 0 1px #E3C58F}
+.tag.na{background:#fff;color:var(--red);box-shadow:inset 0 0 0 1px #E8B4B0}
+
+/* =========================================================
+   6. 섹션 공통
+   ========================================================= */
+.sec{padding-top:72px;scroll-margin-top:20px}
+.sec-head{border-top:2px solid var(--navy);padding-top:16px;margin-bottom:28px}
+.sec-label{display:flex;gap:12px;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--blue);margin:0 0 12px}
+.sec-label .n{font-variant-numeric:tabular-nums}
+.sec h2{font-size:clamp(24px,3vw,31px);line-height:1.38;font-weight:800;letter-spacing:-.015em}
+.takeaway{font-size:18px;line-height:1.7;color:#2E3C50;margin:14px 0 0}
+.sec h3{font-size:18px;font-weight:700;margin:36px 0 12px}
+
+/* 분석 흐름: 왼쪽 라벨 + 본문 */
+.argument{margin:32px 0 0}
+.argument > div{display:grid;grid-template-columns:120px 1fr;gap:0 24px;padding:16px 0;border-top:1px solid var(--line)}
+.argument > div:last-child{border-bottom:1px solid var(--line)}
+.argument dt{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.04em;padding-top:3px}
+.argument dd{margin:0}
+.argument dd p:last-child,.argument dd ul:last-child{margin-bottom:0}
+.argument ul{margin:0 0 12px;padding-left:18px}
+.argument li{margin-bottom:6px}
+
+/* 도표 공통 */
+figure{margin:28px 0 0}
+.fig-title{font-size:16px;font-weight:700;color:var(--navy);margin:0 0 2px}
+.fig-sub{font-size:13px;color:var(--muted);margin:0 0 14px;line-height:1.55}
+.chart-box{position:relative;width:100%}
+.chart-box.h-rank{height:360px}
+.chart-box.h-gain{height:470px}
+.chart-fail{display:none;align-items:center;justify-content:center;text-align:center;height:100%;background:var(--paper);color:var(--muted);font-size:14px;padding:20px}
+.chart-box.failed canvas{display:none}
+.chart-box.failed .chart-fail{display:flex}
+figcaption{font-size:13px;color:var(--muted);line-height:1.6;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+figcaption b{color:var(--ink)}
+.legend-note{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13px;color:var(--muted);margin:0 0 10px}
+.legend-note span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:0}
+.legend-note .filled::before{background:var(--navy)}
+.legend-note .hollow::before{background:#fff;box-shadow:inset 0 0 0 2px var(--navy)}
+.legend-note .tri::before{width:0;height:0;border-radius:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:9px solid #6C7A8C;background:none}
+
+details.data{margin-top:10px;font-size:14px}
+details.data summary{cursor:pointer;color:var(--blue);font-weight:600;font-size:13px;width:max-content}
+details.data[open] summary{margin-bottom:8px}
+
+/* 표 */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.55}
+caption{caption-side:top;text-align:left;font-size:16px;font-weight:700;color:var(--navy);padding-bottom:10px}
+th{text-align:left;font-size:13px;font-weight:700;color:var(--muted);border-bottom:1px solid var(--navy);padding:8px 10px;vertical-align:bottom;white-space:nowrap}
+td{border-bottom:1px solid var(--line);padding:10px;vertical-align:top}
+.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.me td{background:var(--sky);font-weight:700}
+td .s{display:block;font-size:13px;color:var(--muted);font-weight:400}
+.up{color:var(--blue);font-weight:700}
+.down{color:#6C7A8C}
+
+/* 2단 비교 */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:32px}
+.split h3{margin-top:0}
+
+/* 요약 요점과 간결한 표 */
+.points{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--line)}
+.points li{padding:12px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.65}
+.tag-key{display:flex;flex-wrap:wrap;align-items:center;gap:6px 6px;font-size:13px;color:var(--muted);margin:18px 0 0}
+.tag-key .tag{margin-left:10px}.tag-key .tag:first-child{margin-left:0}
+table.compact td{font-size:15px}
+table.compact caption{font-size:16px}
+/* 메모(검증·한계) */
+.memo{margin-top:24px;padding:14px 0 0 16px;border-left:3px solid var(--line-strong);font-size:15px;color:#3A4859}
+.memo b{color:var(--ink)}
+
+/* =========================================================
+   7. 섹션별 표현
+   ========================================================= */
+/* 03 타임라인 */
+.tl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+.tl{min-width:660px;font-size:13px}
+.tl-row{display:grid;grid-template-columns:132px 1fr;align-items:center;min-height:44px;border-bottom:1px solid var(--line)}
+.tl-row.axis{min-height:28px;border-bottom:1px solid var(--navy)}
+.tl-name{font-weight:700;color:var(--ink);line-height:1.35;padding-right:12px}
+.tl-name small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.tl-track{position:relative;height:44px}
+.axis .tl-track{height:28px}
+.tl-tick{position:absolute;top:6px;transform:translateX(-50%);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tl-today{position:absolute;top:0;bottom:0;width:0;border-left:1px dashed var(--blue);pointer-events:none}
+.tl-bar{position:absolute;top:11px;height:22px;background:var(--blue);color:#fff;font-weight:600;font-size:12px;line-height:22px;padding:0 8px;white-space:nowrap;overflow:hidden;border-radius:2px}
+.tl-bar.b2{background:#4F80BE}
+.tl-dot{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--navy)}
+.tl-dot.hollow{background:#fff;box-shadow:inset 0 0 0 2px var(--navy)}
+.tl-dot.diamond{border-radius:0;transform:rotate(45deg);background:var(--blue)}
+.tl-dot.plan{background:#fff;box-shadow:inset 0 0 0 2px var(--blue);border-radius:0}
+.tl-lab{position:absolute;top:50%;transform:translateY(-50%);margin-left:10px;white-space:nowrap;color:var(--ink);font-weight:600}
+.tl-lab.left{transform:translate(-100%,-50%);margin-left:-10px}
+.tl-none{color:var(--muted);font-style:normal}
+.tl-wrap-row .tl-track{height:auto;padding:6px 0}
+
+/* 03 구성 요소 3단 */
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:32px;border-top:1px solid var(--navy)}
+.part{padding:18px 20px 4px 0}
+.part + .part{padding-left:20px;border-left:1px solid var(--line)}
+.part h3{margin:0 0 4px;font-size:17px}
+.part .path{font-size:13px;color:var(--muted);margin:0 0 12px}
+.part ul{list-style:none;margin:0;padding:0;font-size:15px}
+.part li{padding:8px 0;border-top:1px dotted var(--line);line-height:1.6}
+.part li:first-child{border-top:0;padding-top:0}
+
+/* 04 가설 매트릭스 */
+.matrix td{font-size:14.5px}
+.matrix th:first-child,.matrix td:first-child{min-width:150px}
+.matrix .c{text-align:center;white-space:nowrap}
+.mk{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:-2px}
+.mk.yes{background:var(--navy)}
+.mk.no{box-shadow:inset 0 0 0 2px var(--grey)}
+.mk.part{background:linear-gradient(90deg,var(--navy) 50%,#fff 50%);box-shadow:inset 0 0 0 2px var(--navy)}
+.verdict{display:inline-block;font-size:13px;font-weight:700;padding:3px 8px;border-radius:2px;white-space:nowrap}
+.v1{background:var(--navy);color:#fff}
+.v2{background:var(--sky);color:var(--navy)}
+.v3{background:#fff;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line-strong)}
+.v4{background:#fff;color:var(--red);box-shadow:inset 0 0 0 1px #E8B4B0}
+.matrix-key{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13px;color:var(--muted);margin:12px 0 0}
+.matrix-key span{display:inline-flex;align-items:center;gap:6px}
+
+/* 05 시장별 기록 격자 */
+.grid-mk td,.grid-mk th{text-align:center}
+.grid-mk td:first-child,.grid-mk th:first-child{text-align:left}
+.grid-mk td{font-size:14px;white-space:nowrap}
+.grid-mk .empty{color:#C3CAD3}
+.grid-mk .hit{font-weight:800;color:var(--navy)}
+.grid-mk .hit .s{font-weight:400}
+.grid-mk col.jp{background:var(--sky)}
+.grid-mk tr.me td{background:transparent;font-weight:inherit}
+.grid-mk tr.me td:first-child,.grid-mk tr.me td.hit{font-weight:800}
+.grid-mk tr.me td{border-top:1px solid var(--navy)}
+
+/* 06 이용자 반응 */
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:28px}
+.voice{border-top:3px solid var(--navy);padding-top:14px}
+.voice h3{margin:0 0 8px;font-size:17px}
+.voice p{font-size:15px;color:#2E3C50}
+.voice .links{font-size:13px;color:var(--muted);margin:0}
+
+/* 07 검증 포인트 */
+.checks{list-style:none;margin:28px 0 0;padding:0}
+.checks li{display:grid;grid-template-columns:110px 1fr;gap:0 24px;padding:20px 0;border-top:1px solid var(--line)}
+.checks li:last-child{border-bottom:1px solid var(--line)}
+.checks .d{font-size:26px;font-weight:800;color:var(--navy);line-height:1.15;font-variant-numeric:tabular-nums}
+.checks .d small{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-top:4px;letter-spacing:.02em}
+.checks h3{margin:0 0 6px;font-size:17px}
+.checks p{font-size:15px;margin-bottom:6px}
+.checks .if{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:14.5px;margin:8px 0 0}
+.checks .if dt{font-weight:700;color:var(--muted)}
+.checks .if dd{margin:0}
+
+/* 08 자료 범위 */
+.inventory{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:28px}
+.inventory h3{margin:0 0 10px;font-size:16px;display:flex;align-items:center;gap:8px}
+.inventory ul{list-style:none;margin:0;padding:0;font-size:15px}
+.inventory li{padding:10px 0;border-top:1px solid var(--line);line-height:1.6}
+.inventory li:last-child{border-bottom:1px solid var(--line)}
+.inventory .have h3::before,.inventory .miss h3::before{content:"";width:12px;height:12px;border-radius:50%}
+.inventory .have h3::before{background:var(--navy)}
+.inventory .miss h3::before{box-shadow:inset 0 0 0 2px var(--grey)}
+.excluded{margin-top:36px}
+
+/* 09 출처 */
+.sources h3{font-size:15px;color:var(--muted);letter-spacing:.04em;margin:28px 0 8px}
+.sources ol{margin:0;padding-left:24px;font-size:14.5px}
+.sources li{padding:5px 0;line-height:1.6}
+.sources .st{font-size:12px;color:var(--muted);margin-left:6px;white-space:nowrap}
+.sources .used{font-size:12px;color:var(--muted)}
+
+/* 푸터 */
+.foot{border-top:1px solid var(--line);background:var(--paper)}
+.foot-in{max-width:1180px;margin:0 auto;padding:28px 32px 36px;font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+/* =========================================================
+   8. 반응형
+   ========================================================= */
+@media (max-width:1079px){
+  .layout{grid-template-columns:minmax(0,var(--content));gap:0;padding-top:0}
+  .toc{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);margin:0 -32px;padding:0 32px}
+  .toc-title{display:none}
+  .toc ol{display:flex;gap:4px;overflow-x:auto;border-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .toc ol::-webkit-scrollbar{display:none}
+  .toc li{flex:0 0 auto}
+  .toc a{border-left:0;border-bottom:2px solid transparent;padding:12px 8px 10px;margin:0;white-space:nowrap}
+  .toc a.on{border-bottom-color:var(--blue)}
+  .toc .no{display:none}
+  .summary{padding-top:40px}
+  .sec{scroll-margin-top:56px}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .masthead-in{padding:40px 20px 28px}
+  .kpi-band ul{grid-template-columns:1fr 1fr;padding:0 20px}
+  .kpi-band li:nth-child(3){border-left:0}
+  .kpi-band li:nth-child(n+3){border-top:1px solid var(--line)}
+  .kpi{padding:20px 14px}
+  .kpi-band li:nth-child(odd) .kpi{padding-left:0}
+  .layout{padding:0 20px 72px}
+  .toc{margin:0 -20px;padding:0 12px}
+  .findings p{font-size:17px}
+  .findings li{grid-template-columns:36px 1fr}
+  .sec{padding-top:56px}
+  .argument > div{grid-template-columns:1fr;gap:4px}
+  .split,.inventory{grid-template-columns:1fr;gap:28px}
+  .parts{grid-template-columns:1fr}
+  .part,.part + .part{padding:16px 0 8px;border-left:0}
+  .part + .part{border-top:1px solid var(--line)}
+  .voices{grid-template-columns:1fr;gap:24px}
+  .checks li{grid-template-columns:1fr;gap:8px}
+  .chart-box.h-rank{height:320px}
+  .chart-box.h-gain{height:440px}
+  .foot-in{padding:24px 20px 32px}
+}
+
+/* =========================================================
+   9. 인쇄
+   ========================================================= */
+@media print{
+  @page{size:A4;margin:16mm 14mm}
+  body{font-size:10.5pt;line-height:1.6;color:#000}
+  .progress,.toc,.tools,.skip,details.data summary{display:none!important}
+  details.data{display:block}
+  .layout{display:block;padding:0;max-width:none}
+  .masthead-in,.kpi-band ul,.foot-in{padding-left:0;padding-right:0}
+  .kpi-band{background:none;border-top:1px solid #999;border-bottom:1px solid #999}
+  .sec{padding-top:28px}
+  .sec-head,figure,.voice,.checks li,tr,.part{break-inside:avoid}
+  .sec-head{break-after:avoid}
+  .chart-box{break-inside:avoid}
+  .chart-box.h-rank{height:300px}
+  .chart-box.h-gain{height:400px}
+  a{color:inherit;text-decoration:none}
+  .sources a::after{content:" (" attr(href) ")";font-size:8pt;color:#555;word-break:break-all}
+  .tl{min-width:0}
+  .tl-scroll{overflow:visible}
+  .table-wrap{overflow:visible}
+  .foot{background:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<\!-- =========================================================
+     표지
+     ========================================================= -->
+<header class="masthead">
+  <div class="masthead-in">
+    <p class="kicker">모바일 게임 매출 순위 분석 · 2026년 11월</p>
+    <h1>「승리의 여신: 니케」는 왜 1주 만에 매출 35위에서 5위로 올랐나</h1>
+    <p class="deck">4주년 업데이트와 순위 상승 시점이 겹친다. 신규 캐릭터와 특수 모집이 가장 유력한 원인이지만, 매출 자료가 없어 인과는 아직 검증되지 않았다.</p>
+    <ul class="meta">
+      <li><b>기준일</b><span class="num">2026-11-05</span></li>
+      <li><b>분석 기간</b><span class="num">2026-10-29 ~ 11-05</span></li>
+      <li><b>주요 자료</b>모바일인덱스 매출 순위, 언론 보도 15건, 커뮤니티 게시글</li>
+    </ul>
+    <div class="tools">
+      <button class="btn" type="button" id="btn-print">인쇄 / PDF 저장</button>
+    </div>
+  </div>
+</header>
+
+<section class="kpi-band" aria-label="핵심 수치">
+  <ul>
+    <li><a class="kpi" href="#s1">
+      <span class="kpi-v">35→5<small>위</small></span>
+      <span class="kpi-k">한국 구글 플레이 매출 순위</span>
+      <span class="kpi-d">10/29 오전 → 11/5 10:13, 모바일인덱스</span>
+      <span class="kpi-go">01 순위 관측 →</span>
+    </a></li>
+    <li><a class="kpi" href="#s2">
+      <span class="kpi-v">+30</span>
+      <span class="kpi-k">1주 상승 폭</span>
+      <span class="kpi-d">두 시점 모두 47위 안에 있던 게임 중 최대</span>
+      <span class="kpi-go">02 시장 비교 →</span>
+    </a></li>
+    <li><a class="kpi" href="#s1">
+      <span class="kpi-v">당일 1<small>위</small></span>
+      <span class="kpi-k">한국 앱스토어 매출 순위</span>
+      <span class="kpi-d">업데이트 당일 보도. 오전에는 47위 밖</span>
+      <span class="kpi-go">01 순위 관측 →</span>
+    </a></li>
+    <li><a class="kpi" href="#s7">
+      <span class="kpi-v">11/19·26</span>
+      <span class="kpi-k">특수 모집 종료일</span>
+      <span class="kpi-d">모집 가설을 검증할 다음 관측 시점</span>
+      <span class="kpi-go">07 검증 포인트 →</span>
+    </a></li>
+  </ul>
+</section>
+
+<div class="layout">
+
+<\!-- =========================================================
+     목차
+     ========================================================= -->
+<nav class="toc" aria-label="목차">
+  <p class="toc-title">목차</p>
+  <ol>
+    <li><a href="#summary"><span class="no">00</span>핵심 결론</a></li>
+    <li><a href="#s1"><span class="no">01</span>순위 관측</a></li>
+    <li><a href="#s2"><span class="no">02</span>시장 비교</a></li>
+    <li><a href="#s3"><span class="no">03</span>업데이트 구성</a></li>
+    <li><a href="#s4"><span class="no">04</span>원인 가설 검증</a></li>
+    <li><a href="#s5"><span class="no">05</span>과거 사례</a></li>
+    <li><a href="#s6"><span class="no">06</span>이용자 반응</a></li>
+    <li><a href="#s7"><span class="no">07</span>검증 포인트</a></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+<\!-- =========================================================
+     00 핵심 결론
+     ========================================================= -->
+<section class="summary sec" id="summary" style="padding-top:0">
+  <h2>핵심 결론</h2>
+  <ol class="findings">
+    <li>
+      <p><span class="tag fact">사실</span>한국 구글 플레이 매출 35위 → 5위. 비교할 수 있는 게임 중 가장 큰 상승(+30)이다.</p>
+      <span class="go">근거: <a href="#s1">01 순위 관측</a>, <a href="#s2">02 시장 비교</a></span>
+    </li>
+    <li>
+      <p><span class="tag ana">분석</span>상승은 4주년 업데이트 당일 시작됐다. 가장 유력한 원인은 신규 SSR 3종과 특수 모집이다.</p>
+      <span class="go">근거: <a href="#s3">03 업데이트 구성</a>, <a href="#s4">04 원인 가설 검증</a></span>
+    </li>
+    <li>
+      <p><span class="tag na">확인 불가</span>매출·모집 자료가 없어 인과는 검증되지 않았다. 11/19, 11/26 모집 종료 뒤 순위로 확인할 수 있다.</p>
+      <span class="go">근거: <a href="#s4">04 원인 가설 검증</a>, <a href="#s7">07 검증 포인트</a></span>
+    </li>
+  </ol>
+  <p class="tag-key"><span class="tag fact">사실</span>자료로 확인 <span class="tag ana">분석</span>자료를 해석한 판단 <span class="tag est">추정</span>근거 부족 <span class="tag na">확인 불가</span>자료 없음</p>
+</section>
+
+<\!-- =========================================================
+     01 순위 관측
+     ========================================================= -->
+<section class="sec" id="s1" aria-labelledby="s1-h">
+  <header class="sec-head">
+    <p class="sec-label"><span class="n">01</span>순위 관측</p>
+    <h2 id="s1-h">업데이트 당일 앱스토어 1위, 1주 뒤에도 구글 플레이 5위</h2>
+    <p class="takeaway">1주 뒤 앱스토어는 28위로 내려왔고, 구글 플레이는 5위를 지켰다.</p>
+  </header>
+
+  <figure>
+    <p class="fig-title">니케 한국 매출 순위 관측값, 10/29 ~ 11/5</p>
+    <p class="fig-sub">위로 갈수록 높은 순위 · 범례를 눌러 스토어별로 켜고 끄기 · 점에 마우스를 올리면 출처 표시</p>
+    <div class="legend-note" aria-hidden="true"><span class="filled">캡처 (모바일인덱스)</span><span class="hollow">보도 인용</span><span class="tri">47위 밖</span></div>
+    <div class="chart-box h-rank">
+      <canvas id="chart-rank" role="img" aria-label="니케 매출 순위 관측값. 구글 플레이 10월 29일 오전 35위, 11월 2일 3위, 11월 5일 5위. 앱스토어 10월 29일 오전 47위 밖, 같은 날 보도 1위, 11월 5일 28위."></canvas>
+      <div class="chart-fail">그래프를 불러오지 못했다. 아래 표에서 같은 데이터를 확인할 수 있다.</div>
+    </div>
+    <figcaption>음영: 업데이트 당일(10/29). 점선은 관측값을 이은 선이며 그 사이 순위는 관측하지 않았다.</figcaption>
+    <details class="data">
+      <summary>데이터 표로 보기</summary>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>시점</th><th class="r">구글 플레이</th><th class="r">앱스토어</th><th>자료</th></tr></thead>
+        <tbody>
+          <tr><td>10/29 오전, 업데이트 전</td><td class="r">35위</td><td class="r">47위 밖</td><td>모바일인덱스 캡처</td></tr>
+          <tr><td>10/29, 17:43 보도</td><td class="r">—</td><td class="r">1위</td><td><a target="_blank" rel="noopener" href="https://zdnet.co.kr/view/?no=20261029174322">ZDNet 10/29</a></td></tr>
+          <tr><td>11/2, 시각 미상</td><td class="r">3위<span class="s">베타뉴스는 3~4위</span></td><td class="r">—</td><td><a target="_blank" rel="noopener" href="https://zdnet.co.kr/view/?no=20261102094333">ZDNet 11/2</a>, <a target="_blank" rel="noopener" href="https://www.betanews.net/article/view/beta202611020005">베타뉴스</a></td></tr>
+          <tr class="me"><td>11/5 10:13</td><td class="r">5위</td><td class="r">28위</td><td>모바일인덱스 캡처</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </details>
+  </figure>
+
+  <ul class="points">
+    <li><span class="tag fact">사실</span>앱스토어는 업데이트 당일 오전 47위 밖에서 같은 날 1위가 됐다. 업데이트와 상승 시점이 겹친다는 가장 직접적인 정황이다.</li>
+    <li><span class="tag est">추정</span>1주 뒤 두 스토어 순위가 갈린 이유(집계 방식, 이용자 구성 등)는 확인하지 못했다.</li>
+    <li><span class="tag na">확인 불가</span>날짜별 순위가 없어 정점과 하락 시작 시점은 모른다.</li>
+  </ul>
+</section>
+
+<\!-- =========================================================
+     02 시장 비교
+     ========================================================= -->
+<section class="sec" id="s2" aria-labelledby="s2-h">
+  <header class="sec-head">
+    <p class="sec-label"><span class="n">02</span>시장 비교</p>
+    <h2 id="s2-h">같은 1주 동안 니케만큼 오른 게임은 없었다</h2>
+    <p class="takeaway">기존 상위권(10/29 1~5위)은 0~3계단만 움직였다. 그 사이로 니케가 30계단을 올라왔다.</p>
+  </header>
+
+  <figure>
+    <p class="fig-title">한국 구글 플레이 매출 순위 변동, 10/29 → 11/5</p>
+    <p class="fig-sub">11/5 TOP10과 상승 폭 상위 게임 · 범례를 눌러 묶음별로 켜고 끄기</p>
+    <div class="chart-box h-gain">
+      <canvas id="chart-gain" role="img" aria-label="순위 변동 막대그래프. 니케 30계단 상승으로 최대. 한게임포커 클래식 21, 리니지W 12, 리니지M 7, 오딘과 FC 모바일 6계단 상승. 도깨비의세계 변동 없음. 제우스, WOS, 로블록스 1계단, 킹샷 2계단, 가십하버 3계단 하락."></canvas>
+      <div class="chart-fail">그래프를 불러오지 못했다. 아래 표에서 같은 데이터를 확인할 수 있다.</div>
+    </div>
+    <figcaption>10/29 자료는 47위까지라, 47위 밖에서 진입한 게임(몬스터헌터 아웃랜더스 18위, 피망 포커 22위)은 뺐다.</figcaption>
+    <details class="data">
+      <summary>11/5 TOP10 표로 보기</summary>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th class="r">11/5</th><th>게임</th><th class="r">10/29</th><th class="r">변동</th></tr></thead>
+        <tbody>
+          <tr><td class="r">1</td><td>도깨비의세계</td><td class="r">1</td><td class="r">0</td></tr>
+          <tr><td class="r">2</td><td>리니지M</td><td class="r">9</td><td class="r up">+7</td></tr>
+          <tr><td class="r">3</td><td>제우스: 오만의 신</td><td class="r">2</td><td class="r down">−1</td></tr>
+          <tr><td class="r">4</td><td>WOS: 화이트아웃 서바이벌</td><td class="r">3</td><td class="r down">−1</td></tr>
+          <tr class="me"><td class="r">5</td><td>승리의 여신: 니케</td><td class="r">35</td><td class="r up">+30</td></tr>
+          <tr><td class="r">6</td><td>킹샷</td><td class="r">4</td><td class="r down">−2</td></tr>
+          <tr><td class="r">7</td><td>한게임포커 클래식</td><td class="r">28</td><td class="r up">+21</td></tr>
+          <tr><td class="r">8</td><td>가십하버</td><td class="r">5</td><td class="r down">−3</td></tr>
+          <tr><td class="r">9</td><td>로블록스</td><td class="r">8</td><td class="r down">−1</td></tr>
+          <tr><td class="r">10</td><td>오딘: 발할라 라이징</td><td class="r">16</td><td class="r up">+6</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </details>
+  </figure>
+
+  <ul class="points">
+    <li><span class="tag ana">분석</span>기존 상위권 순서가 거의 그대로여서, 시장 전체의 변동으로 니케의 상승을 설명하기는 어렵다.</li>
+    <li><span class="tag fact">사실</span>한게임포커 클래식(+21), 리니지W(+12)도 크게 올랐다. 두 게임은 이번 분석 범위 밖이다.</li>
+  </ul>
+</section>
+
+<\!-- =========================================================
+     03 업데이트 구성
+     ========================================================= -->
+<section class="sec" id="s3" aria-labelledby="s3-h">
+  <header class="sec-head">
+    <p class="sec-label"><span class="n">03</span>업데이트 구성</p>
+    <h2 id="s3-h">순위가 오른 날 세 가지 변화가 한꺼번에 들어왔다</h2>
+    <p class="takeaway">세 요소가 같은 날 시작돼서 순위 자료만으로는 각각의 효과를 나눌 수 없다.</p>
+  </header>
+
+  <figure>
+    <p class="fig-title">4주년 업데이트 일정과 순위 관측 시점</p>
+    <p class="fig-sub">파란 점선: 기준일(11/5)</p>
+    <div class="tl-scroll" tabindex="0" aria-label="업데이트 일정 타임라인, 좁은 화면에서는 가로로 스크롤">
+    <div class="tl" id="timeline">
+      <div class="tl-row axis"><div class="tl-name"></div><div class="tl-track">
+        <span class="tl-tick" style="left:3.03%">10/29</span>
+        <span class="tl-tick" style="left:15.15%">11/2</span>
+        <span class="tl-tick" style="left:24.24%">11/5</span>
+        <span class="tl-tick" style="left:45.45%">11/12</span>
+        <span class="tl-tick" style="left:66.67%">11/19</span>
+        <span class="tl-tick" style="left:87.88%">11/26</span>
+      </div></div>
+      <div class="tl-row"><div class="tl-name">4주년 업데이트</div><div class="tl-track">
+        <span class="tl-today" style="left:24.24%"></span>
+        <span class="tl-dot diamond" style="left:3.03%"></span><span class="tl-lab" style="left:3.03%">SSR 3종 · 코스튬 4종 · 스토리 49, 50장</span>
+      </div></div>
+      <div class="tl-row"><div class="tl-name">마리안: 퀸<small>특수 모집</small></div><div class="tl-track">
+        <span class="tl-today" style="left:24.24%"></span>
+        <span class="tl-bar" style="left:3.03%;width:63.64%">10/29 ~ 11/19 · 하루 1회 무료 모집</span>
+      </div></div>
+      <div class="tl-row"><div class="tl-name">홍련: 신살<small>특수 모집</small></div><div class="tl-track">
+        <span class="tl-today" style="left:24.24%"></span>
+        <span class="tl-bar b2" style="left:24.24%;width:63.64%">11/5 ~ 11/26</span>
+      </div></div>
+      <div class="tl-row"><div class="tl-name">구글 플레이<small>매출 순위</small></div><div class="tl-track">
+        <span class="tl-today" style="left:24.24%"></span>
+        <span class="tl-dot" style="left:3.03%"></span><span class="tl-lab" style="left:3.03%">35위</span>
+        <span class="tl-dot hollow" style="left:15.15%"></span><span class="tl-lab" style="left:15.15%">3위</span>
+        <span class="tl-dot" style="left:24.24%"></span><span class="tl-lab" style="left:24.24%">5위</span>
+      </div></div>
+      <div class="tl-row"><div class="tl-name">앱스토어<small>매출 순위</small></div><div class="tl-track">
+        <span class="tl-today" style="left:24.24%"></span>
+        <span class="tl-dot" style="left:3.03%"></span><span class="tl-lab" style="left:3.03%">47위 밖→1위</span>
+        <span class="tl-dot" style="left:24.24%"></span><span class="tl-lab" style="left:24.24%">28위</span>
+      </div></div>
+      <div class="tl-row"><div class="tl-name">검증 예정</div><div class="tl-track">
+        <span class="tl-today" style="left:24.24%"></span>
+        <span class="tl-dot plan" style="left:66.67%"></span><span class="tl-lab" style="left:66.67%">모집 종료</span>
+        <span class="tl-dot plan" style="left:87.88%"></span><span class="tl-lab" style="left:87.88%">종료</span>
+      </div></div>
+    </div>
+    </div>
+    <figcaption>라푼젤: 생츄어리 모집 일정과 4주년 혜택 기간은 자료에 없어 표시하지 않았다. 출처: <a target="_blank" rel="noopener" href="https://www.inven.co.kr/webzine/news/?news=322698">인벤</a>, <a target="_blank" rel="noopener" href="http://www.gamey.kr/news/articleViewAmp.html?idxno=3019381">게임Y</a></figcaption>
+  </figure>
+
+  <div class="table-wrap" style="margin-top:32px">
+  <table class="compact">
+    <caption>업데이트 요소별 내용과 매출과의 연결</caption>
+    <thead><tr><th>요소</th><th>내용</th><th>매출과의 연결</th><th>출처</th></tr></thead>
+    <tbody>
+      <tr class="me"><td>신규 캐릭터 · 특수 모집</td><td>SSR 3종, 코스튬 4종, 특수 모집 2회(~11/26)</td><td>직접 (유료 모집)</td><td><a target="_blank" rel="noopener" href="https://www.inven.co.kr/webzine/news/?news=322698">인벤</a></td></tr>
+      <tr><td>메인 스토리 49, 50장</td><td>방주 스토리 결말. 호평 보도와 후기 (일부 '중반부가 늘어진다')</td><td>간접 (접속, 복귀 경유)</td><td><a target="_blank" rel="noopener" href="https://www.dailygame.co.kr/view.php?ud=20261025233759872421ad998911_26">데일리게임</a>, <a target="_blank" rel="noopener" href="https://www.gameinsight.co.kr/news/articleView.html?idxno=36922">게임인사이트</a>, <a target="_blank" rel="noopener" href="https://m.ruliweb.com/community/board/300143/read/77222280">루리웹</a></td></tr>
+      <tr><td>4주년 혜택</td><td>최대 230회 모집, 매일 무료 모집, 싱크로 부스트</td><td>방향 불명 (무료라 결제를 줄일 수도 있음)</td><td><a target="_blank" rel="noopener" href="https://www.inven.co.kr/webzine/news/?news=322531">인벤</a>, <a target="_blank" rel="noopener" href="https://zdnet.co.kr/view/?no=20261102094333">ZDNet</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<\!-- =========================================================
+     04 원인 가설 검증
+     ========================================================= -->
+<section class="sec" id="s4" aria-labelledby="s4-h">
+  <header class="sec-head">
+    <p class="sec-label"><span class="n">04</span>원인 가설 검증</p>
+    <h2 id="s4-h">신규 캐릭터와 특수 모집이 가장 유력하지만, 직접 증거는 없다</h2>
+    <p class="takeaway">여섯 가지 가설 모두 매출이나 모집 참여 같은 직접 지표로는 확인되지 않았다.</p>
+  </header>
+
+  <div class="table-wrap">
+  <table class="matrix">
+    <caption class="sr-only">원인 가설별 근거와 판단</caption>
+    <thead><tr><th>가설</th><th>근거</th><th>약점</th><th>판단</th></tr></thead>
+    <tbody>
+      <tr><td><b>신규 SSR · 특수 모집</b></td><td>당일 급등, 유료 모집은 매출과 직결</td><td>다른 요소와 동시 출시라 효과 분리 불가</td><td><span class="verdict v1">가장 유력</span></td></tr>
+      <tr><td><b>메인 스토리 결말</b></td><td>호평 보도, 이용자 후기</td><td>무료 콘텐츠라 매출 경로가 간접적</td><td><span class="verdict v2">보조 가능성</span></td></tr>
+      <tr><td><b>4주년 혜택</b></td><td>최대 230회 모집</td><td>매출을 늘렸는지 줄였는지 알 수 없음</td><td><span class="verdict v2">방향 불명</span></td></tr>
+      <tr><td><b>시장 전반 변동</b></td><td>기존 상위권은 0~3계단만 움직임</td><td>두 시점 비교뿐이라 배제는 못함</td><td><span class="verdict v3">가능성 낮음</span></td></tr>
+      <tr><td><b>경쟁작 하락</b></td><td>킹샷 −2, 가십하버 −3</td><td>하락 폭이 작고 일부 게임 미기록</td><td><span class="verdict v3">근거 부족</span></td></tr>
+      <tr><td><b>구글 집계 시차</b></td><td>3~4일 지연 설명을 봤다는 메모</td><td>기사 링크 미확보</td><td><span class="verdict v4">확인 불가</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="matrix-key">판단은 근거의 종류에 따른 질적 구분이며 수치 신뢰도가 아니다.</p>
+</section>
+
+<\!-- =========================================================
+     05 과거 사례
+     ========================================================= -->
+<section class="sec" id="s5" aria-labelledby="s5-h">
+  <header class="sec-head">
+    <p class="sec-label"><span class="n">05</span>과거 사례</p>
+    <h2 id="s5-h">일본에서는 업데이트 때마다 1위였지만, 한국 기록은 없다</h2>
+    <p class="takeaway">과거 기록은 국가와 스토어가 제각각이라 같은 기준으로 비교할 수 있는 것은 일본 구글 플레이뿐이다.</p>
+  </header>
+
+  <div class="table-wrap">
+  <table class="grid-mk">
+    <caption>업데이트별 보도된 매출 순위</caption>
+    <colgroup><col><col><col><col class="jp"><col><col></colgroup>
+    <thead><tr><th>업데이트</th><th>한국 구글</th><th>한국 앱스토어</th><th>일본 구글</th><th>일본 앱스토어</th><th>기타</th></tr></thead>
+    <tbody>
+      <tr><td>3주년<span class="s">2025-11</span></td><td class="empty">—</td><td class="empty">—</td><td class="empty">—</td><td class="hit">2위</td><td>북미 22위</td></tr>
+      <tr><td>3.5주년<span class="s">2026-04</span></td><td class="empty">—</td><td class="empty">—</td><td class="hit">1위</td><td class="empty">—</td><td class="empty">—</td></tr>
+      <tr><td>여름 업데이트<span class="s">2026-07</span></td><td class="empty">—</td><td class="empty">—</td><td class="hit">1위</td><td class="empty">—</td><td class="empty">—</td></tr>
+      <tr class="me"><td>4주년<span class="s">2026-10</span></td><td class="hit">3위</td><td class="hit">1위</td><td class="hit">1위</td><td class="empty">—</td><td>대만 구글 5위</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fig-sub" style="margin-top:10px">"—"는 기록을 확보하지 못했다는 뜻이다. 3.5주년과 여름 기록은 <a target="_blank" rel="noopener" href="https://www.playforum.net/news/articleView.html?idxno=635749">플레이포럼</a> 기사에서 재인용했다. 나머지 출처: <a target="_blank" rel="noopener" href="https://zdnet.co.kr/view/?no=20261102094333">ZDNet</a></p>
+
+  <ul class="points">
+    <li><span class="tag fact">사실</span>일본 구글 플레이에서는 3.5주년, 여름, 4주년 업데이트 때 모두 매출 1위를 기록했다.</li>
+    <li><span class="tag na">확인 불가</span>한국에서도 같은 패턴이 반복됐는지는 알 수 없다. 그래서 과거 사례는 참고 정황으로만 쓴다.</li>
+  </ul>
+</section>
+
+<\!-- =========================================================
+     06 이용자 반응
+     ========================================================= -->
+<section class="sec" id="s6" aria-labelledby="s6-h">
+  <header class="sec-head">
+    <p class="sec-label"><span class="n">06</span>이용자 반응</p>
+    <h2 id="s6-h">반응은 신규 캐릭터, 스토리, 보안 사고에 모였다</h2>
+    <p class="takeaway">디시인사이드 니케 갤러리, 11/5 10:28 ~ 10:37 글 약 90건. 주제별 건수는 세지 않았다.</p>
+  </header>
+
+  <div class="table-wrap">
+  <table class="compact">
+    <thead><tr><th>주제</th><th>주로 올라온 글</th><th>순위와의 관계</th><th>대표 글</th></tr></thead>
+    <tbody>
+      <tr><td><b>신규 캐릭터</b></td><td>성능 비교, 육성 질문, 구매 인증</td><td>상승 요인과 겹침</td><td><a target="_blank" rel="noopener" href="https://gall.dcinside.com/mgallery/board/view/?id=gov&amp;no=6468881">#6468881</a>, <a target="_blank" rel="noopener" href="https://gall.dcinside.com/mgallery/board/view/?id=gov&amp;no=6466474">#6466474</a></td></tr>
+      <tr><td><b>메인 스토리</b></td><td>스포일러 감상, 질문</td><td>상승 요인과 겹침</td><td><a target="_blank" rel="noopener" href="https://gall.dcinside.com/mgallery/board/view/?id=gov&amp;no=6468872">#6468872</a>, <a target="_blank" rel="noopener" href="https://gall.dcinside.com/mgallery/board/view/?id=gov&amp;no=6468854">#6468854</a></td></tr>
+      <tr><td><b>PC 런처 보안 사고</b></td><td>공지, 대처법, 불만 (조회 수 최다)</td><td>하락 요인 후보</td><td><a target="_blank" rel="noopener" href="https://gall.dcinside.com/mgallery/board/view/?id=gov&amp;no=6467346">공지</a>, <a target="_blank" rel="noopener" href="https://www.gameinsight.co.kr/news/articleView.html?idxno=36935">게임인사이트</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="memo"><b>한계.</b> 약 10분 분량이고 보안 사고 직후라 평소 반응과 다를 수 있다. 네이버 게임 라운지와 스토어 리뷰는 확인하지 못했다.</p>
+</section>
+
+<\!-- =========================================================
+     07 검증 포인트
+     ========================================================= -->
+<section class="sec" id="s7" aria-labelledby="s7-h">
+  <header class="sec-head">
+    <p class="sec-label"><span class="n">07</span>검증 포인트</p>
+    <h2 id="s7-h">모집이 끝나는 11/19와 11/26 전후 순위로 가설을 확인한다</h2>
+    <p class="takeaway">11/2 3위에서 11/5 5위로 소폭 내려왔지만 원인은 확인하지 못했다. 앞으로 매일 같은 시각에 순위를 기록한다.</p>
+  </header>
+
+  <div class="table-wrap">
+  <table class="compact">
+    <thead><tr><th>날짜</th><th>일정</th><th>순위가 내려가면</th><th>순위가 유지되면</th></tr></thead>
+    <tbody>
+      <tr><td class="num"><b>11/19</b></td><td>마리안: 퀸 모집 종료</td><td>모집 가설이 강해진다</td><td>스토리, 복귀 등 다른 요인 재검토</td></tr>
+      <tr><td class="num"><b>11/26</b></td><td>홍련: 신살 모집 종료</td><td>모집이 순위를 떠받쳤다는 해석이 강해진다</td><td>이용자 수 지표 확보가 우선</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="memo"><b>주의.</b> 순위가 내려가도 그것만으로 인과가 증명되지는 않는다. 같은 시기 다른 게임의 업데이트도 함께 확인해야 한다.</p>
+</section>
+
+<\!-- =========================================================
+     08 자료 범위와 한계
+     ========================================================= -->
+<section class="sec" id="s8" aria-labelledby="s8-h" hidden>
+  <header class="sec-head">
+    <p class="sec-label"><span class="n">08</span>자료 범위와 한계</p>
+    <h2 id="s8-h">이 보고서의 결론은 시점의 일치에 기대고 있다</h2>
+    <p class="takeaway">확보한 자료는 순위 관측값과 보도, 짧은 구간의 커뮤니티 글이다. 매출과 이용자 행동을 직접 보여 주는 자료는 없다.</p>
+  </header>
+
+  <div class="inventory">
+    <div class="have">
+      <h3>확보한 자료</h3>
+      <ul>
+        <li>모바일인덱스 매출 순위 캡처 2개 시점 (10/29 오전 47위까지, 11/5 10:13)</li>
+        <li>순위를 인용한 보도 2개 시점 (10/29, 11/2)</li>
+        <li>업데이트 구성과 일정 보도</li>
+        <li>과거 업데이트 순위 보도 (국가 · 스토어 혼재)</li>
+        <li>디시인사이드 갤러리 글 약 90건 (11/5 10:28 ~ 10:37), 루리웹 후기 1건</li>
+      </ul>
+    </div>
+    <div class="miss">
+      <h3>확보하지 못한 자료</h3>
+      <ul>
+        <li>매출액, 모집 참여량, 이용자 수 같은 직접 지표</li>
+        <li>날짜별 연속 순위</li>
+        <li>캡처의 국가와 순위 유형 표기 (한국 매출 순위로 보았다)</li>
+        <li>10/29 기준 48위 밖 게임과 10/29 6·7·10위 게임 정보</li>
+        <li>한국 시장의 과거 업데이트 순위 기록</li>
+        <li>네이버 게임 라운지, 스토어 리뷰</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="excluded">
+    <h3>검토했지만 근거로 쓰지 않은 자료</h3>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>자료</th><th>내용</th><th>제외 이유</th></tr></thead>
+      <tbody>
+        <tr><td>복귀 · 유입 지표 보도</td><td>업데이트 후 국내 주간 이용자 수 전주 대비 +6.7%, 주간 플레이 시간 +2.2% (모바일인덱스 기준으로 보도)</td><td>원문 기사를 확인하지 못함</td></tr>
+        <tr><td>구글 플레이 집계 시차 기사</td><td>구글 순위가 3~4일 늦게 반영된다는 설명</td><td>링크와 발행 시점 미확보</td></tr>
+        <tr><td><a target="_blank" rel="noopener" href="https://gamefocus.co.kr/detail.php?number=180225">게임포커스</a> "구글 플레이 5위"</td><td>니케 구글 플레이 5위 보도</td><td>날짜 정보가 이번 기간과 맞지 않음 (약 600일 전 표기)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="memo">일부 기사(게임Y 등)는 제목과 요약만 확인했다. 출처 목록에 확인 수준을 함께 표시했다.</p>
+  </div>
+</section>
+
+<\!-- =========================================================
+     09 출처
+     ========================================================= -->
+<section class="sec sources" id="src" aria-labelledby="src-h" hidden>
+  <header class="sec-head">
+    <p class="sec-label"><span class="n">09</span>출처</p>
+    <h2 id="src-h">출처와 참고 자료</h2>
+  </header>
+
+  <h3>순위 자료</h3>
+  <ol>
+    <li>모바일인덱스 구글 플레이, 앱스토어 매출 순위 캡처. 2026-10-29 오전, 2026-11-05 10:13:36 기준. <a href="https://www.mobileindex.com/mi-chart/realtime-rank" target="_blank" rel="noopener">mobileindex.com</a> <span class="used">01, 02</span></li>
+  </ol>
+
+  <h3>기사</h3>
+  <ol>
+    <li>ZDNet Korea, 2026-10-29 17:43, 업데이트 당일 순위. <a href="https://zdnet.co.kr/view/?no=20261029174322" target="_blank" rel="noopener">원문</a><span class="st">본문 확인</span> <span class="used">01, 05</span></li>
+    <li>ZDNet Korea, 2026-11-02 10:35, 3·4주년 연속 반등. <a href="https://zdnet.co.kr/view/?no=20261102094333" target="_blank" rel="noopener">원문</a><span class="st">본문 확인</span> <span class="used">01, 03, 05</span></li>
+    <li>베타뉴스, 11/2 순위. <a href="https://www.betanews.net/article/view/beta202611020005" target="_blank" rel="noopener">원문</a> <span class="used">01</span></li>
+    <li>인벤, 4주년 업데이트. <a href="https://www.inven.co.kr/webzine/news/?news=322698" target="_blank" rel="noopener">원문</a> <span class="used">03</span></li>
+    <li>인벤, 4주년 특별방송. <a href="https://www.inven.co.kr/webzine/news/?news=322531" target="_blank" rel="noopener">원문</a> <span class="used">03</span></li>
+    <li>인벤, 세계 도심 4주년 축제. <a href="https://www.inven.co.kr/webzine/news/?news=322864" target="_blank" rel="noopener">원문</a></li>
+    <li>루리웹 뉴스, 4주년 캠페인. <a href="https://bbs.ruliweb.com/news/read/231223" target="_blank" rel="noopener">원문</a></li>
+    <li>게임Y, 마리안 특수 모집 무료 혜택. <a href="http://www.gamey.kr/news/articleViewAmp.html?idxno=3019381" target="_blank" rel="noopener">원문</a><span class="st">제목 확인</span> <span class="used">03</span></li>
+    <li>데일리게임, 메인 스토리 49, 50장. <a href="https://www.dailygame.co.kr/view.php?ud=20261025233759872421ad998911_26" target="_blank" rel="noopener">원문</a> <span class="used">03</span></li>
+    <li>경향게임스, 4주년 반응. <a href="https://www.khgames.co.kr/news/articleView.html?idxno=309814" target="_blank" rel="noopener">원문</a> <span class="used">03</span></li>
+    <li>게임인사이트, 4년 서사 호평. <a href="https://www.gameinsight.co.kr/news/articleView.html?idxno=36922" target="_blank" rel="noopener">원문</a> <span class="used">03</span></li>
+    <li>게임인사이트, PC 런처 관련 지적. <a href="https://www.gameinsight.co.kr/news/articleView.html?idxno=36935" target="_blank" rel="noopener">원문</a> <span class="used">06</span></li>
+    <li>플레이포럼, 일본 구글 플레이 순위. <a href="https://www.playforum.net/news/articleView.html?idxno=635749" target="_blank" rel="noopener">원문</a> <span class="used">05</span></li>
+    <li>플레이포럼, 한국, 대만 매출 1위. <a href="https://www.playforum.net/news/articleView.html?idxno=635730" target="_blank" rel="noopener">원문</a></li>
+    <li>게임뷰, 글로벌 매출 역주행. <a href="https://www.gamevu.co.kr/news/articleView.html?idxno=61965" target="_blank" rel="noopener">원문</a></li>
+    <li>게임톡, 스토리 평가. <a href="https://www.gametoc.co.kr/news/articleView.html?idxno=112622" target="_blank" rel="noopener">원문</a></li>
+  </ol>
+
+  <h3>커뮤니티</h3>
+  <ol>
+    <li>디시인사이드 승리의 여신: 니케 마이너 갤러리, 2026-11-05 10:28 ~ 10:37 게시글과 개념글. <a href="https://gall.dcinside.com/mgallery/board/lists/?id=gov" target="_blank" rel="noopener">원문</a> <span class="used">03, 06</span></li>
+    <li>루리웹, 스포 없는 49, 50 챕터 후기. <a href="https://m.ruliweb.com/community/board/300143/read/77222280" target="_blank" rel="noopener">원문</a> <span class="used">03</span></li>
+  </ol>
+  <p class="memo">상태 표시가 없는 기사는 링크와 요약 수준으로 확인했다. 숫자는 해당 자료를 인용한 본문 섹션이다.</p>
+</section>
+
+</main>
+</div>
+
+<footer class="foot">
+  <div class="foot-in">
+    <span>「승리의 여신: 니케」 매출 순위 상승 요인 분석</span>
+    <span>기준일 2026-11-05 · 자료 모바일인덱스, 언론 보도, 커뮤니티 게시글</span>
+  </div>
+</footer>
+
+<\!-- 그래프 라이브러리: 실패해도 본문과 데이터 표는 그대로 읽힌다 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer onerror="window.__chartFailed=true"><\/script>
+<script>
+/* =========================================================
+   보고서 스크립트
+   1) 목차 활성화와 이동  2) 진행 표시  3) 인쇄  4) 그래프
+   ========================================================= */
+(function () {
+  'use strict';
+
+  /* ---------- 1. 목차 ---------- */
+  var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = tocLinks.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); }).filter(Boolean);
+
+  function setActive(id) {
+    tocLinks.forEach(function (a) {
+      var on = a.getAttribute('href') === '#' + id;
+      a.classList.toggle('on', on);
+      if (on) {
+        a.setAttribute('aria-current', 'true');
+        // 좁은 화면의 가로 목차에서 현재 항목이 보이게 한다
+        var list = a.closest('ol');
+        if (list && list.scrollWidth > list.clientWidth) {
+          var left = a.offsetLeft - list.clientWidth / 2 + a.offsetWidth / 2;
+          list.scrollTo({ left: left, behavior: 'auto' });
+        }
+      } else {
+        a.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  var current = null;
+  function onScroll() {
+    var line = window.innerHeight * 0.28;
+    var id = sections[0].id;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].getBoundingClientRect().top <= line) id = sections[i].id;
+    }
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      id = sections[sections.length - 1].id;
+    }
+    if (id !== current) { current = id; setActive(id); }
+
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+  }
+
+  // 섹션 이동 후 키보드 초점을 해당 섹션 제목으로 옮긴다
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var target = document.getElementById(a.getAttribute('href').slice(1));
+    if (!target) return;
+    var heading = target.querySelector('h2');
+    if (heading) {
+      heading.setAttribute('tabindex', '-1');
+      setTimeout(function () { heading.focus({ preventScroll: true }); }, 400);
+    }
+  });
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* ---------- 2. 인쇄 ---------- */
+  var detailsOpen = [];
+  window.addEventListener('beforeprint', function () {
+    detailsOpen = Array.prototype.map.call(document.querySelectorAll('details.data'), function (d) {
+      var was = d.open; d.open = true; return was;
+    });
+    charts.forEach(function (c) { c.resize(); });
+  });
+  window.addEventListener('afterprint', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('details.data'), function (d, i) { d.open = !!detailsOpen[i]; });
+    charts.forEach(function (c) { c.resize(); });
+  });
+  document.getElementById('btn-print').addEventListener('click', function () { window.print(); });
+
+  /* ---------- 3. 그래프 ---------- */
+  var charts = [];
+  var C = {
+    navy: '#13294B', blue: '#1F5FAE', blueSoft: '#9DB9DB', slate: '#6C7A8C',
+    grey: '#A7B0BC', line: '#DDE3EA', ink: '#0F1B2D', muted: '#5B6878'
+  };
+  var DAY = ['10/29', '10/30', '10/31', '11/1', '11/2', '11/3', '11/4', '11/5'];
+
+  function chartFailed() {
+    document.querySelectorAll('.chart-box').forEach(function (b) { b.classList.add('failed'); });
+    document.querySelectorAll('details.data').forEach(function (d) { d.open = true; });
+  }
+
+  // 점 옆에 값 표시
+  var pointLabels = {
+    id: 'pointLabels',
+    afterDatasetsDraw: function (chart) {
+      var ctx = chart.ctx;
+      ctx.save();
+      ctx.font = '700 12px ' + Chart.defaults.font.family;
+      ctx.textBaseline = 'middle';
+      chart.data.datasets.forEach(function (ds, i) {
+        if (!chart.isDatasetVisible(i)) return;
+        chart.getDatasetMeta(i).data.forEach(function (pt, j) {
+          var raw = ds.data[j];
+          ctx.fillStyle = ds.borderColor;
+          var text = raw.label || (raw.y + '위');
+          var dx = raw.dx != null ? raw.dx : 10, dy = raw.dy != null ? raw.dy : 0;
+          ctx.textAlign = dx < 0 ? 'right' : 'left';
+          ctx.fillText(text, pt.x + dx, pt.y + dy);
+        });
+      });
+      ctx.restore();
+    }
+  };
+
+  // 업데이트 당일 영역 표시
+  var updateBand = {
+    id: 'updateBand',
+    beforeDatasetsDraw: function (chart) {
+      var x = chart.scales.x, y = chart.scales.y, ctx = chart.ctx;
+      var x0 = x.getPixelForValue(0), x1 = x.getPixelForValue(1);
+      ctx.save();
+      ctx.fillStyle = 'rgba(31,95,174,0.07)';
+      ctx.fillRect(x0, y.top, x1 - x0, y.bottom - y.top);
+      ctx.restore();
+    }
+  };
+
+  // 막대 끝에 변동 값 표시
+  var barLabels = {
+    id: 'barLabels',
+    afterDatasetsDraw: function (chart) {
+      var ctx = chart.ctx;
+      ctx.save();
+      ctx.font = '700 12px ' + Chart.defaults.font.family;
+      ctx.textBaseline = 'middle';
+      chart.data.datasets.forEach(function (ds, i) {
+        if (!chart.isDatasetVisible(i)) return;
+        chart.getDatasetMeta(i).data.forEach(function (bar, j) {
+          var v = ds.data[j];
+          if (v === null || v === undefined) return;
+          var text = v > 0 ? '+' + v : (v < 0 ? '−' + Math.abs(v) : '0');
+          ctx.fillStyle = i === 0 ? C.blue : C.muted;
+          ctx.textAlign = v < 0 ? 'right' : 'left';
+          ctx.fillText(text, bar.x + (v < 0 ? -6 : 6), bar.y);
+        });
+      });
+      ctx.restore();
+    }
+  };
+
+  function legendOpts() {
+    return {
+      position: 'top', align: 'start',
+      labels: { usePointStyle: true, boxWidth: 8, boxHeight: 8, padding: 16, color: C.ink, font: { size: 13, weight: '600' } }
+    };
+  }
+  function tooltipOpts(extra) {
+    var base = {
+      backgroundColor: '#fff', titleColor: C.navy, bodyColor: C.ink, borderColor: C.line, borderWidth: 1,
+      padding: 10, titleFont: { weight: '700' }, displayColors: false, cornerRadius: 2
+    };
+    for (var k in extra) base[k] = extra[k];
+    return base;
+  }
+
+  function buildRankChart() {
+    var el = document.getElementById('chart-rank');
+    var narrow = el.parentNode.clientWidth < 520;
+    var chart = new Chart(el, {
+      type: 'scatter',
+      data: {
+        datasets: [
+          {
+            label: '구글 플레이',
+            data: [
+              { x: 0.42, y: 35, t: '10/29 오전 (업데이트 전)', src: '모바일인덱스 캡처', cap: true },
+              { x: 4, y: 3, t: '11/2 (관측 시각 미상)', src: 'ZDNet 11/2 보도 · 베타뉴스는 3~4위', cap: false, dy: -12, dx: -6 },
+              { x: 7.42, y: 5, t: '11/5 10:13', src: '모바일인덱스 캡처', cap: true, dy: -12, dx: -6 }
+            ],
+            showLine: true, borderDash: [5, 4], borderWidth: 2,
+            borderColor: C.blue, backgroundColor: C.blue,
+            pointBackgroundColor: function (c) { return c.raw && c.raw.cap ? C.blue : '#fff'; },
+            pointBorderColor: C.blue, pointBorderWidth: 2, pointRadius: 6, pointHoverRadius: 8
+          },
+          {
+            label: '앱스토어',
+            data: [
+              { x: 0.74, y: 1, t: '10/29 (17:43 보도)', src: 'ZDNet 10/29 보도', cap: false, dx: 12, dy: 2 },
+              { x: 7.42, y: 28, t: '11/5 10:13', src: '모바일인덱스 캡처', cap: true, dx: -6, dy: -14 }
+            ],
+            showLine: true, borderDash: [5, 4], borderWidth: 2,
+            borderColor: C.slate, backgroundColor: C.slate,
+            pointBackgroundColor: function (c) { return c.raw && c.raw.cap ? C.slate : '#fff'; },
+            pointBorderColor: C.slate, pointBorderWidth: 2, pointRadius: 6, pointHoverRadius: 8
+          },
+          {
+            label: '앱스토어 47위 밖',
+            data: [
+              { x: 0.42, y: 50, t: '10/29 오전 (업데이트 전)', src: '모바일인덱스 캡처, 47위까지 기록에 없음', cap: true, label: '앱스토어 47위 밖' }
+            ],
+            showLine: false, borderColor: C.slate, backgroundColor: C.slate,
+            pointStyle: 'triangle', rotation: 180, pointRadius: 7, pointHoverRadius: 9
+          }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, animation: { duration: 500 },
+        layout: { padding: { right: narrow ? 24 : 40, top: 18 } },
+        interaction: { mode: 'nearest', intersect: true },
+        plugins: {
+          legend: (function () {
+            var o = legendOpts();
+            // 범례 아이콘은 점 채움과 상관없이 스토어 색으로 표시
+            o.labels.generateLabels = function (chart) {
+              return chart.data.datasets.map(function (ds, i) {
+                return {
+                  text: ds.label, datasetIndex: i, hidden: !chart.isDatasetVisible(i),
+                  fillStyle: ds.borderColor, strokeStyle: ds.borderColor, lineWidth: 0,
+                  pointStyle: ds.pointStyle || 'circle', rotation: ds.rotation || 0, fontColor: C.ink
+                };
+              });
+            };
+            return o;
+          })(),
+          tooltip: tooltipOpts({
+            callbacks: {
+              title: function (items) { return items[0].raw.t; },
+              label: function (item) {
+                var r = item.raw;
+                var val = r.label ? r.label : r.y + '위';
+                return [item.dataset.label.replace(' 47위 밖', '') + ': ' + val, '자료: ' + r.src];
+              }
+            }
+          })
+        },
+        scales: {
+          x: {
+            type: 'linear', min: 0, max: 7.9,
+            grid: { color: C.line, drawTicks: false },
+            border: { color: C.navy },
+            ticks: {
+              stepSize: 1, padding: 8, color: C.muted, font: { size: 12 }, maxRotation: 0, autoSkip: false,
+              callback: function (v) { return Number.isInteger(v) && (!narrow || v % 2 === 0 || v === 7) ? DAY[v] : ''; }
+            },
+            title: { display: !narrow, text: '날짜 (2026년)', color: C.muted, font: { size: 12 } }
+          },
+          y: {
+            reverse: true, min: 0, max: 53,
+            grid: { color: function (c) { return c.tick && c.tick.value === 50 ? 'transparent' : C.line; } },
+            border: { display: false },
+            afterBuildTicks: function (axis) { axis.ticks = [1, 10, 20, 30, 40, 50].map(function (v) { return { value: v }; }); },
+            ticks: { color: C.muted, font: { size: 12 }, callback: function (v) { return v === 50 ? '47위 밖' : v + '위'; } },
+            title: { display: !narrow, text: '매출 순위', color: C.muted, font: { size: 12 } }
+          }
+        }
+      },
+      plugins: [updateBand, pointLabels]
+    });
+    charts.push(chart);
+  }
+
+  function buildGainChart() {
+    var games = [
+      ['승리의 여신: 니케', 35, 5],
+      ['한게임포커 클래식', 28, 7],
+      ['리니지W', 47, 35],
+      ['리니지M', 9, 2],
+      ['오딘: 발할라 라이징', 16, 10],
+      ['FC 모바일', 26, 20],
+      ['도깨비의세계', 1, 1],
+      ['제우스: 오만의 신', 2, 3],
+      ['WOS: 화이트아웃 서바이벌', 3, 4],
+      ['로블록스', 8, 9],
+      ['킹샷', 4, 6],
+      ['가십하버', 5, 8]
+    ];
+    var labels = games.map(function (g) { return g[0]; });
+    var delta = games.map(function (g) { return g[1] - g[2]; });
+    function pick(fn) { return delta.map(function (d, i) { return fn(d, i) ? d : null; }); }
+
+    var el = document.getElementById('chart-gain');
+    var narrow = el.parentNode.clientWidth < 520;
+    var common = { borderWidth: 0, barThickness: narrow ? 16 : 20, grouped: false, borderRadius: 1 };
+    var chart = new Chart(el, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          Object.assign({ label: '니케', data: pick(function (d, i) { return i === 0; }), backgroundColor: C.blue }, common),
+          Object.assign({ label: '다른 상승 게임', data: pick(function (d, i) { return i > 0 && d > 0; }), backgroundColor: C.blueSoft }, common),
+          Object.assign({ label: '하락 · 보합', data: pick(function (d) { return d <= 0; }), backgroundColor: C.grey }, common)
+        ]
+      },
+      options: {
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false, animation: { duration: 500 },
+        layout: { padding: { right: 36 } },
+        plugins: {
+          legend: legendOpts(),
+          tooltip: tooltipOpts({
+            filter: function (item) { return item.raw !== null; },
+            callbacks: {
+              title: function (items) { return items[0].label; },
+              label: function (item) {
+                var g = games[item.dataIndex], d = g[1] - g[2];
+                var word = d > 0 ? d + '계단 상승' : (d < 0 ? Math.abs(d) + '계단 하락' : '변동 없음');
+                return ['10/29 ' + g[1] + '위 → 11/5 ' + g[2] + '위', word];
+              }
+            }
+          })
+        },
+        scales: {
+          x: {
+            min: -5, max: 35,
+            grid: { color: function (c) { return c.tick && c.tick.value === 0 ? C.navy : C.line; }, lineWidth: function (c) { return c.tick && c.tick.value === 0 ? 1.5 : 1; } },
+            border: { display: false },
+            ticks: { stepSize: narrow ? 10 : 5, maxRotation: 0, color: C.muted, font: { size: 12 }, callback: function (v) { return v > 0 ? '+' + v : (v < 0 ? '−' + Math.abs(v) : '0'); } },
+            title: { display: true, text: '순위 변동 (계단, 오른쪽이 상승)', color: C.muted, font: { size: 12 } }
+          },
+          y: {
+            grid: { display: false }, border: { display: false },
+            ticks: {
+              color: function (c) { return c.index === 0 ? C.blue : C.ink; },
+              font: function (c) { return { size: narrow ? 12 : 13, weight: c.index === 0 ? '800' : '500' }; },
+              callback: function (v, i) {
+                var name = labels[i];
+                return narrow && name.length > 9 ? name.replace(/:.*$/, '') : name;
+              }
+            }
+          }
+        }
+      },
+      plugins: [barLabels]
+    });
+    charts.push(chart);
+  }
+
+  function initCharts() {
+    if (window.__chartFailed || typeof window.Chart === 'undefined') { chartFailed(); return; }
+    Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+    Chart.defaults.color = C.muted;
+    try { buildRankChart(); buildGainChart(); }
+    catch (err) { chartFailed(); if (window.console) console.warn('그래프 생성 실패:', err); }
+  }
+
+  // 라이브러리 로드 후, 글꼴이 준비된 뒤 그려야 캔버스 글자가 대체 글꼴로 남지 않는다
+  function start() {
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(initCharts, initCharts);
+    else initCharts();
+  }
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start);
+})();
+<\/script>
+</body>
+</html>
+</script>
+<script>
+  /* ---------- report tab: 탭을 처음 열 때 보고서를 불러온다 ---------- */
+  (function () {
+    var view = document.querySelector('[data-view="report"]');
+    var frame = document.getElementById("reportFrame");
+    var open = document.getElementById("reportNewTab");
+    if (!view || !frame) return;
+    var raw = document.getElementById("report-nikke").textContent
+      .replace(/<\\\/script/g, "</script").replace(/<\\!--/g, "<!--");
+    try { open.href = URL.createObjectURL(new Blob([raw], { type: "text/html" })); } catch (e) { open.hidden = true; }
+    var loaded = false;
+    function load() { if (loaded || view.hidden) return; loaded = true; frame.srcdoc = raw; }
+    load();
+    new MutationObserver(load).observe(view, { attributes: true, attributeFilter: ["hidden"] });
+  })();
 </script>
 </body>
 </html>
