@@ -1136,7 +1136,7 @@
       <section class="section">
         <div class="sec-head reveal"><div><p class="sec-en">Report</p><h2>매출 순위 분석 보고서</h2></div></div>
         <div class="tab-summary" style="--c:var(--blue);--c-d:var(--blue-d);--c-soft:var(--blue-soft)"><p class="tab-summary-label">SUMMARY · 요약</p><ol><li><span class="sum-n">1</span><p>「승리의 여신: 니케」가 4주년 업데이트 후 1주 만에 한국 구글 플레이 매출 35위에서 5위로 오른 이유를 순위 자료, 언론 보도, 커뮤니티 반응으로 분석했습니다.</p></li><li><span class="sum-n">2</span><p>신규 SSR과 특수 모집을 가장 유력한 원인으로 보되, 가설 6개를 근거와 약점으로 비교해 사실과 추정을 구분했습니다.</p></li><li><span class="sum-n">3</span><p>매출 자료가 없다는 한계를 밝히고, 모집 종료일(11/19, 11/26) 전후 순위로 가설을 검증하는 계획을 세웠습니다.</p></li></ol></div>
-        <div class="report-bar"><span class="report-meta">기준일 2026-11-05 · 인터랙티브 보고서 (그래프에 마우스를 올리면 상세 수치 표시)</span><a class="report-open" id="reportNewTab" href="#" target="_blank" rel="noopener">새 탭에서 크게 보기</a></div>
+        <div class="report-bar"><span class="report-meta">기준일 2026-11-05 · 인터랙티브 보고서 (그래프에 마우스를 올리면 상세 수치 표시)</span><a class="report-open" id="reportNewTab" href="#report" role="button">새 탭에서 크게 보기</a></div>
         <div class="report-frame-wrap"><iframe id="reportFrame" class="report-frame" title="니케 매출 순위 분석 보고서" loading="lazy"></iframe></div>
       </section>
     </div>
@@ -13567,7 +13567,15 @@ table.compact caption{font-size:16px}
     if (!view || !frame) return;
     var raw = document.getElementById("report-nikke").textContent
       .replace(/<\\\/script/g, "</script").replace(/<\\!--/g, "<!--");
-    try { open.href = URL.createObjectURL(new Blob([raw], { type: "text/html" })); } catch (e) { open.hidden = true; }
+    // blob 주소는 최신 Chrome에서 새 탭으로 열리지 않으므로, 빈 창을 열고 보고서를 직접 써 넣는다
+    open.addEventListener("click", function (e) {
+      e.preventDefault();
+      var w = window.open("", "_blank");
+      if (!w) { alert("팝업이 차단되었습니다. 브라우저 주소창의 팝업 허용을 눌러 주세요."); return; }
+      w.document.open();
+      w.document.write(raw);
+      w.document.close();
+    });
     var loaded = false;
     function load() { if (loaded || view.hidden) return; loaded = true; frame.srcdoc = raw; }
     load();
